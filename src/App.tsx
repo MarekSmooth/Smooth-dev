@@ -39,14 +39,14 @@ const LandingPage: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-        </Routes>
-      </Router>
+      <Router basename="/Smooth-dev">
+  <Routes>
+    <Route path="/" element={<LandingPage />} />
+    <Route path="/about" element={<AboutPage />} />
+    <Route path="/services" element={<ServicesPage />} />
+    <Route path="/portfolio" element={<PortfolioPage />} />
+  </Routes>
+</Router>
     </ThemeProvider>
   );
 };

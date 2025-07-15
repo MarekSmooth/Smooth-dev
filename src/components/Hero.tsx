@@ -16,15 +16,22 @@ const Hero: React.FC = () => {
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10 dark:opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-yellow-400 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/public/SD logo 18.png" 
+              alt="Smooth Development Logo" 
+              className="w-20 h-20 object-contain animate-pulse"
+            />
+          </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             Your Vision.{' '}
-            <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Our Technology.
             </span>
           </h1>
@@ -36,7 +43,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => scrollToSection('portfolio')}
-              className="group bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-4 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-2"
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-2"
             >
               <span>See Our Work</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -44,7 +51,7 @@ const Hero: React.FC = () => {
             
             <button
               onClick={() => scrollToSection('contact')}
-              className="group bg-transparent border-2 border-yellow-600 text-yellow-600 dark:text-yellow-400 px-8 py-4 rounded-lg font-medium hover:bg-yellow-600 hover:text-white transition-all duration-200 flex items-center space-x-2"
+              className="group bg-transparent border-2 border-blue-600 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-200 flex items-center space-x-2"
             >
               <Play className="w-5 h-5" />
               <span>Contact Us</span>

@@ -44,7 +44,7 @@ const About: React.FC = () => {
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 Our team brings together diverse expertise in modern web technologies, mobile development, and user experience design. We're committed to delivering premium quality while maintaining the agility and personal touch of a boutique agency.
               </p>
-              <button className="group bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-6 py-3 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-2">
+              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-2">
                 <span>Learn More</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
               </button>
@@ -53,19 +53,19 @@ const About: React.FC = () => {
             <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">50+</div>
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
                   <div className="text-gray-600 dark:text-gray-300">Projects Completed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">5+</div>
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">5+</div>
                   <div className="text-gray-600 dark:text-gray-300">Years Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">100%</div>
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">100%</div>
                   <div className="text-gray-600 dark:text-gray-300">Client Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">24/7</div>
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">24/7</div>
                   <div className="text-gray-600 dark:text-gray-300">Support</div>
                 </div>
               </div>
@@ -75,7 +75,7 @@ const About: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <value.icon className="w-6 h-6 text-white" />
                 </div>
                 <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">

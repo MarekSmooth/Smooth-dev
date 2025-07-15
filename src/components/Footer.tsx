@@ -50,9 +50,11 @@ const Footer: React.FC = () => {
             {/* Company Info */}
             <div className="lg:col-span-1">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">∞</span>
-                </div>
+                <img 
+                  src="/public/SD logo 18.png" 
+                  alt="Smooth Development Logo" 
+                  className="w-10 h-10 object-contain"
+                />
                 <span className="text-xl font-bold">Smooth Development</span>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">

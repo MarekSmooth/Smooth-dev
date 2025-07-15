@@ -82,6 +82,7 @@ const Portfolio: React.FC = () => {
                 
                 <div className="p-6">
                   <div className="text-sm text-yellow-600 dark:text-yellow-400 font-medium mb-2">
+                  <div className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-2">
                     {project.category}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -97,7 +98,7 @@ const Portfolio: React.FC = () => {
                       </span>
                     ))}
                   </div>
-                  <button className="text-yellow-600 dark:text-yellow-400 font-medium hover:text-yellow-700 dark:hover:text-yellow-300 transition-colors duration-200 flex items-center space-x-1 group">
+                  <button className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 flex items-center space-x-1 group">
                     <span>View Project</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                   </button>
@@ -107,7 +108,7 @@ const Portfolio: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-4 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
               View All Projects
             </button>
           </div>

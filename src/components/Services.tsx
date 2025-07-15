@@ -45,7 +45,7 @@ const Services: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <div key={index} className="group bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <service.icon className="w-6 h-6 text-white" />
                 </div>
                 
@@ -60,13 +60,13 @@ const Services: React.FC = () => {
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full mr-2"></div>
+                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                       {feature}
                     </li>
                   ))}
                 </ul>
                 
-                <button className="text-yellow-600 dark:text-yellow-400 font-medium hover:text-yellow-700 dark:hover:text-yellow-300 transition-colors duration-200 flex items-center space-x-1 group">
+                <button className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 flex items-center space-x-1 group">
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
@@ -75,7 +75,7 @@ const Services: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-4 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
               View All Services
             </button>
           </div>

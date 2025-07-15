@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
   margin: 0;
@@ -15,7 +16,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', 'Inter', sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -105,7 +106,7 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #D4AF37 0%, #FFE066 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -118,7 +119,7 @@ body {
 
 .btn-hover-float:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
 }
 
 /* Backdrop blur support */
@@ -129,7 +130,7 @@ body {
 
 /* Focus styles */
 .focus-visible {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
@@ -146,12 +147,12 @@ body {
 
 /* Custom selection colors */
 ::selection {
-  background-color: #D4AF37;
+  background-color: #3b82f6;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #D4AF37;
+  background-color: #3b82f6;
   color: white;
 }
 
@@ -190,7 +191,7 @@ body {
 
 /* Glow effects for dark mode */
 .glow-effect {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 /* Smooth image loading */

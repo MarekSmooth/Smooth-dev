@@ -33,9 +33,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">∞</span>
-            </div>
+            <img 
+              src="/public/SD logo 18.png" 
+              alt="Smooth Development Logo" 
+              className="w-10 h-10 object-contain"
+            />
             <span className="text-xl font-bold text-gray-900 dark:text-white">
               Smooth Development
             </span>
@@ -49,13 +51,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
                 onClick={() => scrollToSection(item.id)}
                 className={`relative transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-yellow-600 dark:text-yellow-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-yellow-400'
+                    ? 'text-blue-600 dark:text-blue-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-600 dark:bg-yellow-400 rounded-full"></span>
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-full"></span>
                 )}
               </button>
             ))}
@@ -75,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
               )}
             </button>
             
-            <button className="hidden md:block bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-6 py-2 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button className="hidden md:block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
               Start a Project
             </button>
 
@@ -104,14 +106,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left transition-colors duration-200 ${
                     activeSection === item.id
-                      ? 'text-yellow-600 dark:text-yellow-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-yellow-400'
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-6 py-2 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200 shadow-lg">
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg">
                 Start a Project
               </button>
             </nav>

@@ -28,17 +28,20 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 transition-all duration-300">
-      <div className="container mx-auto px-4 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 nav-premium transition-all duration-300">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img 
-              src="/public/SD logo 18.png" 
-              alt="Smooth Development Logo" 
-              className="w-10 h-10 object-contain"
-            />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
+          <div className="flex items-center space-x-3 group">
+            <div className="relative">
+              <img 
+                src="/SD logo 18.png" 
+                alt="Smooth Development Logo" 
+                className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+            </div>
+            <span className="text-xl font-heading font-semibold text-gray-900 dark:text-white">
               Smooth Development
             </span>
           </div>
@@ -49,15 +52,15 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative transition-colors duration-200 ${
+                className={`relative font-medium transition-all duration-300 ${
                   activeSection === item.id
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                    ? 'text-gold-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gold-400'
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-full"></span>
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full"></span>
                 )}
               </button>
             ))}
@@ -67,24 +70,24 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 group glow-effect-hover"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
-                <Moon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <Moon className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-gold-400 transition-colors duration-300" />
               ) : (
-                <Sun className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <Sun className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-gold-400 transition-colors duration-300" />
               )}
             </button>
             
-            <button className="hidden md:block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button className="hidden md:block btn-premium bg-gradient-to-r from-gold-400 to-gold-600 text-dark-950 px-6 py-3 rounded-xl font-heading font-semibold hover:from-gold-500 hover:to-gold-700 transition-all duration-300 shadow-glow hover:shadow-glow-lg">
               Start a Project
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="md:hidden p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -98,22 +101,22 @@ const Header: React.FC<HeaderProps> = ({ activeSection, isMenuOpen, setIsMenuOpe
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
-            <nav className="flex flex-col space-y-4 pt-4">
+          <div className="md:hidden mt-6 pb-6 border-t border-gray-200 dark:border-gray-700">
+            <nav className="flex flex-col space-y-4 pt-6">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left transition-colors duration-200 ${
+                  className={`text-left font-medium transition-colors duration-300 ${
                     activeSection === item.id
-                      ? 'text-blue-600 dark:text-blue-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      ? 'text-gold-400'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-gold-400'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg">
+              <button className="btn-premium bg-gradient-to-r from-gold-400 to-gold-600 text-dark-950 px-6 py-3 rounded-xl font-heading font-semibold hover:from-gold-500 hover:to-gold-700 transition-all duration-300 shadow-glow mt-4">
                 Start a Project
               </button>
             </nav>

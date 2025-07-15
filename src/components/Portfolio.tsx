@@ -82,7 +82,6 @@ const Portfolio: React.FC = () => {
                 
                 <div className="p-6">
                   <div className="text-sm text-yellow-600 dark:text-yellow-400 font-medium mb-2">
-                  <div className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-2">
                     {project.category}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">

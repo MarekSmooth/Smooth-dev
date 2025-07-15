@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-yellow-400 hover:to-yellow-600 transition-all duration-200 group"
+                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-200 group"
                   >
                     <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white" />
                   </a>
@@ -98,19 +98,19 @@ const Footer: React.FC = () => {
           <div className="border-t border-gray-800 pt-8 mb-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-yellow-400" />
+                <Mail className="w-5 h-5 text-blue-400" />
                 <a
                   href="mailto:hello@smoothdevelopment.com"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-200"
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                 >
                   hello@smoothdevelopment.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-yellow-400" />
+                <Phone className="w-5 h-5 text-blue-400" />
                 <a
                   href="tel:+15551234567"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-200"
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                 >
                   +1 (555) 123-4567
                 </a>
@@ -130,8 +130,9 @@ const Footer: React.FC = () => {
                   type="email"
                   placeholder="Enter your email"
                   className="flex-1 px-4 py-2 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                  className="flex-1 px-4 py-2 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-                <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-6 py-2 rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-700 transition-all duration-200">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200">
                   Subscribe
                 </button>
               </div>
@@ -147,19 +148,19 @@ const Footer: React.FC = () => {
               <div className="flex space-x-6">
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-200"
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                 >
                   Privacy Policy
                 </a>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-200"
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                 >
                   Terms of Service
                 </a>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors duration-200"
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                 >
                   Cookie Policy
                 </a>

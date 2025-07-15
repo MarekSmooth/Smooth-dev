@@ -39,7 +39,7 @@ const LandingPage: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <Router basename="/Smooth-dev">
+      <Router basename="/Smooth-dev/">
   <Routes>
     <Route path="/" element={<LandingPage />} />
     <Route path="/about" element={<AboutPage />} />

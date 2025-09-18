@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
             </Link>
           </div>
 {/*
-          {/* Stats */}
+          Stats
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-3xl font-light text-white mb-2">50+</div>

@@ -24,7 +24,7 @@ const Header: React.FC = () => {
     { path: '/services', label: t('nav.services') },
     { path: '/about', label: t('nav.about') },
     { path: '/made-by-smooth', label: t('nav.made') },
-    { id: 'contact', label: t('nav.contact') },
+    { path: '/contact', label: t('nav.contact') },
   ];
 
   const isActivePath = (path: string) => {
@@ -65,36 +65,22 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-6 ml-auto">
             {/* Navigation Items */}
             <nav className="flex items-center space-x-8">
-              {navigationItems.filter(item => item.id !== 'contact').map((item) => (
-                item.path ? (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`transition-colors duration-200 font-normal text-sm ${
-                      isHomePage
-                        ? isActivePath(item.path)
-                          ? 'text-white'
-                          : 'text-gray-300 hover:text-white'
-                        : isActivePath(item.path)
-                          ? 'text-white'
-                          : 'text-gray-300 hover:text-white'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`transition-colors duration-200 font-normal text-sm ${
-                      isHomePage
-                        ? 'text-gray-300 hover:text-white'
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`transition-colors duration-200 font-normal text-sm ${
+                    isHomePage
+                      ? isActivePath(item.path)
+                        ? 'text-white'
                         : 'text-gray-300 hover:text-white'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                )
+                      : isActivePath(item.path)
+                        ? 'text-white'
+                        : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
               ))}
             </nav>
             
@@ -133,8 +119,8 @@ const Header: React.FC = () => {
             <LanguageToggle />
             
             {/* Contact Button - moved after language toggle */}
-            <button
-              onClick={() => scrollToSection('contact')}
+            <Link
+              to="/contact"
               className={`transition-colors duration-200 font-normal text-sm border border-white px-3 py-1 rounded text-white hover:bg-white hover:text-black ${
                 isHomePage
                   ? ''
@@ -142,7 +128,7 @@ const Header: React.FC = () => {
               }`}
             >
               {t('nav.contact')}
-            </button>
+            </Link>
           </div>
         </div>
       </div>

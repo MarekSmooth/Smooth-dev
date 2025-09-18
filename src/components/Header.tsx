@@ -53,12 +53,12 @@ const Header: React.FC = () => {
           {/* Desktop Navigation - Full Width Layout */}
           <div className="flex items-center flex-1 ml-12">
             {/* Navigation Items - Right after logo */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm uppercase tracking-wide"
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
                 >
                   {item.label}
                 </button>

@@ -51,22 +51,22 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation - Full Width Layout */}
-          <div className="hidden lg:flex items-center justify-between flex-1 ml-16">
-            {/* Navigation Items */}
-            <nav className="flex items-center space-x-8">
+          <div className="hidden lg:flex items-center flex-1">
+            {/* Navigation Items - Right after logo */}
+            <nav className="flex items-center space-x-8 ml-12">
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm uppercase tracking-wide"
                 >
                   {item.label}
                 </button>
               ))}
             </nav>
 
-            {/* Right Side Controls */}
-            <div className="flex items-center space-x-6">
+            {/* Right Side Controls - Push to far right */}
+            <div className="flex items-center space-x-6 ml-auto">
               {/* Social Links */}
               <a
                 href="https://facebook.com"

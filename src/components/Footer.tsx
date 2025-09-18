@@ -131,7 +131,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-100 dark:border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-xs mb-4 md:mb-0">
             {t('footer.copyright')}
@@ -165,7 +164,6 @@ const Footer: React.FC = () => {
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
-        </div>
       </div>
     </footer>
   );

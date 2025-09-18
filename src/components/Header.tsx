@@ -30,6 +30,13 @@ const Header: React.FC = () => {
     return location.pathname === path;
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className={`w-full z-50 transition-all duration-300 ${
       isScrolled 
@@ -54,17 +61,27 @@ const Header: React.FC = () => {
             {/* Navigation Items */}
             <nav className="flex items-center space-x-8">
               {navigationItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`transition-colors duration-200 font-normal text-sm ${
-                    isActivePath(item.path)
-                      ? 'text-black dark:text-white'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                item.path ? (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`transition-colors duration-200 font-normal text-sm ${
+                      isActivePath(item.path)
+                        ? 'text-black dark:text-white'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
             </nav>
             
@@ -99,66 +116,6 @@ const Header: React.FC = () => {
             >
               {t('nav.contact')}
             </Link>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-};
-
-export default Header;
-              src="/SDlogo.png" 
-              alt="Smooth Development" 
-              className="h-8 w-auto object-contain"
-            />
-          </div>
-
-          {/* Right Side Controls */}
-          <div className="flex items-center space-x-6 ml-auto">
-            {/* Navigation Items */}
-            <nav className="flex items-center space-x-8">
-              {navigationItems.filter(item => item.id !== 'contact').map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-            
-            {/* Social Links */}
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-            
-            <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
-            
-            <ThemeToggle />
-            <LanguageToggle />
-            
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="border-2 border-black dark:border-white text-black dark:text-white px-4 py-1.5 text-xs font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 uppercase tracking-wide rounded-lg"
-            >
-              {t('nav.contact')}
-            </button>
           </div>
         </div>
       </div>

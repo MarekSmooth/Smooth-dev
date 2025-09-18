@@ -11,15 +11,15 @@ const LanguageToggle: React.FC = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="relative w-10 h-5 bg-black rounded-full transition-colors duration-200 focus:outline-none hover:bg-gray-800"
+      className="relative w-12 h-6 bg-black border border-white rounded-full transition-colors duration-200 focus:outline-none hover:bg-gray-800"
       aria-label="Toggle language"
     >
       <div
-        className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transform transition-transform duration-200 flex items-center justify-center ${
-          language === 'en' ? 'translate-x-5' : 'translate-x-0'
+        className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transform transition-transform duration-200 flex items-center justify-center ${
+          language === 'en' ? 'translate-x-6' : 'translate-x-0'
         }`}
       >
-        <span className="text-xs font-medium text-black">
+        <span className="text-[10px] font-medium text-black">
           {language.toUpperCase()}
         </span>
       </div>

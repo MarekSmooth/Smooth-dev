@@ -23,7 +23,7 @@ const Header: React.FC = () => {
     { path: '/', label: t('nav.home') },
     { path: '/services', label: t('nav.services') },
     { path: '/about', label: t('nav.about') },
-    { path: '/contact', label: t('nav.contact') },
+    { id: 'contact', label: t('nav.contact') },
   ];
 
   const isActivePath = (path: string) => {

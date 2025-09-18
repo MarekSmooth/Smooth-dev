@@ -24,10 +24,6 @@ const Footer: React.FC = () => {
               />
             </div>
             
-            <p className="text-gray-400 mb-8 max-w-md text-sm leading-relaxed">
-              {t('footer.description')}
-            </p>
-            
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400">
                 <Phone className="w-3 h-3 text-white" />

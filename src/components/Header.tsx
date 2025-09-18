@@ -64,7 +64,7 @@ const Header: React.FC = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-8 ml-auto">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
             </nav>
 
             {/* Desktop Right Side */}
-            <div className="hidden md:flex items-center space-x-4 ml-auto">
+            <div className="hidden md:flex items-center space-x-4">
               {/* Social Links and Language Toggle */}
               <a
                 href="https://facebook.com"

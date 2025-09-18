@@ -48,21 +48,21 @@ const Header: React.FC = () => {
             />
           </div>
 
-          {/* Navigation Items - Right after logo */}
-          <nav className="flex items-center space-x-8 ml-12">
-            {navigationItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
           {/* Right Side Controls */}
           <div className="flex items-center space-x-6 ml-auto">
+            {/* Navigation Items */}
+            <nav className="flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+            
             {/* Social Links */}
             <a
               href="https://facebook.com"
@@ -87,14 +87,6 @@ const Header: React.FC = () => {
             
             <ThemeToggle />
             <LanguageToggle />
-            
-            {/* CTA Button */}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm uppercase tracking-wide"
-            >
-              {t('nav.contact')}
-            </button>
           </div>
         </div>
       </div>

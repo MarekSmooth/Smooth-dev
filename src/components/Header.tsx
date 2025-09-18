@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/SD_logo_white.png" 
+              src="/SDlogo.png" 
               alt="Smooth Development" 
               className="h-10 w-auto object-contain"
             />

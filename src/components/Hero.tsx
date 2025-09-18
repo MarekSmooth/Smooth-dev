@@ -23,12 +23,6 @@ const Hero: React.FC = () => {
     <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 mb-8">
-            <Star className="w-4 h-4 text-yellow-500" />
-            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('hero.badge')}</span>
-          </div>
-
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             <span className="text-gray-900 dark:text-white">

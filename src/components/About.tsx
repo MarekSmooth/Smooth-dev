@@ -30,49 +30,49 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white dark:bg-gray-900">
+    <section id="about" className="py-24 bg-gray-900">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
               {t('about.title.crafting')} <br />
               {t('about.title.excellence')}
             </h2>
 
-            <p className="text-base text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-light">
+            <p className="text-base text-gray-400 mb-8 leading-relaxed font-light">
               {t('about.description')}
             </p>
 
             <div className="space-y-6 mb-8">
               <div className="flex items-start space-x-4">
-                <CheckCircle className="w-5 h-5 text-black dark:text-white mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-medium text-black dark:text-white mb-1 text-sm">{t('about.expertise.title')}</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{t('about.expertise.description')}</p>
+                  <h4 className="font-medium text-white mb-1 text-sm">{t('about.expertise.title')}</h4>
+                  <p className="text-gray-400 text-sm">{t('about.expertise.description')}</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <CheckCircle className="w-5 h-5 text-black dark:text-white mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-medium text-black dark:text-white mb-1 text-sm">{t('about.custom.title')}</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{t('about.custom.description')}</p>
+                  <h4 className="font-medium text-white mb-1 text-sm">{t('about.custom.title')}</h4>
+                  <p className="text-gray-400 text-sm">{t('about.custom.description')}</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
-                <CheckCircle className="w-5 h-5 text-black dark:text-white mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-medium text-black dark:text-white mb-1 text-sm">{t('about.hardware.title')}</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{t('about.hardware.description')}</p>
+                  <h4 className="font-medium text-white mb-1 text-sm">{t('about.hardware.title')}</h4>
+                  <p className="text-gray-400 text-sm">{t('about.hardware.description')}</p>
                 </div>
               </div>
             </div>
 
             <Link
               to="/contact"
-              className="bg-black dark:bg-white text-white dark:text-black px-10 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+              className="bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
             >
               {t('about.cta')}
             </Link>
@@ -83,13 +83,13 @@ const About: React.FC = () => {
             {achievements.map((achievement, index) => (
               <div
                 key={index}
-                className="bg-gray-50 dark:bg-gray-800 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="bg-gray-800 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-10 h-10 bg-black dark:bg-white flex items-center justify-center mb-4 text-white dark:text-black">
+                <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
                   {achievement.icon}
                 </div>
-                <h3 className="text-base font-medium text-black dark:text-white mb-2">{achievement.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-xs">{achievement.description}</p>
+                <h3 className="text-base font-medium text-white mb-2">{achievement.title}</h3>
+                <p className="text-gray-400 text-xs">{achievement.description}</p>
               </div>
             ))}
           </div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Facebook, Instagram } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -43,8 +42,8 @@ const Header: React.FC = () => {
       isHomePage
         ? 'bg-black'
         : isScrolled 
-          ? 'bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800' 
-          : 'bg-white dark:bg-gray-900'
+          ? 'bg-gray-900 shadow-sm border-b border-gray-800' 
+          : 'bg-gray-900'
     }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -76,8 +75,8 @@ const Header: React.FC = () => {
                           ? 'text-white'
                           : 'text-gray-300 hover:text-white'
                         : isActivePath(item.path)
-                          ? 'text-black dark:text-white'
-                          : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
+                          ? 'text-white'
+                          : 'text-gray-300 hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -89,7 +88,7 @@ const Header: React.FC = () => {
                     className={`transition-colors duration-200 font-normal text-sm ${
                       isHomePage
                         ? 'text-gray-300 hover:text-white'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
+                        : 'text-gray-300 hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -106,7 +105,7 @@ const Header: React.FC = () => {
               className={`transition-colors duration-200 ${
                 isHomePage
                   ? 'text-gray-400 hover:text-white'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  : 'text-gray-400 hover:text-white'
               }`}
               aria-label="Facebook"
             >
@@ -119,7 +118,7 @@ const Header: React.FC = () => {
               className={`transition-colors duration-200 ${
                 isHomePage
                   ? 'text-gray-400 hover:text-white'
-                  : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white'
+                  : 'text-gray-400 hover:text-white'
               }`}
               aria-label="Instagram"
             >
@@ -127,10 +126,9 @@ const Header: React.FC = () => {
             </a>
             
             <div className={`w-px h-4 ${
-              isHomePage ? 'bg-gray-600' : 'bg-gray-300 dark:bg-gray-600'
+              isHomePage ? 'bg-gray-600' : 'bg-gray-600'
             }`}></div>
             
-            <ThemeToggle />
             <LanguageToggle />
             
             <Link
@@ -138,7 +136,7 @@ const Header: React.FC = () => {
               className={`border-2 px-4 py-1.5 text-xs font-medium transition-all duration-300 uppercase tracking-wide rounded-lg ${
                 isHomePage
                   ? 'border-white text-white hover:bg-white hover:text-black'
-                  : 'border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black'
+                  : 'border-white text-white hover:bg-white hover:text-black'
               }`}
             >
               {t('nav.contact')}

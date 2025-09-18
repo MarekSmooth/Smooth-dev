@@ -62,15 +62,15 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gray-50 dark:bg-gray-800">
+    <section id="services" className="py-24 bg-gray-800">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
             {t('services.title')}
           </h2>
           
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light">
             {t('services.subtitle')}
           </p>
         </div>
@@ -80,24 +80,24 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-700 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group bg-gray-700 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 bg-black dark:bg-white flex items-center justify-center mb-6 text-white dark:text-black group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
-              <h3 className="text-lg font-medium text-black dark:text-white mb-4">
+              <h3 className="text-lg font-medium text-white mb-4">
                 {service.title}
               </h3>
               
-              <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
+              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
                 {service.description}
               </p>
               
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
-                    <div className="w-1 h-1 bg-black dark:bg-white rounded-full"></div>
+                  <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-400">
+                    <div className="w-1 h-1 bg-white rounded-full"></div>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -110,7 +110,7 @@ const Services: React.FC = () => {
         <div className="text-center">
           <Link
             to="/contact"
-            className="inline-flex items-center space-x-2 bg-black dark:bg-white text-white dark:text-black px-10 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+            className="inline-flex items-center space-x-2 bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
           >
             <Wrench className="w-4 h-4" />
             <span>{t('services.cta')}</span>

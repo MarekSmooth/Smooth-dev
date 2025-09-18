@@ -85,7 +85,7 @@ const Header: React.FC = () => {
             </nav>
 
             {/* Desktop Right Side */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-4">
               {/* Social Links and Language Toggle */}
               <a
                 href="https://facebook.com"

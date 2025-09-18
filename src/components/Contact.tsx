@@ -34,21 +34,16 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contact" className="py-24 bg-gray-50 dark:bg-gray-800">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 mb-6">
-            <Phone className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('contact.badge')}</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white mb-6 tracking-tight">
             {t('contact.title.ready')} <br />
             {t('contact.title.project')}
           </h2>
           
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
             {t('contact.subtitle')}
           </p>
         </div>
@@ -56,50 +51,50 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
-              <div className="w-12 h-12 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center mb-4 text-white dark:text-gray-900">
-                <Phone className="w-6 h-6" />
+            <div className="bg-white dark:bg-gray-700 p-6">
+              <div className="w-10 h-10 bg-black dark:bg-white flex items-center justify-center mb-4 text-white dark:text-black">
+                <Phone className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{t('contact.phone')}</h3>
-              <p className="text-gray-600 dark:text-gray-300">+420 XXX XXX XXX</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('contact.phone.hours')}</p>
+              <h3 className="text-base font-medium text-black dark:text-white mb-2">{t('contact.phone')}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">+420 XXX XXX XXX</p>
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">{t('contact.phone.hours')}</p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
-              <div className="w-12 h-12 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center mb-4 text-white dark:text-gray-900">
-                <Mail className="w-6 h-6" />
+            <div className="bg-white dark:bg-gray-700 p-6">
+              <div className="w-10 h-10 bg-black dark:bg-white flex items-center justify-center mb-4 text-white dark:text-black">
+                <Mail className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{t('contact.email')}</h3>
-              <p className="text-gray-600 dark:text-gray-300">info@smoothdevelopment.com</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('contact.email.support')}</p>
+              <h3 className="text-base font-medium text-black dark:text-white mb-2">{t('contact.email')}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">info@smoothdevelopment.com</p>
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">{t('contact.email.support')}</p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
-              <div className="w-12 h-12 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center mb-4 text-white dark:text-gray-900">
-                <MapPin className="w-6 h-6" />
+            <div className="bg-white dark:bg-gray-700 p-6">
+              <div className="w-10 h-10 bg-black dark:bg-white flex items-center justify-center mb-4 text-white dark:text-black">
+                <MapPin className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{t('contact.location')}</h3>
-              <p className="text-gray-600 dark:text-gray-300">Czech Republic</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('contact.location.services')}</p>
+              <h3 className="text-base font-medium text-black dark:text-white mb-2">{t('contact.location')}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Czech Republic</p>
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">{t('contact.location.services')}</p>
             </div>
 
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6">
-              <div className="w-12 h-12 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center mb-4 text-white dark:text-gray-900">
-                <Clock className="w-6 h-6" />
+            <div className="bg-white dark:bg-gray-700 p-6">
+              <div className="w-10 h-10 bg-black dark:bg-white flex items-center justify-center mb-4 text-white dark:text-black">
+                <Clock className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{t('contact.response')}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{t('contact.response.time')}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('contact.response.note')}</p>
+              <h3 className="text-base font-medium text-black dark:text-white mb-2">{t('contact.response')}</h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">{t('contact.response.time')}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">{t('contact.response.note')}</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+            <div className="bg-white dark:bg-gray-700 p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="name" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
                       {t('contact.form.name')} *
                     </label>
                     <input
@@ -109,13 +104,13 @@ const Contact: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-transparent text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm"
                       placeholder={t('contact.form.name')}
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="email" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
                       {t('contact.form.email')} *
                     </label>
                     <input
@@ -125,7 +120,7 @@ const Contact: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-transparent text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -133,7 +128,7 @@ const Contact: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="phone" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
                       {t('contact.form.phone')}
                     </label>
                     <input
@@ -142,13 +137,13 @@ const Contact: React.FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-transparent text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm"
                       placeholder="+420 XXX XXX XXX"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="service" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
                       {t('contact.form.service')}
                     </label>
                     <select
@@ -156,7 +151,7 @@ const Contact: React.FC = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-transparent text-black dark:text-white text-sm"
                     >
                       <option value="">{t('contact.form.service.select')}</option>
                       <option value="website">{t('contact.form.service.website')}</option>
@@ -171,7 +166,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
                     {t('contact.form.message')} *
                   </label>
                   <textarea
@@ -181,16 +176,16 @@ const Contact: React.FC = () => {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-600 border border-gray-200 dark:border-gray-500 focus:ring-1 focus:ring-black dark:focus:ring-white focus:border-transparent text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none text-sm"
                     placeholder={t('contact.form.message.placeholder')}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full bg-black dark:bg-white text-white dark:text-black px-8 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 flex items-center justify-center space-x-2 uppercase tracking-wide"
                 >
-                  <Send className="w-5 h-5" />
+                  <Send className="w-4 h-4" />
                   <span>{t('contact.form.send')}</span>
                 </button>
               </form>

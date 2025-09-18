@@ -17,70 +17,70 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+      <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
+            <div className="flex items-center mb-8">
               <img 
                 src="/SDlogo.png" 
                 alt="Smooth Development" 
-                className="h-8 w-auto object-contain"
+                className="h-6 w-auto object-contain"
               />
             </div>
             
-            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md">
+            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md text-sm leading-relaxed">
               {t('footer.description')}
             </p>
             
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-                <Phone className="w-4 h-4 text-gray-900 dark:text-white" />
-                <span>+420 XXX XXX XXX</span>
+              <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                <Phone className="w-3 h-3 text-black dark:text-white" />
+                <span className="text-xs">+420 XXX XXX XXX</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-                <Mail className="w-4 h-4 text-gray-900 dark:text-white" />
-                <span>info@smoothdevelopment.com</span>
+              <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                <Mail className="w-3 h-3 text-black dark:text-white" />
+                <span className="text-xs">info@smoothdevelopment.com</span>
               </div>
-              <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-                <MapPin className="w-4 h-4 text-gray-900 dark:text-white" />
-                <span>Czech Republic</span>
+              <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
+                <MapPin className="w-3 h-3 text-black dark:text-white" />
+                <span className="text-xs">Czech Republic</span>
               </div>
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">{t('footer.services')}</h3>
+            <h3 className="text-sm font-medium text-black dark:text-white mb-6 uppercase tracking-wide">{t('footer.services')}</h3>
             <ul className="space-y-3">
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('services.website.title')}
                 </span>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('services.ecommerce.title')}
                 </span>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('services.mobile.title')}
                 </span>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('services.database.title')}
                 </span>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('services.repair.title')}
                 </span>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('services.custom.title')}
                 </span>
               </li>
@@ -89,12 +89,12 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">{t('footer.links')}</h3>
+            <h3 className="text-sm font-medium text-black dark:text-white mb-6 uppercase tracking-wide">{t('footer.links')}</h3>
             <ul className="space-y-3">
               <li>
                 <button
                   onClick={() => scrollToSection('hero')}
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.home')}
                 </button>
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               <li>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.services')}
                 </button>
@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
               <li>
                 <button
                   onClick={() => scrollToSection('about')}
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.about')}
                 </button>
@@ -118,18 +118,18 @@ const Footer: React.FC = () => {
               <li>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.contact')}
                 </button>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('footer.privacy')}
                 </span>
               </li>
               <li>
-                <span className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 cursor-pointer">
+                <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">
                   {t('footer.terms')}
                 </span>
               </li>
@@ -137,8 +137,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 dark:border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+        <div className="border-t border-gray-100 dark:border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 dark:text-gray-500 text-xs mb-4 md:mb-0">
             {t('footer.copyright')}
           </p>
           
@@ -148,26 +148,26 @@ const Footer: React.FC = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
               aria-label="Facebook"
             >
-              <Facebook className="w-5 h-5" />
+              <Facebook className="w-4 h-4" />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors duration-200"
+              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
               aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-4 h-4" />
             </a>
             
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full flex items-center justify-center hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300"
+              className="w-8 h-8 bg-black dark:bg-white text-white dark:text-black flex items-center justify-center hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300"
             >
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4 h-4" />
             </button>
           </div>
         </div>

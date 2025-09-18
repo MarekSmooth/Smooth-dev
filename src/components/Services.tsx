@@ -61,47 +61,42 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="services" className="py-24 bg-gray-50 dark:bg-gray-800">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 mb-6">
-            <Code className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('services.badge')}</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-light text-black dark:text-white mb-6 tracking-tight">
             {t('services.title')}
           </h2>
           
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
             {t('services.subtitle')}
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:-translate-y-1"
+              className="group bg-white dark:bg-gray-700 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-16 h-16 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center mb-6 text-white dark:text-gray-900 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-black dark:bg-white flex items-center justify-center mb-6 text-white dark:text-black group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-lg font-medium text-black dark:text-white mb-4">
                 {service.title}
               </h3>
               
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
                 {service.description}
               </p>
               
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-                    <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full"></div>
+                  <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="w-1 h-1 bg-black dark:bg-white rounded-full"></div>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -117,9 +112,9 @@ const Services: React.FC = () => {
               const element = document.getElementById('contact');
               if (element) element.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center space-x-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300"
+            className="inline-flex items-center space-x-2 bg-black dark:bg-white text-white dark:text-black px-10 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
           >
-            <Wrench className="w-5 h-5" />
+            <Wrench className="w-4 h-4" />
             <span>{t('services.cta')}</span>
           </button>
         </div>

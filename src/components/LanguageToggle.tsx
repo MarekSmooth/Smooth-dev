@@ -9,52 +9,21 @@ const LanguageToggle: React.FC = () => {
   };
 
   return (
-    <div className="relative">
-      <button
-        onClick={toggleLanguage}
-        className="relative bg-black/80 backdrop-blur-sm border border-primary-500/30 rounded-lg px-4 py-2 transition-all duration-300 hover:border-primary-400/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 group overflow-hidden"
-        aria-label="Toggle language"
+    <button
+      onClick={toggleLanguage}
+      className="relative w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:ring-offset-2"
+      aria-label="Toggle language"
+    >
+      <div
+        className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white dark:bg-gray-900 rounded-full shadow-md transform transition-transform duration-300 flex items-center justify-center ${
+          language === 'en' ? 'translate-x-6' : 'translate-x-0'
+        }`}
       >
-        {/* Neon glow background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        
-        {/* Language options */}
-        <div className="relative flex items-center space-x-3">
-          <span 
-            className={`text-sm font-bold transition-all duration-300 ${
-              language === 'cs' 
-                ? 'text-primary-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] animate-pulse' 
-                : 'text-gray-500 hover:text-gray-400'
-            }`}
-          >
-            CS
-          </span>
-          
-          {/* Separator */}
-          <div className="w-px h-4 bg-gradient-to-b from-transparent via-primary-500/50 to-transparent"></div>
-          
-          <span 
-            className={`text-sm font-bold transition-all duration-300 ${
-              language === 'en' 
-                ? 'text-primary-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] animate-pulse' 
-                : 'text-gray-500 hover:text-gray-400'
-            }`}
-          >
-            EN
-          </span>
-        </div>
-        
-        {/* Active indicator */}
-        <div 
-          className={`absolute bottom-0 h-0.5 bg-gradient-to-r from-primary-400 to-gold-400 transition-all duration-300 ${
-            language === 'cs' ? 'left-2 w-6' : 'right-2 w-6'
-          }`}
-          style={{
-            boxShadow: '0 0 8px rgba(56, 189, 248, 0.6)'
-          }}
-        ></div>
-      </button>
-    </div>
+        <span className="text-xs font-bold text-gray-900 dark:text-white">
+          {language.toUpperCase()}
+        </span>
+      </div>
+    </button>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Code, Home, Briefcase, User, Phone, Facebook, Instagram } from 'lucide-react';
+import { Menu, X, Home, Briefcase, User, Phone, Facebook, Instagram } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -27,184 +27,121 @@ const Header: React.FC = () => {
   };
 
   const navigationItems = [
-    { id: 'hero', label: t('nav.home'), icon: <Home className="w-5 h-5" /> },
-    { id: 'services', label: t('nav.services'), icon: <Briefcase className="w-5 h-5" /> },
-    { id: 'about', label: t('nav.about'), icon: <User className="w-5 h-5" /> },
-    { id: 'contact', label: t('nav.contact'), icon: <Phone className="w-5 h-5" /> },
+    { id: 'hero', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
+    { id: 'services', label: t('nav.services'), icon: <Briefcase className="w-4 h-4" /> },
+    { id: 'about', label: t('nav.about'), icon: <User className="w-4 h-4" /> },
+    { id: 'contact', label: t('nav.contact'), icon: <Phone className="w-4 h-4" /> },
   ];
 
   return (
-    <>
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-20 xl:w-64 bg-gradient-to-b from-black to-gray-800 backdrop-blur-lg z-20 flex-col">
-        {/* Logo Section */}
-        <div className="p-6">
-          <div className="flex items-center justify-center xl:justify-start space-x-3">
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800' 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <div className="flex items-center">
             <img 
-              src="/SD logo bez pozadi use.png" 
+              src="/SD_logo_white.png" 
               alt="Smooth Development" 
-              className="h-16 w-auto object-contain"
+              className="h-10 w-auto object-contain"
             />
           </div>
-        </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 py-6">
-          <div className="space-y-2 px-3">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8">
             {navigationItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="w-full flex items-center space-x-3 px-3 py-3 rounded-lg text-gray-300 hover:bg-gray-900/50 hover:text-primary-400 hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.6)] transition-all duration-300 group relative overflow-hidden"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 font-medium"
               >
-                {/* Neon glow background on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-                
-                <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
-                  {item.icon}
-                </div>
-                <span className="hidden xl:block font-medium relative z-10 group-hover:drop-shadow-[0_0_6px_rgba(56,189,248,0.8)] transition-all duration-300">{item.label}</span>
-                
-                {/* Active indicator line */}
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-0 bg-gradient-to-b from-primary-400 to-gold-400 group-hover:h-8 transition-all duration-300 rounded-r-full opacity-0 group-hover:opacity-100" style={{ boxShadow: '0 0 8px rgba(56, 189, 248, 0.6)' }}></div>
+                {item.label}
               </button>
             ))}
-            
-            {/* Social Media Links */}
-            <div className="flex items-center justify-center xl:justify-start space-x-3 mt-6 px-3">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative bg-black/80 backdrop-blur-sm border border-primary-500/30 rounded-lg p-3 transition-all duration-300 hover:border-primary-400/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 overflow-hidden"
-                aria-label="Facebook"
-              >
-                {/* Neon glow background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <Facebook className="w-5 h-5 text-gray-400 group-hover:text-blue-400 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-all duration-300 relative z-10" />
-                
-                {/* Active indicator */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-8 transition-all duration-300 opacity-0 group-hover:opacity-100" style={{ boxShadow: '0 0 8px rgba(59, 130, 246, 0.6)' }}></div>
-              </a>
-              
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative bg-black/80 backdrop-blur-sm border border-primary-500/30 rounded-lg p-3 transition-all duration-300 hover:border-primary-400/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 overflow-hidden"
-                aria-label="Instagram"
-              >
-                {/* Neon glow background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <Instagram className="w-5 h-5 text-gray-400 group-hover:text-pink-400 group-hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] group-hover:scale-110 transition-all duration-300 relative z-10" />
-                
-                {/* Active indicator */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-8 transition-all duration-300 opacity-0 group-hover:opacity-100" style={{ boxShadow: '0 0 8px rgba(236, 72, 153, 0.6)' }}></div>
-              </a>
-            </div>
-          </div>
-        </nav>
+          </nav>
 
-        {/* Theme and Language Controls */}
-        <div className="p-6 space-y-4">
-          <div className="flex xl:flex-row flex-col items-center xl:justify-between space-y-3 xl:space-y-0 xl:space-x-3">
+          {/* Desktop Controls */}
+          <div className="hidden lg:flex items-center space-x-4">
+            {/* Social Links */}
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors duration-200"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            
+            <div className="w-px h-6 bg-gray-300 dark:bg-gray-600"></div>
+            
             <ThemeToggle />
             <LanguageToggle />
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-gray-700 dark:text-gray-300 p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
-      </aside>
-
-      {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 w-full z-20 bg-gradient-to-b from-black to-gray-800 backdrop-blur-lg">
-        <div className="px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/SD logo bez pozadi use.png" 
-                alt="Smooth Development" 
-                className="h-12 w-auto object-contain"
-              />
-            </div>
-
-            <button
-              className="text-gray-700 dark:text-white p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="mt-4 pb-4 pt-4">
-              <div className="flex justify-center space-x-4 mb-6">
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <div className="py-6 space-y-4">
+              {navigationItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="flex items-center space-x-3 w-full px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </button>
+              ))}
+              
+              <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-200 dark:border-gray-800">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-pink-600 dark:hover:text-pink-400 transition-colors duration-200"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
                 <ThemeToggle />
                 <LanguageToggle />
               </div>
-              
-              <nav className="space-y-2">
-                {navigationItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-900/50 hover:text-primary-400 hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.6)] transition-all duration-300 group relative overflow-hidden"
-                  >
-                    {/* Neon glow background on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-gold-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-                    
-                    <div className="relative z-10 group-hover:scale-110 transition-transform duration-200">
-                    {item.icon}
-                    </div>
-                    <span className="font-medium relative z-10 group-hover:drop-shadow-[0_0_6px_rgba(56,189,248,0.8)] transition-all duration-300">{item.label}</span>
-                    
-                    {/* Active indicator line */}
-                    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-0 bg-gradient-to-b from-primary-400 to-gold-400 group-hover:h-8 transition-all duration-300 rounded-r-full opacity-0 group-hover:opacity-100" style={{ boxShadow: '0 0 8px rgba(56, 189, 248, 0.6)' }}></div>
-                  </button>
-                ))}
-                
-                {/* Social Media Links after navigation */}
-                <div className="flex items-center justify-center space-x-4 mt-6">
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative bg-black/80 backdrop-blur-sm border border-primary-500/30 rounded-lg p-3 transition-all duration-300 hover:border-primary-400/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 overflow-hidden"
-                    aria-label="Facebook"
-                  >
-                    {/* Neon glow background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <Facebook className="w-5 h-5 text-gray-400 group-hover:text-blue-400 group-hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] group-hover:scale-110 transition-all duration-300 relative z-10" />
-                    
-                    {/* Active indicator */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-8 transition-all duration-300 opacity-0 group-hover:opacity-100" style={{ boxShadow: '0 0 8px rgba(59, 130, 246, 0.6)' }}></div>
-                  </a>
-                  
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative bg-black/80 backdrop-blur-sm border border-primary-500/30 rounded-lg p-3 transition-all duration-300 hover:border-primary-400/50 focus:outline-none focus:ring-2 focus:ring-primary-500/50 overflow-hidden"
-                    aria-label="Instagram"
-                  >
-                    {/* Neon glow background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <Instagram className="w-5 h-5 text-gray-400 group-hover:text-pink-400 group-hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] group-hover:scale-110 transition-all duration-300 relative z-10" />
-                    
-                    {/* Active indicator */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400 group-hover:w-8 transition-all duration-300 opacity-0 group-hover:opacity-100" style={{ boxShadow: '0 0 8px rgba(236, 72, 153, 0.6)' }}></div>
-                  </a>
-                </div>
-              </nav>
             </div>
-          )}
-        </div>
-      </header>
-    </>
+          </div>
+        )}
+      </div>
+    </header>
   );
 };
 

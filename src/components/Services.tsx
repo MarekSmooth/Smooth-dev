@@ -61,37 +61,36 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-20 relative lg:pl-48 xl:pl-96">
-      
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="services" className="py-24 bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-gray-100/80 dark:bg-black/50 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-full px-6 py-3 mb-6 shadow-lg">
-            <Code className="w-4 h-4 text-primary-600 dark:text-primary-400" />
-            <span className="text-sm text-gray-800 dark:text-gray-300">{t('services.badge')}</span>
+          <div className="inline-flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 mb-6">
+            <Code className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+            <span className="text-sm text-gray-600 dark:text-gray-300 font-medium">{t('services.badge')}</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary-600 to-gold-600 dark:from-primary-400 dark:to-gold-400 bg-clip-text text-transparent">
-              {t('services.title')}
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('services.title')}
           </h2>
           
-          <p className="text-xl text-gray-800 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t('services.subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-900 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-2xl p-8 hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 dark:hover:shadow-primary-500/10 hover:-translate-y-2"
+              className="group bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-gold-500 rounded-xl flex items-center justify-center mb-6 text-white group-hover:animate-pulse">
+              <div className="w-16 h-16 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center mb-6 text-white dark:text-gray-900 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {service.title}
               </h3>
               
@@ -101,8 +100,8 @@ const Services: React.FC = () => {
               
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-400">
-                    <div className="w-1.5 h-1.5 bg-gold-500 dark:bg-gold-400 rounded-full"></div>
+                  <li key={featureIndex} className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+                    <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full"></div>
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -111,13 +110,14 @@ const Services: React.FC = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        {/* CTA */}
+        <div className="text-center">
           <button
             onClick={() => {
               const element = document.getElementById('contact');
               if (element) element.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-gold-500 px-8 py-4 rounded-lg text-lg font-semibold hover:from-primary-600 hover:to-gold-600 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
+            className="inline-flex items-center space-x-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300"
           >
             <Wrench className="w-5 h-5" />
             <span>{t('services.cta')}</span>

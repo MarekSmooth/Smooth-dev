@@ -51,14 +51,14 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation - Full Width Layout */}
-          <div className="hidden lg:flex items-center flex-1">
+          <div className="hidden lg:flex items-center flex-1 ml-12">
             {/* Navigation Items - Right after logo */}
-            <nav className="flex items-center space-x-8 ml-12">
+            <nav className="flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm uppercase tracking-wide"
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
                 >
                   {item.label}
                 </button>
@@ -92,12 +92,12 @@ const Header: React.FC = () => {
               <ThemeToggle />
               <LanguageToggle />
               
-              {/* CTA Button like Squarespace SUBSCRIBE */}
+              {/* CTA Button */}
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm"
+                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm uppercase tracking-wide"
               >
-                {t('nav.contact').toUpperCase()}
+                {t('nav.contact')}
               </button>
             </div>
           </div>

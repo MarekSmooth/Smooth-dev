@@ -90,7 +90,7 @@ const Header: React.FC = () => {
             
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+              className="border-2 border-black dark:border-white text-black dark:text-white px-6 py-2 text-sm font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 uppercase tracking-wide rounded-lg"
             >
               {t('nav.contact')}
             </button>

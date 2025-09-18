@@ -24,6 +24,7 @@ const translations = {
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.about': 'About',
+    'nav.made': 'Made by Smooth',
     'nav.contact': 'Contact',
     
     // Hero Section
@@ -144,6 +145,7 @@ const translations = {
     'nav.home': 'Domů',
     'nav.services': 'Služby',
     'nav.about': 'O nás',
+    'nav.made': 'Made by Smooth',
     'nav.contact': 'Kontakt',
     
     // Hero Section

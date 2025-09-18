@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
+import MadeBySmoothPage from './pages/MadeBySmoothPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/made-by-smooth" element={<MadeBySmoothPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>

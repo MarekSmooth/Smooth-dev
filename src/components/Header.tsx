@@ -23,6 +23,7 @@ const Header: React.FC = () => {
     { path: '/', label: t('nav.home') },
     { path: '/services', label: t('nav.services') },
     { path: '/about', label: t('nav.about') },
+    { path: '/made-by-smooth', label: t('nav.made') },
     { id: 'contact', label: t('nav.contact') },
   ];
 

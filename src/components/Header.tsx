@@ -87,6 +87,9 @@ const Header: React.FC = () => {
             {/* Desktop Right Side */}
             <div className="hidden md:flex items-center space-x-4">
               {/* Social Links and Language Toggle */}
+              <div className="mr-4">
+                {/* This creates the space before social icons */}
+              </div>
               <a
                 href="https://facebook.com"
                 target="_blank"

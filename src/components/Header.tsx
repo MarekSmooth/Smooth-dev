@@ -41,7 +41,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className={`w-full z-50 transition-all duration-300 ${
+      <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isHomePage
           ? 'bg-black'
           : isScrolled 
@@ -53,52 +53,39 @@ const Header: React.FC = () => {
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/" onClick={closeMobileMenu}>
-                <div>
-                  <img 
-                    src="/SDlogo.png" 
-                    alt="Smooth Development" 
-                    className="h-8 w-auto object-contain"
-                  />
-                </div>
+                <img 
+                  src="/SDlogo.png" 
+                  alt="Smooth Development" 
+                  className="h-8 w-auto object-contain"
+                />
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8 ml-auto">
+            {/* Desktop Navigation - Hidden on mobile */}
+            <div className="hidden lg:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   className={`transition-colors duration-200 font-normal text-sm ${
-                    isHomePage
-                      ? isActivePath(item.path)
-                        ? 'text-white'
-                        : 'text-gray-300 hover:text-white'
-                      : isActivePath(item.path)
-                        ? 'text-white'
-                        : 'text-gray-300 hover:text-white'
+                    isActivePath(item.path)
+                      ? 'text-white'
+                      : 'text-gray-300 hover:text-white'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
-            </nav>
+            </div>
 
-            {/* Desktop Right Side */}
+            {/* Desktop Right Side - Hidden on mobile */}
             <div className="hidden lg:flex items-center space-x-4">
-              {/* Social Links and Language Toggle */}
-              <div className="mr-4">
-                {/* This creates the space before social icons */}
-              </div>
+              <div className="mr-4"></div>
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors duration-200 ${
-                  isHomePage
-                    ? 'text-gray-400 hover:text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
+                className="text-gray-400 hover:text-white transition-colors duration-200"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />
@@ -107,23 +94,16 @@ const Header: React.FC = () => {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-colors duration-200 ${
-                  isHomePage
-                    ? 'text-gray-400 hover:text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
+                className="text-gray-400 hover:text-white transition-colors duration-200"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               
-              <div className={`w-px h-4 ${
-                isHomePage ? 'bg-gray-600' : 'bg-gray-600'
-              }`}></div>
+              <div className="w-px h-4 bg-gray-600"></div>
               
               <LanguageToggle />
               
-              {/* Contact Button */}
               <Link
                 to="/contact"
                 className="transition-colors duration-200 font-normal text-sm border border-white px-3 py-1 rounded text-white hover:bg-white hover:text-black"
@@ -132,7 +112,7 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Only visible on mobile */}
             <button
               onClick={toggleMobileMenu}
               className="lg:hidden text-white hover:text-gray-300 transition-colors duration-200"

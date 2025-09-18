@@ -7,11 +7,11 @@ const Hero: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-black pt-16">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <div className="max-w-4xl mx-auto">
+    <section className="min-h-screen flex items-end bg-black pt-16 pb-24">
+      <div className="max-w-6xl mx-auto px-6 w-full">
+        <div className="max-w-4xl">
           {/* Main Heading */}
-          <h1 className="text-6xl md:text-8xl font-light mb-8 leading-tight tracking-tight">
+          <h1 className="text-7xl md:text-9xl font-black mb-6 leading-none tracking-tight text-left">
             <span className="text-white">
               {t('hero.title.smooth')}
             </span>
@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
             {t('hero.subtitle')}
           </p>
 
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
               <span>{t('hero.cta.start')}</span>
             </Link>
           </div>
-
+{/*
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
             <div className="text-center">
@@ -60,6 +60,7 @@ const Hero: React.FC = () => {
               <div className="text-sm text-gray-400 uppercase tracking-wide">{t('hero.stats.support')}</div>
             </div>
           </div>
+*/}
         </div>
       </div>
     </section>

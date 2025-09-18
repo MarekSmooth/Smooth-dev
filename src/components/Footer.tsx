@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
               <img 
                 src="/SDlogo.png" 
                 alt="Smooth Development" 
-                className="h-6 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
             </div>
             

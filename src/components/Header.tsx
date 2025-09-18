@@ -48,11 +48,13 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/">
-              <img 
-                src="/SDlogo.png" 
-                alt="Smooth Development" 
-                className="h-8 w-auto object-contain"
-              />
+              <div>
+                <img 
+                  src="/SDlogo.png" 
+                  alt="Smooth Development" 
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
             </Link>
           </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, Briefcase, User, Phone, Facebook, Instagram } from 'lucide-react';
+import { Menu, X, Facebook, Instagram } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -27,10 +27,10 @@ const Header: React.FC = () => {
   };
 
   const navigationItems = [
-    { id: 'hero', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
-    { id: 'services', label: t('nav.services'), icon: <Briefcase className="w-4 h-4" /> },
-    { id: 'about', label: t('nav.about'), icon: <User className="w-4 h-4" /> },
-    { id: 'contact', label: t('nav.contact'), icon: <Phone className="w-4 h-4" /> },
+    { id: 'hero', label: t('nav.home') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'about', label: t('nav.about') },
+    { id: 'contact', label: t('nav.contact') },
   ];
 
   return (
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
         ? 'bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800' 
         : 'bg-white dark:bg-gray-900'
     }`}>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -50,45 +50,56 @@ const Header: React.FC = () => {
             />
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-12">
-            {navigationItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm uppercase tracking-wide"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          {/* Desktop Navigation - Full Width Layout */}
+          <div className="hidden lg:flex items-center justify-between flex-1 ml-16">
+            {/* Navigation Items */}
+            <nav className="flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
 
-          {/* Desktop Controls */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {/* Social Links */}
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-4 h-4" />
-            </a>
-            
-            <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
-            
-            <ThemeToggle />
-            <LanguageToggle />
+            {/* Right Side Controls */}
+            <div className="flex items-center space-x-6">
+              {/* Social Links */}
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              
+              <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+              
+              <ThemeToggle />
+              <LanguageToggle />
+              
+              {/* CTA Button like Squarespace SUBSCRIBE */}
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm"
+              >
+                {t('nav.contact').toUpperCase()}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -108,10 +119,9 @@ const Header: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="flex items-center space-x-3 w-full px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 text-sm uppercase tracking-wide"
+                  className="block w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 text-sm"
                 >
-                  {item.icon}
-                  <span>{item.label}</span>
+                  {item.label}
                 </button>
               ))}
               
@@ -136,6 +146,15 @@ const Header: React.FC = () => {
                 </a>
                 <ThemeToggle />
                 <LanguageToggle />
+              </div>
+              
+              <div className="px-4 pt-4">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm"
+                >
+                  {t('nav.contact').toUpperCase()}
+                </button>
               </div>
             </div>
           </div>

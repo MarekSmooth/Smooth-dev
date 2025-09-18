@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Facebook, Instagram, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -71,9 +71,100 @@ const Header: React.FC = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6 ml-auto">
-              {/* Navigation Items */}
-              <nav className="flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`transition-colors duration-200 font-normal text-sm ${
+                    isHomePage
+                      ? isActivePath(item.path)
+                        ? 'text-white'
+                        : 'text-gray-300 hover:text-white'
+                      : isActivePath(item.path)
+                        ? 'text-white'
+                        : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Desktop Right Side */}
+            <div className="hidden md:flex items-center space-x-4 ml-auto">
+              <LanguageToggle />
+              
+              <Link
+                to="/contact"
+                className="transition-colors duration-200 font-normal text-sm border border-white px-3 py-1 rounded text-white hover:bg-white hover:text-black"
+              >
+                {t('nav.contact')}
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={closeMobileMenu} />
+      )}
+
+      {/* Mobile Menu */}
+      <div className={`md:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
+        isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+      }`}>
+        <div className="px-6 py-4 space-y-4">
+          {/* Navigation Items */}
+          {navigationItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={closeMobileMenu}
+              className={`block py-2 text-base transition-colors duration-200 ${
+                isActivePath(item.path)
+                  ? 'text-white'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          
+          {/* Contact Button */}
+          <Link
+            to="/contact"
+            onClick={closeMobileMenu}
+            className="block w-full text-center py-3 mt-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-200"
+          >
+            {t('nav.contact')}
+          </Link>
+          
+          {/* Language Toggle */}
+          <div className="flex items-center justify-center pt-4 border-t border-gray-700">
+            <LanguageToggle />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Header;
                 {navigationItems.map((item) => (
                   <Link
                     key={item.path}

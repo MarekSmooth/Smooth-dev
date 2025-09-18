@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
 
@@ -22,7 +21,6 @@ const Header: React.FC = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
     }
   };
 
@@ -50,121 +48,55 @@ const Header: React.FC = () => {
             />
           </div>
 
-          {/* Desktop Navigation - Full Width Layout */}
-          <div className="flex items-center flex-1 ml-12">
-            {/* Navigation Items - Right after logo */}
-            <nav className="flex items-center space-x-8">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-
-            {/* Right Side Controls - Push to far right */}
-            <div className="hidden lg:flex items-center space-x-6 ml-auto">
-              {/* Social Links */}
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              
-              <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
-              
-              <ThemeToggle />
-              <LanguageToggle />
-              
-              {/* CTA Button */}
+          {/* Navigation Items - Right after logo */}
+          <nav className="flex items-center space-x-8 ml-12">
+            {navigationItems.map((item) => (
               <button
-                onClick={() => scrollToSection('contact')}
-                className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm uppercase tracking-wide"
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
               >
-                {t('nav.contact')}
+                {item.label}
               </button>
-            </div>
-          </div>
+            ))}
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-gray-600 dark:text-gray-300 p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-
-          {/* Mobile Controls - Show on mobile */}
-          <div className="lg:hidden flex items-center space-x-4">
+          {/* Right Side Controls */}
+          <div className="flex items-center space-x-6 ml-auto">
+            {/* Social Links */}
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            
+            <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+            
             <ThemeToggle />
             <LanguageToggle />
+            
+            {/* CTA Button */}
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm uppercase tracking-wide"
+            >
+              {t('nav.contact')}
+            </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
-            <div className="py-6 space-y-4">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 text-sm"
-                >
-                  {item.label}
-                </button>
-              ))}
-              
-              <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-100 dark:border-gray-800">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <ThemeToggle />
-                <LanguageToggle />
-              </div>
-              
-              <div className="px-4 pt-4">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 rounded-sm"
-                >
-                  {t('nav.contact').toUpperCase()}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

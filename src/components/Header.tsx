@@ -9,6 +9,7 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,9 +40,11 @@ const Header: React.FC = () => {
 
   return (
     <header className={`w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800' 
-        : 'bg-white dark:bg-gray-900'
+      isHomePage
+        ? 'bg-black'
+        : isScrolled 
+          ? 'bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800' 
+          : 'bg-white dark:bg-gray-900'
     }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -68,9 +71,13 @@ const Header: React.FC = () => {
                     key={item.path}
                     to={item.path}
                     className={`transition-colors duration-200 font-normal text-sm ${
-                      isActivePath(item.path)
-                        ? 'text-black dark:text-white'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
+                      isHomePage
+                        ? isActivePath(item.path)
+                          ? 'text-white'
+                          : 'text-gray-300 hover:text-white'
+                        : isActivePath(item.path)
+                          ? 'text-black dark:text-white'
+                          : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
                     }`}
                   >
                     {item.label}
@@ -79,7 +86,11 @@ const Header: React.FC = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200 font-normal text-sm"
+                    className={`transition-colors duration-200 font-normal text-sm ${
+                      isHomePage
+                        ? 'text-gray-300 hover:text-white'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white'
+                    }`}
                   >
                     {item.label}
                   </button>
@@ -92,7 +103,11 @@ const Header: React.FC = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+              className={`transition-colors duration-200 ${
+                isHomePage
+                  ? 'text-gray-400 hover:text-white'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white'
+              }`}
               aria-label="Facebook"
             >
               <Facebook className="w-4 h-4" />
@@ -101,20 +116,30 @@ const Header: React.FC = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200"
+              className={`transition-colors duration-200 ${
+                isHomePage
+                  ? 'text-gray-400 hover:text-white'
+                  : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white'
+              }`}
               aria-label="Instagram"
             >
               <Instagram className="w-4 h-4" />
             </a>
             
-            <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+            <div className={`w-px h-4 ${
+              isHomePage ? 'bg-gray-600' : 'bg-gray-300 dark:bg-gray-600'
+            }`}></div>
             
             <ThemeToggle />
             <LanguageToggle />
             
             <Link
               to="/contact"
-              className="border-2 border-black dark:border-white text-black dark:text-white px-4 py-1.5 text-xs font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 uppercase tracking-wide rounded-lg"
+              className={`border-2 px-4 py-1.5 text-xs font-medium transition-all duration-300 uppercase tracking-wide rounded-lg ${
+                isHomePage
+                  ? 'border-white text-white hover:bg-white hover:text-black'
+                  : 'border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black'
+              }`}
             >
               {t('nav.contact')}
             </Link>

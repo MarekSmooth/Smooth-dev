@@ -24,7 +24,6 @@ const Header: React.FC = () => {
     { path: '/services', label: t('nav.services') },
     { path: '/about', label: t('nav.about') },
     { path: '/made-by-smooth', label: t('nav.made') },
-    { path: '/contact', label: t('nav.contact') },
   ];
 
   const isActivePath = (path: string) => {

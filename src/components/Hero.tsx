@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="max-w-4xl">
           {/* Main Heading */}
-          <h1 className="text-7xl md:text-9xl font-black mb-6 leading-none tracking-tight text-left">
+          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tight text-left">
             <span className="text-white">
               {t('hero.title.smooth')}
             </span>

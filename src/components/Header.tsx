@@ -64,7 +64,7 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-6 ml-auto">
             {/* Navigation Items */}
             <nav className="flex items-center space-x-8">
-              {navigationItems.map((item) => (
+              {navigationItems.filter(item => item.id !== 'contact').map((item) => (
                 item.path ? (
                   <Link
                     key={item.path}
@@ -130,6 +130,18 @@ const Header: React.FC = () => {
             }`}></div>
             
             <LanguageToggle />
+            
+            {/* Contact Button - moved after language toggle */}
+            <button
+              onClick={() => scrollToSection('contact')}
+              className={`transition-colors duration-200 font-normal text-sm ${
+                isHomePage
+                  ? 'text-gray-300 hover:text-white'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              {t('nav.contact')}
+            </button>
           </div>
         </div>
       </div>

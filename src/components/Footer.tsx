@@ -77,54 +77,6 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-sm font-medium text-white mb-6 uppercase tracking-wide">{t('footer.links')}</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs"
-                >
-                  {t('nav.home')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs"
-                >
-                  {t('nav.services')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs"
-                >
-                  {t('nav.about')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 text-xs"
-                >
-                  {t('nav.contact')}
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer text-xs">
-                  {t('footer.privacy')}
-                </span>
-              </li>
-              <li>
-                <span className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer text-xs">
-                  {t('footer.terms')}
-                </span>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">

@@ -19,7 +19,7 @@ const LanguageToggle: React.FC = () => {
           language === 'en' ? 'translate-x-6' : 'translate-x-0'
         }`}
       >
-        <span className="text-[10px] font-medium text-black">
+        <span className="text-[9px] font-semibold text-black leading-none">
           {language.toUpperCase()}
         </span>
       </div>

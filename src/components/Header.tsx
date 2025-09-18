@@ -31,13 +31,6 @@ const Header: React.FC = () => {
     return location.pathname === path;
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -71,7 +64,7 @@ const Header: React.FC = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
@@ -92,7 +85,7 @@ const Header: React.FC = () => {
             </nav>
 
             {/* Desktop Right Side */}
-            <div className="hidden lg:flex items-center space-x-4 ml-auto">
+            <div className="hidden md:flex items-center space-x-4 ml-auto">
               {/* Social Links and Language Toggle */}
               <a
                 href="https://facebook.com"
@@ -139,7 +132,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-white hover:text-gray-300 transition-colors duration-200"
+              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -154,11 +147,11 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={closeMobileMenu} />
+        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={closeMobileMenu} />
       )}
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
+      <div className={`md:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
         isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
       }`}>
         <div className="px-6 py-4 space-y-4">

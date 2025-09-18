@@ -15,8 +15,8 @@ const LanguageToggle: React.FC = () => {
       aria-label="Toggle language"
     >
       <div
-        className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transform transition-transform duration-200 flex items-center justify-center ${
-          language === 'en' ? 'translate-x-6' : 'translate-x-0'
+        className={`absolute top-[2px] left-[2px] w-5 h-5 bg-white rounded-full transform transition-transform duration-200 flex items-center justify-center ${
+          language === 'en' ? 'translate-x-[22px]' : 'translate-x-0'
         }`}
       >
         <span className="text-[9px] font-semibold text-black leading-none">

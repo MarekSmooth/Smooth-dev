@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Award, Users, Clock, CheckCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -69,15 +70,12 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            <button
-              onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
+            <Link
+              to="/contact"
               className="bg-black dark:bg-white text-white dark:text-black px-10 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
             >
               {t('about.cta')}
-            </button>
+            </Link>
           </div>
 
           {/* Achievements Grid */}

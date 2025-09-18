@@ -1,26 +1,13 @@
 import React from 'react';
-import { ArrowRight, Zap, Star } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
 
-  const scrollToServices = () => {
-    const element = document.getElementById('services');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 pt-16">
+    <section className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 pt-16">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Main Heading */}
@@ -41,21 +28,21 @@ const Hero: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-            <button
-              onClick={scrollToServices}
+            <Link
+              to="/services"
               className="group bg-black dark:bg-white text-white dark:text-black px-10 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
             >
               <span>{t('hero.cta.services')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
+            </Link>
 
-            <button
-              onClick={scrollToContact}
+            <Link
+              to="/contact"
               className="px-10 py-4 text-sm font-medium border border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
             >
               <Zap className="w-4 h-4" />
               <span>{t('hero.cta.start')}</span>
-            </button>
+            </Link>
           </div>
 
           {/* Stats */}

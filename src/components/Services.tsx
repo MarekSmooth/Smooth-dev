@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Globe, 
   ShoppingCart, 
@@ -107,16 +108,13 @@ const Services: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <button
-            onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
+          <Link
+            to="/contact"
             className="inline-flex items-center space-x-2 bg-black dark:bg-white text-white dark:text-black px-10 py-4 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
           >
             <Wrench className="w-4 h-4" />
             <span>{t('services.cta')}</span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

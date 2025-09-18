@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowUp, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -7,13 +8,6 @@ const Footer: React.FC = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
@@ -92,36 +86,36 @@ const Footer: React.FC = () => {
             <h3 className="text-sm font-medium text-black dark:text-white mb-6 uppercase tracking-wide">{t('footer.links')}</h3>
             <ul className="space-y-3">
               <li>
-                <button
-                  onClick={() => scrollToSection('hero')}
+                <Link
+                  to="/"
                   className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.home')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('services')}
+                <Link
+                  to="/services"
                   className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.services')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('about')}
+                <Link
+                  to="/about"
                   className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.about')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('contact')}
+                <Link
+                  to="/contact"
                   className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 text-xs"
                 >
                   {t('nav.contact')}
-                </button>
+                </Link>
               </li>
               <li>
                 <span className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer text-xs">

@@ -52,7 +52,7 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-6 ml-auto">
             {/* Navigation Items */}
             <nav className="flex items-center space-x-8">
-              {navigationItems.map((item) => (
+              {navigationItems.filter(item => item.id !== 'contact').map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -87,6 +87,13 @@ const Header: React.FC = () => {
             
             <ThemeToggle />
             <LanguageToggle />
+            
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+            >
+              {t('nav.contact')}
+            </button>
           </div>
         </div>
       </div>

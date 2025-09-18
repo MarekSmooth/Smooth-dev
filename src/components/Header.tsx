@@ -97,7 +97,7 @@ const Header: React.FC = () => {
               ))}
             </nav>
             
-            {/* Social Links */}
+            {/* Social Links and Language Toggle */}
             <a
               href="https://facebook.com"
               target="_blank"
@@ -130,17 +130,6 @@ const Header: React.FC = () => {
             }`}></div>
             
             <LanguageToggle />
-            
-            <Link
-              to="/contact"
-              className={`border-2 px-4 py-1.5 text-xs font-medium transition-all duration-300 uppercase tracking-wide rounded-lg ${
-                isHomePage
-                  ? 'border-white text-white hover:bg-white hover:text-black'
-                  : 'border-white text-white hover:bg-white hover:text-black'
-              }`}
-            >
-              {t('nav.contact')}
-            </Link>
           </div>
         </div>
       </div>

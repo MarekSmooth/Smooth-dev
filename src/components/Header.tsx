@@ -134,7 +134,7 @@ const Header: React.FC = () => {
             {/* Contact Button - moved after language toggle */}
             <button
               onClick={() => scrollToSection('contact')}
-              className={`transition-colors duration-200 font-normal text-sm border border-white px-4 py-2 rounded hover:bg-white hover:text-black ${
+              className={`transition-colors duration-200 font-normal text-sm border border-white px-3 py-1.5 rounded hover:bg-white hover:text-black ${
                 isHomePage
                   ? 'text-gray-300 hover:text-white'
                   : 'text-gray-300 hover:text-white'

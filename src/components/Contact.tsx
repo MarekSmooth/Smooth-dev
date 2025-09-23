@@ -163,23 +163,23 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
 
-                <div>
                   <div>
-                    <label htmlFor="message" className="block text-xs font-medium text-gray-300 mb-2 uppercase tracking-wide">
-                      {t('contact.form.message')} *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={6}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-black border border-gray-600 focus:ring-1 focus:ring-white focus:border-transparent text-white placeholder-gray-400 resize-none text-sm"
-                      placeholder={t('contact.form.message.placeholder')}
-                    ></textarea>
+                    <div>
+                      <label htmlFor="message" className="block text-xs font-medium text-gray-300 mb-2 uppercase tracking-wide">
+                        {t('contact.form.message')} *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={6}
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-black border border-gray-600 focus:ring-1 focus:ring-white focus:border-transparent text-white placeholder-gray-400 resize-none text-sm"
+                        placeholder={t('contact.form.message.placeholder')}
+                      ></textarea>
+                    </div>
                   </div>
-                </div>
 
                   <button
                     type="submit"
@@ -192,15 +192,10 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-      </div>
-      </div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default Contact;
-  )
-}
-  )
-}

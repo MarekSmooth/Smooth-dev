@@ -50,7 +50,7 @@ const Header: React.FC = () => {
                 <img 
                   src="/SDlogo.png" 
                   alt="Smooth Development" 
-                  className="h-10 md:h-8 w-auto object-contain"
+                  className="h-10 md:h-12 w-auto object-contain"
                 />
               </Link>
             </div>

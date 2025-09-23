@@ -78,7 +78,20 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-            {/* Desktop Right Side - ZŮSTÁVÁ STEJNÁ */}
+            {/* Mobile Burger Menu Button */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-8 h-8" />
+              ) : (
+                <Menu className="w-8 h-8" />
+              )}
+            </button>
+
+            {/* Desktop Right Side */}
             <div className="hidden md:flex items-center space-x-4">
               <div className="mr-4"></div>
               <a
@@ -111,19 +124,6 @@ const Header: React.FC = () => {
                 {t('nav.contact')}
               </Link>
             </div>
-
-            {/* Mobile Burger Menu Button - POUZE PRO MOBIL */}
-            <button
-              onClick={toggleMobileMenu}
-              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2 z-50"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-8 h-8" />
-              ) : (
-                <Menu className="w-8 h-8" />
-              )}
-            </button>
           </div>
         </div>
       </header>

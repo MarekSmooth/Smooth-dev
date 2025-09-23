@@ -128,7 +128,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-gray-900">
+        <div className="fixed inset-0 z-40 bg-black md:hidden">
           <div className="pt-20 px-6">
             <div className="space-y-6">
               {navigationItems.map((item) => (

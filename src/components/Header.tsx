@@ -31,14 +31,6 @@ const Header: React.FC = () => {
     return location.pathname === path;
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <>
       <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
@@ -50,9 +42,10 @@ const Header: React.FC = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            
+            {/* Logo - vždy viditelné */}
             <div className="flex items-center">
-              <Link to="/" onClick={closeMobileMenu}>
+              <Link to="/">
                 <img 
                   src="/SDlogo.png" 
                   alt="Smooth Development" 
@@ -61,8 +54,8 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Desktop Navigation - ZŮSTÁVÁ STEJNÁ */}
-            <div className="hidden sm:flex items-center space-x-8">
+            {/* Desktop Navigation - pouze na velkých obrazovkách */}
+            <div className="hidden lg:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
@@ -78,22 +71,8 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-            {/* Mobile Burger Menu Button */}
-            <button
-              onClick={toggleMobileMenu}
-              className="sm:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-8 h-8" />
-              ) : (
-                <Menu className="w-8 h-8" />
-              )}
-            </button>
-
-            {/* Desktop Right Side */}
-            <div className="hidden sm:flex items-center space-x-4">
-              <div className="mr-4"></div>
+            {/* Desktop Right Side - pouze na velkých obrazovkách */}
+            <div className="hidden lg:flex items-center space-x-4">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -124,6 +103,20 @@ const Header: React.FC = () => {
                 {t('nav.contact')}
               </Link>
             </div>
+
+            {/* Mobile Burger Menu Button - pouze na malých obrazovkách */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-8 h-8" />
+              ) : (
+                <Menu className="w-8 h-8" />
+              )}
+            </button>
+
           </div>
         </div>
       </header>
@@ -131,13 +124,13 @@ const Header: React.FC = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" 
-          onClick={closeMobileMenu} 
+          className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50" 
+          onClick={() => setIsMobileMenuOpen(false)} 
         />
       )}
 
       {/* Mobile Menu Panel */}
-      <div className={`md:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
+      <div className={`lg:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
         isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
       }`}>
         <div className="px-6 py-4 space-y-4">
@@ -146,7 +139,7 @@ const Header: React.FC = () => {
             <Link
               key={item.path}
               to={item.path}
-              onClick={closeMobileMenu}
+              onClick={() => setIsMobileMenuOpen(false)}
               className={`block py-2 text-base transition-colors duration-200 ${
                 isActivePath(item.path)
                   ? 'text-white'
@@ -160,7 +153,7 @@ const Header: React.FC = () => {
           {/* Mobile Contact Button */}
           <Link
             to="/contact"
-            onClick={closeMobileMenu}
+            onClick={() => setIsMobileMenuOpen(false)}
             className="block w-full text-center py-3 mt-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-200"
           >
             {t('nav.contact')}

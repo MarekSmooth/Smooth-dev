@@ -38,14 +38,16 @@ const Contact: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+          <div className="max-w-4xl text-left">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
             {t('contact.title.ready')} <br />
             {t('contact.title.project')}
           </h2>
           
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light">
+            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
             {t('contact.subtitle')}
           </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">

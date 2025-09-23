@@ -53,13 +53,15 @@ const MadeBySmoothPage: React.FC = () => {
     <div className="bg-black text-white min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-24 bg-black">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-7xl font-light mb-8 tracking-tight">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
             Made by <span className="text-white">Smooth</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
             Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.
           </p>
+          </div>
         </div>
       </section>
 
@@ -84,10 +86,10 @@ const MadeBySmoothPage: React.FC = () => {
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
               Featured Projects
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light">
+            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
               A selection of our most impactful work, showcasing our expertise across different industries and technologies.
             </p>
           </div>
@@ -128,10 +130,10 @@ const MadeBySmoothPage: React.FC = () => {
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
               Our Process
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto font-light">
+            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
               From initial consultation to final deployment, we follow a proven methodology that ensures success.
             </p>
           </div>
@@ -155,13 +157,17 @@ const MadeBySmoothPage: React.FC = () => {
 
       {/* CTA Section */}
       <section className="py-24 bg-black">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-8 tracking-tight">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-4xl">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
             Ready to Create Something Amazing?
           </h2>
-          <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
             Let's discuss your next project and bring your vision to life with our expertise and passion for excellence.
           </p>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <button
             onClick={() => {
               const element = document.getElementById('contact');

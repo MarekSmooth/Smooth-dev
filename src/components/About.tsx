@@ -35,12 +35,12 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
               {t('about.title.crafting')} <br />
               {t('about.title.excellence')}
             </h2>
 
-            <p className="text-base text-gray-400 mb-8 leading-relaxed font-light">
+            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
               {t('about.description')}
             </p>
 

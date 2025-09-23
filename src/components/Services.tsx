@@ -119,11 +119,12 @@ const Services: React.FC = () => {
             {services.map((service, index) => {
               const isWebsiteService = index === 0; // První služba je Website Development
               const isEcommerceService = index === 1; // Druhá služba je E-commerce
+              const isMobileService = index === 2; // Třetí služba je Mobile Applications
               return (
               <motion.div
                 key={index}
                 className={`group border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
-                  isWebsiteService || isEcommerceService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
+                  isWebsiteService || isEcommerceService || isMobileService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
                 }`}
                 style={isWebsiteService ? {
                   backgroundImage: 'url("/image copy copy.png")',
@@ -133,10 +134,14 @@ const Services: React.FC = () => {
                   backgroundImage: 'url("/image copy copy copy.png")',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
+                } : isMobileService ? {
+                  backgroundImage: 'url("/image copy copy copy copy copy.png")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 } : {}}
                 variants={cardVariants}
               >
-                {(isWebsiteService || isEcommerceService) && (
+                {(isWebsiteService || isEcommerceService || isMobileService) && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">

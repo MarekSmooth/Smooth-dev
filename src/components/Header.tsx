@@ -39,11 +39,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isHomePage
-          ? 'bg-black'
-          : isScrolled 
-            ? 'bg-black shadow-sm border-b border-gray-800' 
-            : 'bg-black'
+        'bg-black'
       }`}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">

@@ -83,7 +83,7 @@ const About: React.FC = () => {
             {achievements.map((achievement, index) => (
               <div
                 key={index}
-                className="bg-gray-800 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="bg-black border border-gray-800 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
                   {achievement.icon}

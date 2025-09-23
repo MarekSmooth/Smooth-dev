@@ -80,7 +80,7 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-gray-700 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group bg-black border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
                 {service.icon}

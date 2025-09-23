@@ -42,8 +42,8 @@ const Header: React.FC = () => {
         isHomePage
           ? 'bg-black'
           : isScrolled 
-            ? 'bg-gray-900 shadow-sm border-b border-gray-800' 
-            : 'bg-gray-900'
+            ? 'bg-black shadow-sm border-b border-gray-800' 
+            : 'bg-black'
       }`}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">

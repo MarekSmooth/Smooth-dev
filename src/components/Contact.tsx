@@ -9,13 +9,13 @@ const Contact: React.FC = () => {
   const fadeInUp = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    transition: { duration: 2.4, ease: "easeOut" }
+    transition: { duration: 1.8, ease: "easeOut" }
   };
 
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.8
+        staggerChildren: 0.6
       }
     }
   };
@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
     initial: { opacity: 0 },
     animate: { 
       opacity: 1, 
-      transition: { duration: 2.0, ease: "easeOut" }
+      transition: { duration: 1.5, ease: "easeOut" }
     }
   };
 

@@ -10,13 +10,13 @@ const Hero: React.FC = () => {
   const fadeInUp = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    transition: { duration: 1.8, ease: "easeOut" }
+    transition: { duration: 1.35, ease: "easeOut" }
   };
 
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.45
+        staggerChildren: 0.34
       }
     }
   };

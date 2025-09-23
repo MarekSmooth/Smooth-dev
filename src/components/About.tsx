@@ -30,7 +30,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gray-900">
+    <section id="about" className="py-24 bg-black">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}

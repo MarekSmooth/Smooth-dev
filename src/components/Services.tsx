@@ -62,7 +62,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gray-800">
+    <section id="services" className="py-24 bg-black">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">

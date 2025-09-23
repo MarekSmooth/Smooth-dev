@@ -13,7 +13,7 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <div className="bg-gray-900 text-white min-h-screen flex flex-col">
+        <div className="bg-black text-white min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">
             <Routes>

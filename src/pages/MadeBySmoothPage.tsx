@@ -50,7 +50,7 @@ const MadeBySmoothPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen pt-16">
+    <div className="bg-black text-white min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-6 text-center">
@@ -64,7 +64,7 @@ const MadeBySmoothPage: React.FC = () => {
       </section>
 
       {/* Achievements */}
-      <section className="py-16 bg-gray-800">
+      <section className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => (
@@ -81,7 +81,7 @@ const MadeBySmoothPage: React.FC = () => {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-24 bg-gray-900">
+      <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
@@ -123,7 +123,7 @@ const MadeBySmoothPage: React.FC = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-gray-800">
+      <section className="py-24 bg-black">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">

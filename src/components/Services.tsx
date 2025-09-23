@@ -84,10 +84,10 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center bg-black pt-32 md:pt-16 pb-16">
-      <div className="max-w-6xl mx-auto px-6 w-full">
+    <section className="min-h-screen bg-black pt-20 pb-16 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto w-full">
         <motion.div 
-          className="max-w-4xl mt-20"
+          className="max-w-4xl mt-8 sm:mt-16 md:mt-20"
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -95,7 +95,7 @@ const Services: React.FC = () => {
         >
           {/* Main Heading */}
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-none tracking-tight text-left"
             variants={fadeInUp}
           >
             <span className="text-white">
@@ -105,7 +105,7 @@ const Services: React.FC = () => {
 
           {/* Subtitle */}
           <motion.p 
-            className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
+            className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 md:mb-16 max-w-2xl leading-relaxed font-normal text-left"
             variants={fadeInUp}
           >
             {t('services.subtitle')}
@@ -113,7 +113,7 @@ const Services: React.FC = () => {
 
           {/* Services Grid */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-12 sm:mb-16 md:mb-20"
             variants={staggerContainer}
           >
             {services.map((service, index) => {
@@ -123,7 +123,7 @@ const Services: React.FC = () => {
               return (
               <motion.div
                 key={index}
-                className={`group border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
+                className={`group border border-gray-800 p-4 sm:p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
                   isWebsiteService || isEcommerceService || isMobileService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
                 }`}
                 style={isWebsiteService ? {
@@ -145,21 +145,21 @@ const Services: React.FC = () => {
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">
-                <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white flex items-center justify-center mb-4 sm:mb-6 text-black group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </div>
                 
-                <h3 className="text-lg font-medium text-white mb-4">
+                <h3 className="text-base sm:text-lg font-medium text-white mb-3 sm:mb-4">
                   {service.title}
                 </h3>
                 
-                <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                <p className="text-gray-400 mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
                   {service.description}
                 </p>
                 
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-400">
+                    <li key={featureIndex} className="flex items-center space-x-2 text-xs sm:text-xs text-gray-400">
                       <div className="w-1 h-1 bg-white rounded-full"></div>
                       <span>{feature}</span>
                     </li>
@@ -173,12 +173,12 @@ const Services: React.FC = () => {
 
           {/* CTA Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
             variants={fadeInUp}
           >
             <Link
               to="/contact"
-              className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
+              className="group bg-white text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-xs sm:text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide w-full sm:w-auto justify-center"
             >
               <span>{t('services.cta')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />

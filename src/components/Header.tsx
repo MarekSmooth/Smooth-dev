@@ -43,7 +43,7 @@ const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             
-            {/* Logo - vždy viditelné */}
+            {/* Logo */}
             <div className="flex items-center">
               <Link to="/">
                 <img 
@@ -54,8 +54,21 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Desktop Navigation - pouze na velkých obrazovkách */}
-            <div className="hidden lg:flex items-center space-x-8">
+            {/* BURGER MENU BUTTON - POUZE MOBIL */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="block md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2 z-50"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-8 h-8" />
+              ) : (
+                <Menu className="w-8 h-8" />
+              )}
+            </button>
+
+            {/* DESKTOP NAVIGATION - POUZE DESKTOP */}
+            <div className="hidden md:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
@@ -71,8 +84,8 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-            {/* Desktop Right Side - pouze na velkých obrazovkách */}
-            <div className="hidden lg:flex items-center space-x-4">
+            {/* DESKTOP RIGHT SIDE - POUZE DESKTOP */}
+            <div className="hidden md:flex items-center space-x-4">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -104,19 +117,6 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Mobile Burger Menu Button - pouze na malých obrazovkách */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-8 h-8" />
-              ) : (
-                <Menu className="w-8 h-8" />
-              )}
-            </button>
-
           </div>
         </div>
       </header>
@@ -124,13 +124,13 @@ const Header: React.FC = () => {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50" 
+          className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" 
           onClick={() => setIsMobileMenuOpen(false)} 
         />
       )}
 
       {/* Mobile Menu Panel */}
-      <div className={`lg:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
+      <div className={`md:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
         isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
       }`}>
         <div className="px-6 py-4 space-y-4">

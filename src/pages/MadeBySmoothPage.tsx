@@ -109,7 +109,7 @@ const MadeBySmoothPage: React.FC = () => {
                     {project.tech.map((tech, techIndex) => (
                       <span 
                         key={techIndex}
-                        className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded"
+                        className="px-2 py-1 bg-black border border-gray-700 text-gray-300 text-xs"
                       >
                         {tech}
                       </span>

@@ -118,20 +118,25 @@ const Services: React.FC = () => {
           >
             {services.map((service, index) => {
               const isWebsiteService = index === 0; // První služba je Website Development
+              const isEcommerceService = index === 1; // Druhá služba je E-commerce
               return (
               <motion.div
                 key={index}
                 className={`group border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
-                  isWebsiteService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
+                  isWebsiteService || isEcommerceService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
                 }`}
                 style={isWebsiteService ? {
                   backgroundImage: 'url("/image copy copy.png")',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
+                } : isEcommerceService ? {
+                  backgroundImage: 'url("/image copy copy copy.png")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 } : {}}
                 variants={cardVariants}
               >
-                {isWebsiteService && (
+                {(isWebsiteService || isEcommerceService) && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">

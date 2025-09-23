@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex items-end bg-black pt-16 pb-16">
+    <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
       <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="max-w-4xl">
           {/* Main Heading */}

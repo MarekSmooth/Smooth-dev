@@ -112,14 +112,12 @@ const Header: React.FC = () => {
             {/* Mobile Burger Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
+              className="md:hidden text-white hover:text-gray-300 transition-all duration-300 p-2"
               aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-8 h-8" />
-              ) : (
+              <div className={`transform transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45' : 'rotate-0'}`}>
                 <Plus className="w-8 h-8" />
-              )}
+              </div>
             </button>
 
           </div>

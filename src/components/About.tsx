@@ -30,68 +30,69 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-black">
+    <section id="about" className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
-          <div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
-              {t('about.title.crafting')} <br />
-              {t('about.title.excellence')}
-            </h2>
+        <div className="max-w-4xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
+            <div>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
+                {t('about.title.crafting')} <br />
+                {t('about.title.excellence')}
+              </h2>
+              <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
+                {t('about.description')}
+              </p>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
-              {t('about.description')}
-            </p>
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start space-x-4">
+                  <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-white mb-1 text-sm">{t('about.expertise.title')}</h4>
+                    <p className="text-gray-400 text-sm">{t('about.expertise.description')}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-white mb-1 text-sm">{t('about.custom.title')}</h4>
+                    <p className="text-gray-400 text-sm">{t('about.custom.description')}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-white mb-1 text-sm">{t('about.hardware.title')}</h4>
+                    <p className="text-gray-400 text-sm">{t('about.hardware.description')}</p>
+                  </div>
+                </div>
+              </div>
 
-            <div className="space-y-6 mb-8">
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-medium text-white mb-1 text-sm">{t('about.expertise.title')}</h4>
-                  <p className="text-gray-400 text-sm">{t('about.expertise.description')}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-medium text-white mb-1 text-sm">{t('about.custom.title')}</h4>
-                  <p className="text-gray-400 text-sm">{t('about.custom.description')}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="w-5 h-5 text-white mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-medium text-white mb-1 text-sm">{t('about.hardware.title')}</h4>
-                  <p className="text-gray-400 text-sm">{t('about.hardware.description')}</p>
-                </div>
-              </div>
+              <Link
+                to="/contact"
+                className="bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+              >
+                {t('about.cta')}
+              </Link>
             </div>
 
-            <Link
-              to="/contact"
-              className="bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
-            >
-              {t('about.cta')}
-            </Link>
-          </div>
-
-          {/* Achievements Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {achievements.map((achievement, index) => (
-              <div
-                key={index}
-                className="bg-black border border-gray-800 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
-                  {achievement.icon}
+            {/* Achievements Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {achievements.map((achievement, index) => (
+                <div
+                  key={index}
+                  className="bg-black border border-gray-800 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
+                    {achievement.icon}
+                  </div>
+                  <h3 className="text-base font-medium text-white mb-2">{achievement.title}</h3>
+                  <p className="text-gray-400 text-xs">{achievement.description}</p>
                 </div>
-                <h3 className="text-base font-medium text-white mb-2">{achievement.title}</h3>
-                <p className="text-gray-400 text-xs">{achievement.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

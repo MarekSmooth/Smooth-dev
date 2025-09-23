@@ -62,10 +62,9 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-black">
+    <section id="services" className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
+        <div className="max-w-4xl">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
             {t('services.title')}
           </h2>
@@ -73,48 +72,50 @@ const Services: React.FC = () => {
           <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
             {t('services.subtitle')}
           </p>
-        </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="group bg-black border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
+          
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="group bg-black border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
+                  {service.icon}
+                </div>
+                
+                <h3 className="text-lg font-medium text-white mb-4">
+                  {service.title}
+                </h3>
+                
+                <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+                
+                <ul className="space-y-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-400">
+                      <div className="w-1 h-1 bg-white rounded-full"></div>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              
-              <h3 className="text-lg font-medium text-white mb-4">
-                {service.title}
-              </h3>
-              
-              <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                {service.description}
-              </p>
-              
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center space-x-2 text-xs text-gray-400">
-                    <div className="w-1 h-1 bg-white rounded-full"></div>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <Link
-            to="/contact"
-            className="inline-flex items-center space-x-2 bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
-          >
-            <Wrench className="w-4 h-4" />
-            <span>{t('services.cta')}</span>
-          </Link>
+          {/* CTA */}
+          <div className="text-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center space-x-2 bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+            >
+              <Wrench className="w-4 h-4" />
+              <span>{t('services.cta')}</span>
+            </Link>
+          </div>
+        </div>
         </div>
       </div>
     </section>

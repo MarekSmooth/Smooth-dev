@@ -50,17 +50,17 @@ const MadeBySmoothPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen pt-16">
+    <div className="bg-black text-white">
       {/* Hero Section */}
-      <section className="py-24 bg-black">
+      <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
-            Made by <span className="text-white">Smooth</span>
-          </h1>
+              Made by <span className="text-white">Smooth</span>
+            </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
-            Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.
-          </p>
+              Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.
+            </p>
           </div>
         </div>
       </section>

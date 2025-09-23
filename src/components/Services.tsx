@@ -7,8 +7,7 @@ import {
   Database, 
   Monitor, 
   Settings,
-  Code,
-  Wrench
+  ArrowRight
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -62,19 +61,23 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
+      <div className="max-w-6xl mx-auto px-6 w-full">
         <div className="max-w-4xl">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
-            {t('services.title')}
-          </h2>
-          
+          {/* Main Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
+            <span className="text-white">
+              {t('services.title')}
+            </span>
+          </h1>
+
+          {/* Subtitle */}
           <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
             {t('services.subtitle')}
           </p>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -104,14 +107,14 @@ const Services: React.FC = () => {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="text-center">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
               to="/contact"
-              className="inline-flex items-center space-x-2 bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 uppercase tracking-wide"
+              className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
             >
-              <Wrench className="w-4 h-4" />
               <span>{t('services.cta')}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </div>
         </div>

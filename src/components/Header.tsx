@@ -20,6 +20,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+  document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+  return () => { document.body.style.overflow = ''; };
+}, [isMobileMenuOpen]);
+
   const navigationItems = [
     { path: '/', label: t('nav.home') },
     { path: '/services', label: t('nav.services') },

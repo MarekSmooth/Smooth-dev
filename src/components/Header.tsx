@@ -63,11 +63,14 @@ const Header: React.FC = () => {
                   to={item.path}
                   className={`transition-colors duration-200 font-normal text-sm ${
                     isActivePath(item.path)
-                      ? 'text-white'
+                      ? 'text-white font-medium'
                       : 'text-gray-300 hover:text-white'
                   }`}
                 >
                   {item.label}
+                  {isActivePath(item.path) && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"></div>
+                  )}
                 </Link>
               ))}
             </div>
@@ -132,7 +135,7 @@ const Header: React.FC = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block text-xl font-light transition-colors duration-200 ${
                     isActivePath(item.path)
-                      ? 'text-white'
+                      ? 'text-white font-normal border-l-2 border-white pl-4'
                       : 'text-gray-300 hover:text-white'
                   }`}
                 >

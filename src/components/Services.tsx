@@ -127,15 +127,15 @@ const Services: React.FC = () => {
                   isWebsiteService || isEcommerceService || isMobileService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
                 }`}
                 style={isWebsiteService ? {
-                  backgroundImage: 'url("/image copy copy.png")',
+                  backgroundImage: 'url("/vyvoj.png")',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 } : isEcommerceService ? {
-                  backgroundImage: 'url("/image copy copy copy.png")',
+                  backgroundImage: 'url("/ecommerce.png")',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 } : isMobileService ? {
-                  backgroundImage: 'url("/image copy copy copy copy copy.png")',
+                  backgroundImage: 'url("/mobilni.png")',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 } : {}}

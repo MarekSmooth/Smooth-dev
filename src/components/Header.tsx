@@ -21,9 +21,9 @@ const Header: React.FC = () => {
   }, []);
 
   useEffect(() => {
-  document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
-  return () => { document.body.style.overflow = ''; };
-}, [isMobileMenuOpen]);
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobileMenuOpen]);
 
   const navigationItems = [
     { path: '/', label: t('nav.home') },
@@ -59,20 +59,7 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* BURGER MENU BUTTON - POUZE MOBIL */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="block md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2 z-50"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-8 h-8" />
-              ) : (
-                <Menu className="w-8 h-8" />
-              )}
-            </button>
-
-            {/* DESKTOP NAVIGATION - POUZE DESKTOP */}
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
@@ -89,7 +76,7 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-            {/* DESKTOP RIGHT SIDE - POUZE DESKTOP */}
+            {/* Desktop Right Side */}
             <div className="hidden md:flex items-center space-x-4">
               <a
                 href="https://facebook.com"
@@ -122,72 +109,76 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
+            {/* Mobile Burger Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div 
-          className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-md border border-neutral-700 text-white hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-white/20 transition-colors z-[60]"
-          onClick={() => setIsMobileMenuOpen(false)} 
-        />
-      )}
-
-      {/* Mobile Menu Panel */}
-      <div className={`md:hidden fixed top-16 left-0 right-0 z-[55] bg-gray-900/95 backdrop-blur border-b border-gray-800 transform transition-transform duration-300 pt-[env(safe-area-inset-top)] ${
-    isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-  }`}>
-        <div className="px-6 py-4 space-y-4">
-          {/* Mobile Navigation Items */}
-          {navigationItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-2 text-base transition-colors duration-200 ${
-                isActivePath(item.path)
-                  ? 'text-white'
-                  : 'text-gray-300 hover:text-white'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-          
-          {/* Mobile Contact Button */}
-          <Link
-            to="/contact"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block w-full text-center py-3 mt-4 border border-white text-white hover:bg-white hover:text-black transition-all duration-200"
-          >
-            {t('nav.contact')}
-          </Link>
-          
-          {/* Mobile Social Links and Language Toggle */}
-          <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-700">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <LanguageToggle />
+        <div className="md:hidden fixed inset-0 z-40 bg-gray-900">
+          <div className="pt-20 px-6">
+            <div className="space-y-6">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block text-xl font-light transition-colors duration-200 ${
+                    isActivePath(item.path)
+                      ? 'text-white'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              
+              <Link
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-center py-3 mt-8 border border-white text-white hover:bg-white hover:text-black transition-all duration-200 text-lg"
+              >
+                {t('nav.contact')}
+              </Link>
+              
+              <div className="flex items-center justify-center space-x-6 pt-8">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <LanguageToggle />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

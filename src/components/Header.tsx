@@ -54,7 +54,7 @@ const Header: React.FC = () => {
                 <img 
                   src="/SDlogo.png" 
                   alt="Smooth Development" 
-                  className="h-8 w-auto object-contain"
+                  className="h-10 md:h-8 w-auto object-contain"
                 />
               </Link>
             </div>
@@ -116,9 +116,9 @@ const Header: React.FC = () => {
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-8 h-8" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-8 h-8" />
               )}
             </button>
 

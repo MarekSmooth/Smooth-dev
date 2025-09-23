@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Facebook, Instagram } from 'lucide-react';
+import { Plus, X, Facebook, Instagram } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -118,7 +118,7 @@ const Header: React.FC = () => {
               {isMobileMenuOpen ? (
                 <X className="w-8 h-8" />
               ) : (
-                <Menu className="w-8 h-8" />
+                <Plus className="w-8 h-8" />
               )}
             </button>
 

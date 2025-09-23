@@ -61,7 +61,7 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - ZŮSTÁVÁ STEJNÁ */}
             <div className="hidden md:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-            {/* Desktop Right Side */}
+            {/* Desktop Right Side - ZŮSTÁVÁ STEJNÁ */}
             <div className="hidden md:flex items-center space-x-4">
               <div className="mr-4"></div>
               <a
@@ -112,10 +112,10 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Burger Menu Button - POUZE PRO MOBIL */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200"
+              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -130,15 +130,18 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={closeMobileMenu} />
+        <div 
+          className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-50" 
+          onClick={closeMobileMenu} 
+        />
       )}
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Panel */}
       <div className={`md:hidden fixed top-16 left-0 right-0 z-50 bg-gray-900 border-b border-gray-800 transform transition-transform duration-300 ${
         isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
       }`}>
         <div className="px-6 py-4 space-y-4">
-          {/* Navigation Items */}
+          {/* Mobile Navigation Items */}
           {navigationItems.map((item) => (
             <Link
               key={item.path}
@@ -154,7 +157,7 @@ const Header: React.FC = () => {
             </Link>
           ))}
           
-          {/* Contact Button */}
+          {/* Mobile Contact Button */}
           <Link
             to="/contact"
             onClick={closeMobileMenu}
@@ -163,7 +166,7 @@ const Header: React.FC = () => {
             {t('nav.contact')}
           </Link>
           
-          {/* Social Links and Language Toggle */}
+          {/* Mobile Social Links and Language Toggle */}
           <div className="flex items-center justify-center space-x-6 pt-4 border-t border-gray-700">
             <a
               href="https://facebook.com"

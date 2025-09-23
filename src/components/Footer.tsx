@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-8">
               <img 
-                src="/SDlogo.png" 
+                src="/LogoSD.png" 
                 alt="Smooth Development" 
                 className="h-10 w-auto object-contain"
               />

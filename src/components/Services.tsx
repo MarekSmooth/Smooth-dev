@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { 
   Globe, 
   ShoppingCart, 
@@ -20,6 +21,30 @@ interface Service {
 
 const Services: React.FC = () => {
   const { t } = useLanguage();
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: "easeOut" }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const cardVariants = {
+    initial: { opacity: 0, y: 50, scale: 0.9 },
+    animate: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
 
   const services: Service[] = [
     {
@@ -63,25 +88,41 @@ const Services: React.FC = () => {
   return (
     <section className="min-h-screen flex items-center bg-black pt-32 md:pt-16 pb-16">
       <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="max-w-4xl mt-20">
+        <motion.div 
+          className="max-w-4xl mt-20"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
+            variants={fadeInUp}
+          >
             <span className="text-white">
               {t('services.title')}
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
+          <motion.p 
+            className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
+            variants={fadeInUp}
+          >
             {t('services.subtitle')}
-          </p>
+          </motion.p>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20"
+            variants={staggerContainer}
+          >
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="group bg-black border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                variants={cardVariants}
               >
                 <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
@@ -103,12 +144,15 @@ const Services: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            variants={fadeInUp}
+          >
             <Link
               to="/contact"
               className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
@@ -116,8 +160,8 @@ const Services: React.FC = () => {
               <span>{t('services.cta')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

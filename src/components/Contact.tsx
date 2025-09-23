@@ -1,9 +1,33 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Send } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: "easeOut" }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const formVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -36,9 +60,18 @@ const Contact: React.FC = () => {
   return (
     <section className="min-h-screen flex items-center bg-black pt-32 md:pt-16 pb-16">
       <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="max-w-4xl mt-20">
+        <motion.div 
+          className="max-w-4xl mt-20"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
+            variants={fadeInUp}
+          >
             <span className="text-white">
               {t('contact.title.ready')}
             </span>
@@ -46,15 +79,18 @@ const Contact: React.FC = () => {
             <span className="text-white">
               {t('contact.title.project')}
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
+          <motion.p 
+            className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
+            variants={fadeInUp}
+          >
             {t('contact.subtitle')}
-          </p>
+          </motion.p>
 
           {/* Contact Form */}
-          <div className="bg-black border border-gray-800 p-8 mb-20">
+          <motion.div className="bg-black border border-gray-800 p-8 mb-20" variants={formVariants}>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -153,18 +189,21 @@ const Contact: React.FC = () => {
                 <span>{t('contact.form.send')}</span>
               </button>
             </form>
-          </div>
+          </motion.div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            variants={fadeInUp}
+          >
             <div className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide">
               <span>+420 XXX XXX XXX</span>
             </div>
             <div className="px-10 py-4 text-sm font-medium border border-white text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide">
               <span>info@smoothdevelopment.com</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

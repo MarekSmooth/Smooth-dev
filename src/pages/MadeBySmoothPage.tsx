@@ -1,10 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { ArrowRight, Award, Code, Lightbulb, Users } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const MadeBySmoothPage: React.FC = () => {
   const { t } = useLanguage();
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: "easeOut" }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const projectVariants = {
+    initial: { opacity: 0, y: 50, scale: 0.9 },
+    animate: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
 
   const projects = [
     {
@@ -32,9 +57,18 @@ const MadeBySmoothPage: React.FC = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center bg-black pt-32 md:pt-16 pb-16">
         <div className="max-w-6xl mx-auto px-6 w-full">
-          <div className="max-w-4xl mt-20">
+          <motion.div 
+            className="max-w-4xl mt-20"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
+            <motion.h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
+              variants={fadeInUp}
+            >
               <span className="text-white">
                 Made by
               </span>
@@ -42,17 +76,20 @@ const MadeBySmoothPage: React.FC = () => {
               <span className="text-white">
                 Smooth
               </span>
-            </h1>
+            </motion.h1>
 
             {/* Subtitle */}
-            <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
+            <motion.p 
+              className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
+              variants={fadeInUp}
+            >
               Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.
-            </p>
+            </motion.p>
 
             {/* Projects Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20" variants={staggerContainer}>
               {projects.map((project, index) => (
-                <div key={index} className="bg-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <motion.div key={index} className="bg-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1" variants={projectVariants}>
                   <div className="aspect-video bg-black overflow-hidden">
                     <img 
                       src={project.image} 
@@ -74,12 +111,15 @@ const MadeBySmoothPage: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              variants={fadeInUp}
+            >
               <Link
                 to="/contact"
                 className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
@@ -87,8 +127,8 @@ const MadeBySmoothPage: React.FC = () => {
                 <span>Start Your Project</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>

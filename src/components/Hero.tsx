@@ -1,17 +1,40 @@
 import React from 'react';
 import { ArrowRight, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
 
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: "easeOut" }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
       <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="max-w-4xl">
+        <motion.div 
+          className="max-w-4xl"
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+        >
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
+            variants={fadeInUp}
+          >
             <span className="text-white">
               {t('hero.title.smooth')}
             </span>
@@ -19,15 +42,21 @@ const Hero: React.FC = () => {
             <span className="text-white">
               {t('hero.title.development')}
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left">
+          <motion.p 
+            className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
+            variants={fadeInUp}
+          >
             {t('hero.subtitle')}
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
+            variants={fadeInUp}
+          >
             <Link
               to="/services"
               className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
@@ -43,7 +72,7 @@ const Hero: React.FC = () => {
               <Zap className="w-4 h-4" />
               <span>{t('hero.cta.start')}</span>
             </Link>
-          </div>
+          </motion.div>
 {/*
           Stats
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
@@ -61,7 +90,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 */}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

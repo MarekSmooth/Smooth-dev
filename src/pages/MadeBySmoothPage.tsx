@@ -30,9 +30,9 @@ const MadeBySmoothPage: React.FC = () => {
   return (
     <div className="bg-black text-white">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
+      <section className="min-h-screen flex items-center bg-black pt-32 md:pt-16 pb-16">
         <div className="max-w-6xl mx-auto px-6 w-full">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mt-20">
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left">
               <span className="text-white">

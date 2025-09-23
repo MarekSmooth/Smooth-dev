@@ -96,11 +96,13 @@ const MadeBySmoothPage: React.FC = () => {
             {projects.map((project, index) => (
               <div key={index} className="bg-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="aspect-video bg-gray-700 overflow-hidden">
+                <div className="aspect-video bg-black overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
+                </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-medium text-white mb-3">{project.title}</h3>
@@ -109,7 +111,7 @@ const MadeBySmoothPage: React.FC = () => {
                     {project.tech.map((tech, techIndex) => (
                       <span 
                         key={techIndex}
-                        className="px-2 py-1 bg-black border border-gray-700 text-gray-300 text-xs"
+                        className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded"
                       >
                         {tech}
                       </span>

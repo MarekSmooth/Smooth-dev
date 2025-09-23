@@ -116,12 +116,25 @@ const Services: React.FC = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20"
             variants={staggerContainer}
           >
-            {services.map((service, index) => (
+            {services.map((service, index) => {
+              const isWebsiteService = index === 0; // První služba je Website Development
+              return (
               <motion.div
                 key={index}
-                className="group bg-black border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className={`group border border-gray-800 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
+                  isWebsiteService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
+                }`}
+                style={isWebsiteService ? {
+                  backgroundImage: 'url("/image copy copy.png")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                } : {}}
                 variants={cardVariants}
               >
+                {isWebsiteService && (
+                  <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+                )}
+                <div className="relative z-10">
                 <div className="w-12 h-12 bg-white flex items-center justify-center mb-6 text-black group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </div>
@@ -142,8 +155,10 @@ const Services: React.FC = () => {
                     </li>
                   ))}
                 </ul>
+                </div>
               </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
 
           {/* CTA Buttons */}

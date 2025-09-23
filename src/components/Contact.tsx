@@ -177,7 +177,6 @@ const Contact: React.FC = () => {
                       className="w-full px-4 py-3 bg-black border border-gray-600 focus:ring-1 focus:ring-white focus:border-transparent text-white placeholder-gray-400 resize-none text-sm"
                       placeholder={t('contact.form.message.placeholder')}
                     ></textarea>
-                  </div>
 
                   <button
                     type="submit"

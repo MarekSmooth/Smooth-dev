@@ -62,7 +62,7 @@ const Header: React.FC = () => {
             </div>
 
             {/* Desktop Navigation - ZŮSTÁVÁ STEJNÁ */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden sm:flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
             {/* Mobile Burger Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
+              className="sm:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
             </button>
 
             {/* Desktop Right Side */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden sm:flex items-center space-x-4">
               <div className="mr-4"></div>
               <a
                 href="https://facebook.com"

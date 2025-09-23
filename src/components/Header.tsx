@@ -137,7 +137,7 @@ const Header: React.FC = () => {
       {/* Mobile Menu Panel */}
       <div className={`md:hidden fixed top-16 left-0 right-0 z-[55] bg-gray-900/95 backdrop-blur border-b border-gray-800 transform transition-transform duration-300 pt-[env(safe-area-inset-top)] ${
     isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-  }`}
+  }`}>
         <div className="px-6 py-4 space-y-4">
           {/* Mobile Navigation Items */}
           {navigationItems.map((item) => (

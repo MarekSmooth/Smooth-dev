@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-gray-700 p-6">
+            <div className="bg-black border border-gray-800 p-6">
               <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
                 <Phone className="w-5 h-5" />
               </div>
@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
               <p className="text-xs text-gray-500 mt-1">{t('contact.phone.hours')}</p>
             </div>
 
-            <div className="bg-gray-700 p-6">
+            <div className="bg-black border border-gray-800 p-6">
               <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
                 <Mail className="w-5 h-5" />
               </div>
@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
               <p className="text-xs text-gray-500 mt-1">{t('contact.email.support')}</p>
             </div>
 
-            <div className="bg-gray-700 p-6">
+            <div className="bg-black border border-gray-800 p-6">
               <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
                 <MapPin className="w-5 h-5" />
               </div>
@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
               <p className="text-xs text-gray-500 mt-1">{t('contact.location.services')}</p>
             </div>
 
-            <div className="bg-gray-700 p-6">
+            <div className="bg-black border border-gray-800 p-6">
               <div className="w-10 h-10 bg-white flex items-center justify-center mb-4 text-black">
                 <Clock className="w-5 h-5" />
               </div>

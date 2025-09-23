@@ -90,8 +90,7 @@ const Services: React.FC = () => {
           className="max-w-4xl mt-8 sm:mt-16 md:mt-20"
           variants={staggerContainer}
           initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          animate="animate"
         >
           {/* Main Heading */}
           <motion.h1 

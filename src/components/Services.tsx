@@ -73,7 +73,6 @@ const Services: React.FC = () => {
             {t('services.subtitle')}
           </p>
 
-          
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
             {services.map((service, index) => (

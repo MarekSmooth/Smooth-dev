@@ -115,13 +115,13 @@ const Header: React.FC = () => {
             {/* Mobile Burger Menu Button - POUZE PRO MOBIL */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2"
+              className="md:hidden text-white hover:text-gray-300 transition-colors duration-200 p-2 z-50"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-8 h-8" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-8 h-8" />
               )}
             </button>
           </div>

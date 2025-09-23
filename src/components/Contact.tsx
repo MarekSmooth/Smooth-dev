@@ -179,6 +179,7 @@ const Contact: React.FC = () => {
                       placeholder={t('contact.form.message.placeholder')}
                     ></textarea>
                   </div>
+                </div>
 
                   <button
                     type="submit"
@@ -191,7 +192,6 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );

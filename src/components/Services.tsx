@@ -116,7 +116,6 @@ const Services: React.FC = () => {
             </Link>
           </div>
         </div>
-        </div>
       </div>
     </section>
   );

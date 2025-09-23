@@ -58,20 +58,21 @@ const Header: React.FC = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               {navigationItems.map((item) => (
-                <Link
-                  key={item.path}
+                <div key={item.path} className="relative">
+                  <Link
                   to={item.path}
                   className={`transition-colors duration-200 font-normal text-sm ${
                     isActivePath(item.path)
                       ? 'text-white font-medium'
                       : 'text-gray-300 hover:text-white'
                   }`}
-                >
+                  >
                   {item.label}
+                  </Link>
                   {isActivePath(item.path) && (
                     <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"></div>
                   )}
-                </Link>
+                </div>
               ))}
             </div>
 

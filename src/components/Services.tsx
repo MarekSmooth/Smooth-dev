@@ -120,6 +120,7 @@ const Services: React.FC = () => {
               const isEcommerceService = index === 1;
               const isMobileService = index === 2;
               const isDatabaseService = index === 3;
+              const isRepairService = index === 4;
               
               console.log(`Service ${index}: ${service.title}, isDatabase: ${isDatabaseService}`);
               
@@ -132,12 +133,13 @@ const Services: React.FC = () => {
                                    index === 1 ? 'url("/ecommerce.png")' :
                                    index === 2 ? 'url("/mobilnia.png")' :
                                    index === 3 ? 'url("/databaze.png")' :
+                                   index === 4 ? 'url("/opravy.png")' :
                                    'none',
-                  backgroundColor: index > 3 ? '#000000' : 'transparent'
+                  backgroundColor: index > 4 ? '#000000' : 'transparent'
                 }}
                 variants={cardVariants}
               >
-                {index <= 3 && (
+                {index <= 4 && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">

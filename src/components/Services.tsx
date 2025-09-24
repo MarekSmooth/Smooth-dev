@@ -125,45 +125,47 @@ const Services: React.FC = () => {
                 className={`group border border-gray-800 p-4 sm:p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
                   isWebsiteService || isEcommerceService || isMobileService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
                 }`}
-                style={isWebsiteService ? {
-                  backgroundImage: 'url("/vyvoj.png")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                } : isEcommerceService ? {
-                  backgroundImage: 'url("/ecommerce.png")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                } : isMobileService ? {
-                  backgroundImage: 'url("/mobilni.png")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                } : {}}
+                style={
+                  isWebsiteService ? {
+                    backgroundImage: 'url("/vyvoj.png")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  } : isEcommerceService ? {
+                    backgroundImage: 'url("/ecommerce.png")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  } : isMobileService ? {
+                    backgroundImage: 'url("/mobilni.png")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  } : {}
+                }
                 variants={cardVariants}
               >
                 {(isWebsiteService || isEcommerceService || isMobileService) && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white flex items-center justify-center mb-4 sm:mb-6 text-black group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-base sm:text-lg font-medium text-white mb-3 sm:mb-4">
-                  {service.title}
-                </h3>
-                
-                <p className="text-gray-400 mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-2 text-xs sm:text-xs text-gray-400">
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white flex items-center justify-center mb-4 sm:mb-6 text-black group-hover:scale-110 transition-transform duration-300">
+                    {service.icon}
+                  </div>
+                  
+                  <h3 className="text-base sm:text-lg font-medium text-white mb-3 sm:mb-4">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  <ul className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center space-x-2 text-xs sm:text-xs text-gray-400">
+                        <div className="w-1 h-1 bg-white rounded-full"></div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
               );

@@ -144,7 +144,7 @@ const Services: React.FC = () => {
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white flex items-center justify-center mb-4 sm:mb-6 text-black group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center mb-4 sm:mb-6 text-white group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
                   

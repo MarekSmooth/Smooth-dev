@@ -133,7 +133,7 @@ const Services: React.FC = () => {
                 }}
                 variants={cardVariants}
               >
-                {(index >= 0 && index <= 4) && (
+                {(index === 0 || index === 1 || index === 2 || index === 3 || index === 4) && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">

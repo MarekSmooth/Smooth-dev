@@ -8,7 +8,13 @@ import {
   Database, 
   Monitor, 
   Settings,
-  ArrowRight
+  ArrowRight,
+  Code2,
+  ShoppingBag,
+  Tablet,
+  Server,
+  Wrench,
+  Cpu
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -46,37 +52,37 @@ const Services: React.FC = () => {
 
   const services: Service[] = [
     {
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Code2 className="w-8 h-8" />,
       title: t('services.website.title'),
       description: t('services.website.description'),
       features: [t('services.website.feature1'), t('services.website.feature2'), t('services.website.feature3'), t('services.website.feature4')]
     },
     {
-      icon: <ShoppingCart className="w-8 h-8" />,
+      icon: <ShoppingBag className="w-8 h-8" />,
       title: t('services.ecommerce.title'),
       description: t('services.ecommerce.description'),
       features: [t('services.ecommerce.feature1'), t('services.ecommerce.feature2'), t('services.ecommerce.feature3'), t('services.ecommerce.feature4')]
     },
     {
-      icon: <Smartphone className="w-8 h-8" />,
+      icon: <Tablet className="w-8 h-8" />,
       title: t('services.mobile.title'),
       description: t('services.mobile.description'),
       features: [t('services.mobile.feature1'), t('services.mobile.feature2'), t('services.mobile.feature3'), t('services.mobile.feature4')]
     },
     {
-      icon: <Database className="w-8 h-8" />,
+      icon: <Server className="w-8 h-8" />,
       title: t('services.database.title'),
       description: t('services.database.description'),
       features: [t('services.database.feature1'), t('services.database.feature2'), t('services.database.feature3'), t('services.database.feature4')]
     },
     {
-      icon: <Monitor className="w-8 h-8" />,
+      icon: <Wrench className="w-8 h-8" />,
       title: t('services.repair.title'),
       description: t('services.repair.description'),
       features: [t('services.repair.feature1'), t('services.repair.feature2'), t('services.repair.feature3'), t('services.repair.feature4')]
     },
     {
-      icon: <Settings className="w-8 h-8" />,
+      icon: <Cpu className="w-8 h-8" />,
       title: t('services.custom.title'),
       description: t('services.custom.description'),
       features: [t('services.custom.feature1'), t('services.custom.feature2'), t('services.custom.feature3'), t('services.custom.feature4')]

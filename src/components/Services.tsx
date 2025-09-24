@@ -116,30 +116,24 @@ const Services: React.FC = () => {
             variants={staggerContainer}
           >
             {services.map((service, index) => {
-              const isWebsiteService = index === 0;
-              const isEcommerceService = index === 1;
-              const isMobileService = index === 2;
-              const isDatabaseService = index === 3;
-              const isRepairService = index === 4;
-              
-              console.log(`Service ${index}: ${service.title}, isDatabase: ${isDatabaseService}`);
+              console.log(`Service ${index}: ${service.title}`);
               
               return (
               <motion.div
                 key={index}
                 className="group border border-gray-800 p-4 sm:p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden bg-cover bg-center bg-no-repeat"
                 style={{
-                  backgroundImage: index === 0 ? 'url("/vyvoj.png")' :
-                                   index === 1 ? 'url("/ecommerce.png")' :
-                                   index === 2 ? 'url("/mobilnia.png")' :
-                                   index === 3 ? 'url("/databaze.png")' :
-                                   index === 4 ? 'url("/opravy.png")' :
-                                   'none',
-                  backgroundColor: index > 4 ? '#000000' : 'transparent'
+                  backgroundImage: 
+                    index === 0 ? 'url("/vyvoj.png")' :
+                    index === 1 ? 'url("/ecommerce.png")' :
+                    index === 2 ? 'url("/mobilnia.png")' :
+                    index === 3 ? 'url("/databaze.png")' :
+                    index === 4 ? 'url("/opravy.png")' :
+                    'none'
                 }}
                 variants={cardVariants}
               >
-                {index <= 4 && (
+                {(index >= 0 && index <= 4) && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">

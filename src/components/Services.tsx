@@ -128,7 +128,7 @@ const Services: React.FC = () => {
                     index === 1 ? 'url("/ecommerce.png")' :
                     index === 2 ? 'url("/mobilnia.png")' :
                     index === 3 ? 'url("/databaze.png")' :
-                    index === 4 ? 'url("/opravy.png")' :
+                    index === 4 ? 'url("/Opravy.png")' :
                     'none'
                 }}
                 variants={cardVariants}

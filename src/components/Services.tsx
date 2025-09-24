@@ -116,33 +116,26 @@ const Services: React.FC = () => {
             variants={staggerContainer}
           >
             {services.map((service, index) => {
-              const isWebsiteService = index === 0; // První služba je Website Development
-              const isEcommerceService = index === 1; // Druhá služba je E-commerce
-              const isMobileService = index === 2; // Třetí služba je Mobile Applications
+              const isWebsiteService = index === 0;
+              const isEcommerceService = index === 1;
+              const isMobileService = index === 2;
+              
+              console.log(`Service ${index}: ${service.title}, isMobile: ${isMobileService}`);
+              
               return (
               <motion.div
                 key={index}
-                className={`group border border-gray-800 p-4 sm:p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden ${
-                  isWebsiteService || isEcommerceService || isMobileService ? 'bg-cover bg-center bg-no-repeat' : 'bg-black'
-                }`}
-                style={
-                  isWebsiteService ? {
-                    backgroundImage: 'url("/vyvoj.png")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  } : isEcommerceService ? {
-                    backgroundImage: 'url("/ecommerce.png")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  } : isMobileService ? {
-                    backgroundImage: 'url("/mobilni.png")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  } : {}
-                }
+                className="group border border-gray-800 p-4 sm:p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: index === 0 ? 'url("/vyvoj.png")' :
+                                   index === 1 ? 'url("/ecommerce.png")' :
+                                   index === 2 ? 'url("/mobilnia.png")' :
+                                   'none',
+                  backgroundColor: index > 2 ? '#000000' : 'transparent'
+                }}
                 variants={cardVariants}
               >
-                {(isWebsiteService || isEcommerceService || isMobileService) && (
+                {index <= 2 && (
                   <div className="absolute inset-0 bg-black bg-opacity-70"></div>
                 )}
                 <div className="relative z-10">

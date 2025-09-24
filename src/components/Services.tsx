@@ -119,8 +119,9 @@ const Services: React.FC = () => {
               const isWebsiteService = index === 0;
               const isEcommerceService = index === 1;
               const isMobileService = index === 2;
+              const isDatabaseService = index === 3;
               
-              console.log(`Service ${index}: ${service.title}, isMobile: ${isMobileService}`);
+              console.log(`Service ${index}: ${service.title}, isDatabase: ${isDatabaseService}`);
               
               return (
               <motion.div

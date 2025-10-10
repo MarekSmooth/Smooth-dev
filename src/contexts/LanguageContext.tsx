@@ -142,7 +142,7 @@ const translations = {
 
     // Made by Smooth Page
     'made.title': 'Made by Smooth',
-    'made.subtitle': 'Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.',
+    'made.subtitle': 'Showcase of our work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.',
     'made.project1.title': 'Shoptet E-shop Solutions',
     'made.project1.description': 'Modern online store with payment integration',
     'made.project2.title': 'Corporate Website',
@@ -274,7 +274,7 @@ const translations = {
 
     // Made by Smooth Page
     'made.title': 'Made by Smooth',
-    'made.subtitle': 'Ukázka naší nejlepší práce - od konceptu po nasazení, každý projekt představuje náš závazek k dokonalosti a inovacím v digitálních řešeních.',
+    'made.subtitle': 'Ukázka naší práce - od konceptu po nasazení, každý projekt představuje náš závazek k dokonalosti a inovacím v digitálních řešeních.',
     'made.project1.title': 'Shoptet E-shop řešení',
     'made.project1.description': 'Moderní online obchod s platební integrací',
     'made.project2.title': 'Firemní Web',

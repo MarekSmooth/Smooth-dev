@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/smooth_development/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -163,7 +163,7 @@ const Header: React.FC = () => {
                   <Facebook className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/smooth_development/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-200"

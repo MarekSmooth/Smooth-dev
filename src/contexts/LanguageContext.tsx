@@ -216,7 +216,7 @@ const translations = {
     'about.badge': 'O nás',
     'about.title.crafting': 'Vytváříme digitální',
     'about.title.excellence': 'dokonalost',
-    'about.description': 'Jsme mladý dvoučlenný tým s citem pro moderní design, širokým technickým základem a zapálením pro inovace v digitálním světě. Ve Smooth Development se specializujeme na vytváření bezproblémových digitálních zážitků, které transformují podnikání. S naším vzděláním a praktickou praxí v oboru kombinujeme technické odborné znalosti s kreativní vizí, abychom vám poskytli řešení na míru, která splňují vaše současné potřeby a škálují se s vaším budoucím růstem.',
+    'about.description': 'Jsme mladý dvoučlenný tým s citem pro moderní design, širokým technickým základem a zapálením pro inovace v digitálním světě. Ve Smooth Development se specializujeme na vytváření bezproblémových digitálních zážitků, které transformují podnikání. S naším vzděláním a praktickou zkušeností v oboru kombinujeme technické odborné znalosti s kreativní vizí, abychom vám poskytli řešení na míru, která splňují vaše současné potřeby a škálují se s vaším budoucím růstem.',
     'about.expertise.title': 'Full-Stack odbornost',
     'about.expertise.description': 'Komplexní vývoj od frontendových rozhraní po backendové systémy a databáze.',
     'about.custom.title': 'Řešení na míru',

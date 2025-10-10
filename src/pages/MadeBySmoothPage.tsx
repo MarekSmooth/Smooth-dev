@@ -41,6 +41,12 @@ const MadeBySmoothPage: React.FC = () => {
       description: t('made.project2.description'),
       tech: ["Next.js", "Tailwind CSS", "Supabase"],
       image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+      title: t('made.project3.title'),
+      description: t('made.project3.description'),
+      tech: ["Python", "Data Visualization", "Business Intelligence"],
+      image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
     }
   ];
 

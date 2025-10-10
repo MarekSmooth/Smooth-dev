@@ -147,6 +147,8 @@ const translations = {
     'made.project1.description': 'Modern online store with payment integration',
     'made.project2.title': 'Corporate Website',
     'made.project2.description': 'Professional website with custom CMS',
+    'made.project3.title': 'Data Analysis',
+    'made.project3.description': 'Advanced data analysis and business intelligence solutions',
     'made.cta': 'Start Your Project',
   },
   cs: {
@@ -277,6 +279,8 @@ const translations = {
     'made.project1.description': 'Moderní online obchod s platební integrací',
     'made.project2.title': 'Firemní Web',
     'made.project2.description': 'Profesionální web s vlastním CMS',
+    'made.project3.title': 'Datová Analýza',
+    'made.project3.description': 'Pokročilá datová analýza a business intelligence řešení',
     'made.cta': 'Začít váš projekt',
   }
 };

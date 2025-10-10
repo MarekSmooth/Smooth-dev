@@ -33,18 +33,12 @@ const MadeBySmoothPage: React.FC = () => {
     {
       title: t('made.project1.title'),
       description: t('made.project1.description'),
-      tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      tech: ["Shoptet", "Payment Integration", "SEO"],
       image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
       title: t('made.project2.title'),
       description: t('made.project2.description'),
-      tech: ["React Native", "TypeScript", "Firebase"],
-      image: "https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      title: t('made.project3.title'),
-      description: t('made.project3.description'),
       tech: ["Next.js", "Tailwind CSS", "Supabase"],
       image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800"
     }

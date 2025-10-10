@@ -31,20 +31,20 @@ const MadeBySmoothPage: React.FC = () => {
 
   const projects = [
     {
-      title: "E-commerce Platform",
-      description: "Modern online store with payment integration",
+      title: t('made.project1.title'),
+      description: t('made.project1.description'),
       tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
       image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
-      title: "Mobile Banking App",
-      description: "Secure mobile application for financial services",
+      title: t('made.project2.title'),
+      description: t('made.project2.description'),
       tech: ["React Native", "TypeScript", "Firebase"],
       image: "https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
-      title: "Corporate Website",
-      description: "Professional website with custom CMS",
+      title: t('made.project3.title'),
+      description: t('made.project3.description'),
       tech: ["Next.js", "Tailwind CSS", "Supabase"],
       image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800"
     }
@@ -63,25 +63,21 @@ const MadeBySmoothPage: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Main Heading */}
-            <motion.h1 
+            <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
               variants={fadeInUp}
             >
               <span className="text-white">
-                Made by
-              </span>
-              <br />
-              <span className="text-white">
-                Smooth
+                {t('made.title')}
               </span>
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p 
+            <motion.p
               className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
               variants={fadeInUp}
             >
-              Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.
+              {t('made.subtitle')}
             </motion.p>
 
             {/* Projects Grid */}
@@ -122,7 +118,7 @@ const MadeBySmoothPage: React.FC = () => {
                 to="/contact"
                 className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
               >
-                <span>Start Your Project</span>
+                <span>{t('made.cta')}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
             </motion.div>

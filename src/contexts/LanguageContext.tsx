@@ -139,6 +139,17 @@ const translations = {
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
     'footer.copyright': '© 2025 Smooth Development. All rights reserved.',
+
+    // Made by Smooth Page
+    'made.title': 'Made by Smooth',
+    'made.subtitle': 'Showcase of our finest work - from concept to deployment, each project represents our commitment to excellence and innovation in digital solutions.',
+    'made.project1.title': 'E-commerce Platform',
+    'made.project1.description': 'Modern online store with payment integration',
+    'made.project2.title': 'Mobile Banking App',
+    'made.project2.description': 'Secure mobile application for financial services',
+    'made.project3.title': 'Corporate Website',
+    'made.project3.description': 'Professional website with custom CMS',
+    'made.cta': 'Start Your Project',
   },
   cs: {
     // Header
@@ -260,6 +271,17 @@ const translations = {
     'footer.privacy': 'Zásady ochrany osobních údajů',
     'footer.terms': 'Podmínky služby',
     'footer.copyright': '© 2025 Smooth Development. Všechna práva vyhrazena.',
+
+    // Made by Smooth Page
+    'made.title': 'Made by Smooth',
+    'made.subtitle': 'Ukázka naší nejlepší práce - od konceptu po nasazení, každý projekt představuje náš závazek k dokonalosti a inovacím v digitálních řešeních.',
+    'made.project1.title': 'E-commerce Platforma',
+    'made.project1.description': 'Moderní online obchod s platební integrací',
+    'made.project2.title': 'Mobilní Bankovní Aplikace',
+    'made.project2.description': 'Zabezpečená mobilní aplikace pro finanční služby',
+    'made.project3.title': 'Firemní Web',
+    'made.project3.description': 'Profesionální web s vlastním CMS',
+    'made.cta': 'Začít váš projekt',
   }
 };
 

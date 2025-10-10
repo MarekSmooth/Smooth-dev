@@ -27,11 +27,11 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400">
                 <Phone className="w-3 h-3 text-white" />
-                <span className="text-xs">+420 XXX XXX XXX</span>
+                <span className="text-xs">+420 776 677 137</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
                 <Mail className="w-3 h-3 text-white" />
-                <span className="text-xs">info@smoothdevelopment.com</span>
+                <span className="text-xs">info@smooth-development.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
                 <MapPin className="w-3 h-3 text-white" />

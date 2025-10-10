@@ -196,10 +196,10 @@ const Contact: React.FC = () => {
             variants={fadeInUp}
           >
             <div className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide">
-              <span>+420 XXX XXX XXX</span>
+              <span>+420 776 677 137</span>
             </div>
             <div className="px-10 py-4 text-sm font-medium border border-white text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide">
-              <span>info@smoothdevelopment.com</span>
+              <span>info@smooth-development.com</span>
             </div>
           </motion.div>
         </motion.div>

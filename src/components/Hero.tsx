@@ -22,8 +22,18 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16">
-      <div className="max-w-6xl mx-auto px-6 w-full">
+    <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16 relative overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+      >
+        <source src="/video.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
         <motion.div 
           className="max-w-4xl"
           variants={staggerContainer}

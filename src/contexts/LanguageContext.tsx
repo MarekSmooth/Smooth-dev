@@ -216,7 +216,7 @@ const translations = {
     'about.badge': 'O nás',
     'about.title.crafting': 'Vytváříme digitální',
     'about.title.excellence': 'dokonalost',
-    'about.description': 'Jsme dvojice, kterou spojuje vášeň pro technologie, design a inovace.\nVe Smooth Development vytváříme řešení, která spojují estetiku, výkon a použitelnost.\nNaším cílem je, aby digitální svět fungoval hladkě — stejně jako vaše podnikání.\nDíky kombinaci technických znalostí a citlivého přístupu k detailům proměňujeme nápady ve skutečnost.',
+    'about.description': 'Jsme dvojice, kterou spojuje vášeň pro technologie, design a inovace.\nVe Smooth Development vytváříme řešení, která spojují estetiku, výkon a použitelnost.\nNaším cílem je, aby digitální svět fungoval hladce — stejně jako vaše podnikání.\nDíky kombinaci technických znalostí a citlivého přístupu k detailům proměňujeme nápady ve skutečnost.',
     'about.expertise.title': 'Full-Stack odbornost',
     'about.expertise.description': 'Komplexní vývoj od frontendového rozhraní po backendové systémy a databáze.',
     'about.custom.title': 'Řešení na míru',

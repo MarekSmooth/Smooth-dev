@@ -37,24 +37,30 @@ const Contact: React.FC = () => {
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  const encode = (data: Record<string, string>) =>
-    Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...formData }),
-    })
-      .then(() => {
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '6a078fa5-0ded-429c-8045-e76a24796309',
+          subject: `Nová zpráva od ${formData.name} – Smooth Development`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-      })
-      .catch(() => setStatus('error'));
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -114,8 +120,7 @@ const Contact: React.FC = () => {
                 </button>
               </div>
             ) : (
-            <form onSubmit={handleSubmit} name="contact" data-netlify="true" data-netlify-honeypot="bot-field" className="space-y-6">
-              <input type="hidden" name="form-name" value="contact" />
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-xs font-medium text-gray-300 mb-2 uppercase tracking-wide">

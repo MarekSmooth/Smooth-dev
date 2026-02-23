@@ -35,18 +35,26 @@ const Contact: React.FC = () => {
     service: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const encode = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
-    alert(t('contact.form.success'));
+    setStatus('sending');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...formData }),
+    })
+      .then(() => {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      })
+      .catch(() => setStatus('error'));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -90,7 +98,24 @@ const Contact: React.FC = () => {
 
           {/* Contact Form */}
           <motion.div className="bg-black border border-gray-800 p-8 mb-20" variants={formVariants}>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {status === 'success' ? (
+              <div className="flex flex-col items-center justify-center py-16 space-y-4">
+                <div className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-white text-lg font-medium uppercase tracking-wide text-center">{t('contact.form.success')}</p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-4 text-sm text-gray-400 hover:text-white transition-colors underline"
+                >
+                  {t('contact.form.send')} →
+                </button>
+              </div>
+            ) : (
+            <form onSubmit={handleSubmit} name="contact" data-netlify="true" data-netlify-honeypot="bot-field" className="space-y-6">
+              <input type="hidden" name="form-name" value="contact" />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-xs font-medium text-gray-300 mb-2 uppercase tracking-wide">
@@ -180,14 +205,19 @@ const Contact: React.FC = () => {
                 ></textarea>
               </div>
 
+              {status === 'error' && (
+                <p className="text-red-400 text-sm text-center">Něco se pokazilo, zkuste to prosím znovu.</p>
+              )}
               <button
                 type="submit"
-                className="w-full bg-white text-black px-8 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 flex items-center justify-center space-x-2 uppercase tracking-wide"
+                disabled={status === 'sending'}
+                className="w-full bg-white text-black px-8 py-4 text-sm font-medium hover:bg-gray-100 transition-all duration-300 flex items-center justify-center space-x-2 uppercase tracking-wide disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 h-4" />
-                <span>{t('contact.form.send')}</span>
+                <span>{status === 'sending' ? '...' : t('contact.form.send')}</span>
               </button>
             </form>
+            )}
           </motion.div>
 
           {/* CTA Buttons */}

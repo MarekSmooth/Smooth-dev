@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -81,7 +81,6 @@ const Hero: React.FC = () => {
               className="btn-outline group justify-center sm:justify-start rounded-md"
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
-              <Zap className="w-4 h-4" />
               <span>{t('hero.cta.start')}</span>
             </Link>
           </motion.div>

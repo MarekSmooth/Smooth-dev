@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Plus, X, Facebook, Instagram } from 'lucide-react';
+import { Plus, Facebook, Instagram } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
+import Logo from './Logo';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Header: React.FC = () => {
@@ -9,13 +10,9 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -32,57 +29,50 @@ const Header: React.FC = () => {
     { path: '/made-by-smooth', label: t('nav.made') },
   ];
 
-  const isActivePath = (path: string) => {
-    return location.pathname === path;
-  };
+  const isActivePath = (path: string) => location.pathname === path;
 
   return (
     <>
-      <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        'bg-black'
-      }`}>
+      <header
+        className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? 'bg-[#030712]/90 backdrop-blur-xl border-b border-white/[0.06]'
+            : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            
+
             {/* Logo */}
-            <div className="flex items-center">
-              <Link to="/">
-                <img 
-                  src="/LogoSD.png" 
-                  alt="Smooth Development" 
-                  className="h-10 md:h-12 w-auto object-contain"
-                />
-              </Link>
-            </div>
+            <Logo showText={false} />
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-1">
               {navigationItems.map((item) => (
-                <div key={item.path} className="relative">
-                  <Link
+                <Link
+                  key={item.path}
                   to={item.path}
-                  className={`transition-colors duration-200 font-normal text-sm ${
+                  className={`relative px-4 py-2 text-sm transition-colors duration-200 rounded-md ${
                     isActivePath(item.path)
-                      ? 'text-white font-medium'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-white'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
-                  >
+                >
                   {item.label}
-                  </Link>
                   {isActivePath(item.path) && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"></div>
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full" />
                   )}
-                </div>
+                </Link>
               ))}
-            </div>
+            </nav>
 
             {/* Desktop Right Side */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden md:flex items-center gap-3">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="text-gray-500 hover:text-white transition-colors duration-200 p-1.5 rounded-md hover:bg-white/5"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />
@@ -91,85 +81,82 @@ const Header: React.FC = () => {
                 href="https://www.instagram.com/smooth_development/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="text-gray-500 hover:text-white transition-colors duration-200 p-1.5 rounded-md hover:bg-white/5"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
-              
-              <div className="w-px h-4 bg-gray-600"></div>
-              
+
+              <div className="w-px h-4 bg-white/10 mx-1" />
+
               <LanguageToggle />
-              
+
               <Link
                 to="/contact"
-                className="transition-colors duration-200 font-normal text-sm border border-white px-3 py-1 rounded text-white hover:bg-white hover:text-black"
+                className="ml-1 px-4 py-1.5 text-sm font-medium text-white transition-all duration-200 rounded-md"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(124,58,237,0.8), rgba(109,40,217,0.8))',
+                  border: '1px solid rgba(139,92,246,0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = 'linear-gradient(135deg, rgba(139,92,246,0.9), rgba(124,58,237,0.9))';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = 'linear-gradient(135deg, rgba(124,58,237,0.8), rgba(109,40,217,0.8))';
+                }}
               >
                 {t('nav.contact')}
               </Link>
             </div>
 
-            {/* Mobile Burger Menu Button */}
+            {/* Mobile Burger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white hover:text-gray-300 transition-all duration-300 p-2"
+              className="md:hidden text-white p-2 rounded-md hover:bg-white/5 transition-all duration-300"
               aria-label="Toggle mobile menu"
             >
               <div className={`transform transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45' : 'rotate-0'}`}>
-                <Plus className="w-8 h-8" />
+                <Plus className="w-6 h-6" />
               </div>
             </button>
-
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-black md:hidden">
-          <div className="pt-20 px-6">
-            <div className="space-y-6">
+        <div className="fixed inset-0 z-40 bg-[#030712]/98 backdrop-blur-xl md:hidden">
+          <div className="pt-24 px-6">
+            <div className="space-y-2">
               {navigationItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block text-xl font-light transition-colors duration-200 ${
+                  className={`block px-4 py-3 rounded-lg text-xl font-medium transition-all duration-200 ${
                     isActivePath(item.path)
-                      ? 'text-white font-normal border-l-2 border-white pl-4'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-white bg-violet-500/10 border border-violet-500/20'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
-              
+
               <Link
                 to="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center py-3 mt-8 border border-white text-white hover:bg-white hover:text-black transition-all duration-200 text-lg"
+                className="btn-gradient block w-full text-center mt-6 rounded-md"
               >
                 {t('nav.contact')}
               </Link>
-              
-              <div className="flex items-center justify-center space-x-6 pt-8">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-6 h-6" />
+
+              <div className="flex items-center justify-center gap-6 pt-8 border-t border-white/[0.07] mt-6">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                  <Facebook className="w-5 h-5" />
                 </a>
-                <a
-                  href="https://www.instagram.com/smooth_development/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-6 h-6" />
+                <a href="https://www.instagram.com/smooth_development/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <LanguageToggle />
               </div>

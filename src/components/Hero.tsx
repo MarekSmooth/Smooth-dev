@@ -7,99 +7,102 @@ import { useLanguage } from '../contexts/LanguageContext';
 const Hero: React.FC = () => {
   const { t } = useLanguage();
 
-  const fadeInUp = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    transition: { duration: 1.35, ease: "easeOut" }
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.34
-      }
-    }
+  const fadeUp = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="min-h-screen flex items-end bg-black pt-32 md:pt-16 pb-16 relative overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-      >
+    <section className="min-h-screen flex items-end bg-[#030712] pt-24 pb-12 md:pb-16 relative overflow-hidden">
+      {/* Video background */}
+      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-[0.12]">
         <source src="/video.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/40"></div>
-      <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
-        <motion.div 
-          className="max-w-4xl"
-          variants={staggerContainer}
+
+      {/* Gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/80 via-transparent to-[#030712]" />
+
+      {/* Ambient orbs */}
+      <div className="orb absolute top-1/4 -left-20 w-[400px] h-[400px] bg-violet-600/20 animate-glow-pulse" />
+      <div className="orb absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-500/10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
+
+      {/* Grid dot overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 w-full relative z-10">
+        <motion.div
+          className="max-w-5xl"
           initial="initial"
           animate="animate"
+          transition={{ staggerChildren: 0.12 }}
         >
           {/* Main Heading */}
-          <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight text-left"
-            variants={fadeInUp}
+          <motion.h1
+            className="text-[clamp(2.5rem,10vw,96px)] font-black mb-4 sm:mb-6 leading-none tracking-tight font-display"
+            variants={fadeUp}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            <span className="text-white">
-              {t('hero.title.smooth')}
-            </span>
+            <span className="text-white">{t('hero.title.smooth')}</span>
             <br />
-            <span className="text-white">
-              {t('hero.title.development')}
-            </span>
+            <span className="text-gradient">{t('hero.title.development')}</span>
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p 
-            className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl leading-relaxed font-normal text-left"
-            variants={fadeInUp}
+          <motion.p
+            className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl leading-relaxed"
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             {t('hero.subtitle')}
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
-            variants={fadeInUp}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-12 sm:mb-20"
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <Link
               to="/services"
-              className="group bg-white text-black px-10 py-4 text-sm font-medium hover:bg-gray-200 transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
+              className="btn-gradient group justify-center sm:justify-start rounded-md"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <span>{t('hero.cta.services')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
-
             <Link
               to="/contact"
-              className="px-10 py-4 text-sm font-medium border border-white text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center space-x-2 uppercase tracking-wide"
+              className="btn-outline group justify-center sm:justify-start rounded-md"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <Zap className="w-4 h-4" />
               <span>{t('hero.cta.start')}</span>
             </Link>
           </motion.div>
-{/*
-          Stats
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-light text-white mb-2">50+</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wide">{t('hero.stats.projects')}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-light text-white mb-2">5+</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wide">{t('hero.stats.experience')}</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-light text-white mb-2">24/7</div>
-              <div className="text-sm text-gray-400 uppercase tracking-wide">{t('hero.stats.support')}</div>
-            </div>
-          </div>
-*/}
+
+          {/* Stats */}
+          <motion.div
+            className="grid grid-cols-3 gap-4 sm:gap-12 pt-6 sm:pt-8 border-t border-white/[0.07]"
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            {[
+              { value: '50+', label: t('hero.stats.projects') },
+              { value: '5+', label: t('hero.stats.experience') },
+              { value: '24/7', label: t('hero.stats.support') },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="text-2xl sm:text-3xl font-bold text-white font-display">{stat.value}</div>
+                <div className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest mt-1 leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

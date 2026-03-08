@@ -82,8 +82,8 @@ const translations = {
     
     // About Section
     'about.badge': 'About Us',
-    'about.title.crafting': 'Crafting Digital',
-    'about.title.excellence': 'Excellence',
+    'about.title.crafting': 'Your Vision.',
+    'about.title.excellence': 'Our Code.',
     'about.description': 'We are a duo united by a passion for technology, design, and innovation.\nAt Smooth Development, we create solutions that combine aesthetics, performance, and usability.\nOur goal is for the digital world to run smoothly — just like your business.\nThrough a combination of technical knowledge and a sensitive approach to detail, we transform ideas into reality.',
     'about.expertise.title': 'Full-Stack Expertise',
     'about.expertise.description': 'End-to-end development from frontend interface to backend systems and databases.',
@@ -133,6 +133,7 @@ const translations = {
     'contact.form.success': 'Thank you for your message! We\'ll get back to you soon.',
     
     // Footer
+    'footer.tagline': 'Full-stack development agency crafting digital excellence.',
     'footer.description': 'Expert full-stack development, custom applications, e-commerce solutions, and professional tech services. Transform your business with cutting-edge technology.',
     'footer.services': 'Services',
     'footer.links': 'Quick Links',
@@ -214,8 +215,8 @@ const translations = {
     
     // About Section
     'about.badge': 'O nás',
-    'about.title.crafting': 'Vytváříme digitální',
-    'about.title.excellence': 'dokonalost',
+    'about.title.crafting': 'Váš nápad.',
+    'about.title.excellence': 'Náš kód.',
     'about.description': 'Jsme dvojice, kterou spojuje vášeň pro technologie, design a inovace.\nVe Smooth Development vytváříme řešení, která spojují estetiku, výkon a použitelnost.\nNaším cílem je, aby digitální svět fungoval hladce — stejně jako vaše podnikání.\nDíky kombinaci technických znalostí a citlivého přístupu k detailům proměňujeme nápady ve skutečnost.',
     'about.expertise.title': 'Full-Stack odbornost',
     'about.expertise.description': 'Komplexní vývoj od frontendového rozhraní po backendové systémy a databáze.',
@@ -265,6 +266,7 @@ const translations = {
     'contact.form.success': 'Děkujeme za vaši zprávu! Brzy se vám ozveme.',
     
     // Footer
+    'footer.tagline': 'Agentura pro full-stack vývoj. Tvoříme digitální dokonalost.',
     'footer.description': 'Odborný full-stack vývoj, vlastní aplikace, e-commerce řešení a profesionální technické služby. Transformujte své podnikání pomocí nejmodernějších technologií.',
     'footer.services': 'Služby',
     'footer.links': 'Rychlé odkazy',

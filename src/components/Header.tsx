@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Plus, Facebook, Instagram } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 import Logo from './Logo';
 import { useLanguage } from '../contexts/LanguageContext';
+import { EASE_OUT } from '../lib/motion';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +54,7 @@ const Header: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`relative px-4 py-2 text-sm transition-colors duration-200 rounded-md ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
                     isActivePath(item.path)
                       ? 'text-white'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -112,8 +114,9 @@ const Header: React.FC = () => {
             {/* Mobile Burger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white p-2 rounded-md hover:bg-white/5 transition-all duration-300"
+              className="md:hidden text-white p-2.5 rounded-md hover:bg-white/5 transition-all duration-300"
               aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <div className={`transform transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45' : 'rotate-0'}`}>
                 <Plus className="w-6 h-6" />
@@ -124,46 +127,60 @@ const Header: React.FC = () => {
       </header>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#030712]/98 backdrop-blur-xl md:hidden">
-          <div className="pt-24 px-6">
-            <div className="space-y-2">
-              {navigationItems.map((item) => (
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 bg-[#030712]/98 backdrop-blur-xl md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: EASE_OUT }}
+          >
+            <motion.div
+              className="pt-24 px-6"
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25, ease: EASE_OUT }}
+            >
+              <div className="space-y-2">
+                {navigationItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-lg text-xl font-medium transition-all duration-200 ${
+                      isActivePath(item.path)
+                        ? 'text-white bg-violet-500/10 border border-violet-500/20'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+
                 <Link
-                  key={item.path}
-                  to={item.path}
+                  to="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-xl font-medium transition-all duration-200 ${
-                    isActivePath(item.path)
-                      ? 'text-white bg-violet-500/10 border border-violet-500/20'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
-                  }`}
+                  className="btn-gradient block w-full text-center mt-6 rounded-md"
                 >
-                  {item.label}
+                  {t('nav.contact')}
                 </Link>
-              ))}
 
-              <Link
-                to="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-gradient block w-full text-center mt-6 rounded-md"
-              >
-                {t('nav.contact')}
-              </Link>
-
-              <div className="flex items-center justify-center gap-6 pt-8 border-t border-white/[0.07] mt-6">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="https://www.instagram.com/smooth_development/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <LanguageToggle />
+                <div className="flex items-center justify-center gap-2 pt-8 border-t border-white/[0.07] mt-6">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.instagram.com/smooth_development/" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <LanguageToggle />
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -21,7 +21,7 @@ const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true }) => {
 
       {/* Text */}
       {showText && (
-        <div className={`font-display ${textSize} font-bold tracking-tight leading-none`}>
+        <div className={`font-display ${textSize} font-bold tracking-tightest leading-none`}>
           <span className="text-white">Smooth</span>
           <span
             className="ml-1"

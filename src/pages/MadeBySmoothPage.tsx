@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { SPRING_SNAPPY } from '../lib/motion';
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -40,7 +41,7 @@ const MadeBySmoothPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#030712] text-white min-h-screen relative overflow-hidden">
+    <div className="bg-[#030712] text-white min-h-dvh relative overflow-hidden">
       <div className="orb absolute top-0 right-1/4 w-[400px] h-[400px] bg-violet-600/15 animate-glow-pulse" />
       <div className="orb absolute bottom-1/3 left-0 w-[300px] h-[300px] bg-cyan-500/10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
 
@@ -55,7 +56,7 @@ const MadeBySmoothPage: React.FC = () => {
             transition={{ staggerChildren: 0.12 }}
           >
             <motion.h1
-              className="text-[clamp(2.2rem,8vw,72px)] font-black leading-none tracking-tight font-display mb-4"
+              className="text-[clamp(2.2rem,8vw,72px)] font-black leading-none tracking-tightest font-display mb-4"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
             >
@@ -80,8 +81,8 @@ const MadeBySmoothPage: React.FC = () => {
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.6, delay: index * 0.06 }}
+                whileHover={{ y: -3, transition: SPRING_SNAPPY }}
               >
                 <div className={`grid grid-cols-1 md:grid-cols-2 items-stretch`}>
 
@@ -90,6 +91,7 @@ const MadeBySmoothPage: React.FC = () => {
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading={index === 0 ? 'eager' : 'lazy'}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-r ${project.accent}`} />
@@ -108,9 +110,9 @@ const MadeBySmoothPage: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-display mb-3">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white font-display mb-3">
                       {project.title}
-                    </h3>
+                    </h2>
                     <p className="text-gray-400 text-sm leading-relaxed mb-5">
                       {project.description}
                     </p>

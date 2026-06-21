@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import ShaderBackground from './ShaderBackground';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -13,14 +14,18 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-end bg-[#030712] pt-24 pb-12 md:pb-16 relative overflow-hidden">
-      {/* Video background */}
-      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-[0.12]">
-        <source src="/video.mp4" type="video/mp4" />
-      </video>
+    <section className="min-h-dvh flex items-end bg-[#030712] pt-24 pb-12 md:pb-16 relative overflow-hidden">
+      {/* Shader background */}
+      <ShaderBackground className="absolute inset-0 w-full h-full opacity-70" />
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/80 via-transparent to-[#030712]" />
+      {/* Gradient overlays — keep the shader visible up top, guarantee text contrast lower down */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(3,7,18,0.88) 0%, rgba(3,7,18,0.3) 30%, rgba(3,7,18,0.55) 55%, rgba(3,7,18,0.96) 100%)',
+        }}
+      />
 
       {/* Ambient orbs */}
       <div className="orb absolute top-1/4 -left-20 w-[400px] h-[400px] bg-violet-600/20 animate-glow-pulse" />
@@ -44,7 +49,7 @@ const Hero: React.FC = () => {
         >
           {/* Main Heading */}
           <motion.h1
-            className="text-[clamp(2.5rem,10vw,96px)] font-black mb-4 sm:mb-6 leading-none tracking-tight font-display"
+            className="text-[clamp(2.5rem,10vw,96px)] font-black mb-4 sm:mb-6 leading-none tracking-tightest font-display"
             variants={fadeUp}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >

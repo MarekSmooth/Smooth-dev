@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail, MessageSquare } from 'lucide-react';
+import { Send, Phone, Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const fadeUp = {
@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
     + " bg-white/[0.04] border border-white/[0.08] focus:border-violet-500/40 focus:bg-white/[0.06]";
 
   return (
-    <section className="min-h-screen flex items-center bg-[#030712] pt-28 pb-16 relative overflow-hidden">
+    <section className="min-h-dvh flex items-center bg-[#030712] pt-28 pb-16 relative overflow-hidden">
       <div className="orb absolute top-0 left-1/3 w-[400px] h-[400px] bg-violet-600/15 animate-glow-pulse" />
       <div className="orb absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-500/10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
 
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
             transition={{ staggerChildren: 0.12 }}
           >
             <motion.h1
-              className="text-[clamp(2.2rem,8vw,64px)] font-black mb-5 leading-none tracking-tight font-display"
+              className="text-[clamp(2.2rem,8vw,64px)] font-black mb-5 leading-none tracking-tightest font-display"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
             >
@@ -113,10 +113,10 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             {status === 'success' ? (
-              <div className="flex flex-col items-center justify-center py-16 gap-4">
+              <div className="flex flex-col items-center justify-center py-16 gap-4" role="status" aria-live="polite">
                 <div className="w-16 h-16 rounded-full flex items-center justify-center"
                   style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.3), rgba(34,211,238,0.2))', border: '1px solid rgba(139,92,246,0.4)' }}>
-                  <svg className="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-8 h-8 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -164,16 +164,17 @@ const Contact: React.FC = () => {
                 </div>
 
                 {status === 'error' && (
-                  <p className="text-red-400 text-sm text-center">Něco se pokazilo, zkuste to prosím znovu.</p>
+                  <p className="text-red-400 text-sm text-center" role="alert" aria-live="polite">Něco se pokazilo, zkuste to prosím znovu.</p>
                 )}
 
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-medium uppercase tracking-wide text-white transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                  aria-busy={status === 'sending'}
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-medium uppercase tracking-wide text-white transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
                   style={{ background: 'linear-gradient(135deg, #7c3aed, #6d28d9)', boxShadow: '0 0 0 1px rgba(139,92,246,0.3)' }}
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4" aria-hidden="true" />
                   <span>{status === 'sending' ? '...' : t('contact.form.send')}</span>
                 </button>
               </form>

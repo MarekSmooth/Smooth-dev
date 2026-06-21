@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">Menu</h3>
+            <h2 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">Menu</h2>
             <ul className="space-y-2.5">
               {[
                 { path: '/', label: t('nav.home') },
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">{t('footer.services')}</h3>
+            <h2 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">{t('footer.services')}</h2>
             <ul className="space-y-2.5">
               {[
                 t('services.website.title'),
@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
+              className="w-11 h-11 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
               aria-label="Facebook"
             >
               <Facebook className="w-3.5 h-3.5" />
@@ -106,14 +106,14 @@ const Footer: React.FC = () => {
               href="https://www.instagram.com/smooth_development/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
+              className="w-11 h-11 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
               aria-label="Instagram"
             >
               <Instagram className="w-3.5 h-3.5" />
             </a>
             <button
               onClick={scrollToTop}
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-white transition-all duration-200 hover:scale-110"
+              className="w-11 h-11 rounded-lg flex items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95"
               style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.8), rgba(109,40,217,0.8))' }}
               aria-label="Scroll to top"
             >

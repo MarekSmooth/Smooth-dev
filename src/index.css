@@ -18,8 +18,47 @@
   body {
     background-color: var(--bg);
     color: #f8fafc;
+    letter-spacing: -0.035em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Visible, brand-colored focus ring for keyboard navigation (mouse clicks unaffected) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid rgba(167, 139, 250, 0.8);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role='button'][aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
+  /* Respect OS-level reduced-motion preference across CSS animations/transitions */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* Scrollbar */
@@ -88,6 +127,10 @@
     box-shadow: 0 8px 32px rgba(139, 92, 246, 0.35);
   }
 
+  .btn-gradient:active {
+    transform: translateY(0) scale(0.97);
+  }
+
   .btn-outline {
     @apply relative inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 text-sm font-medium uppercase tracking-wide text-white transition-all duration-300;
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -97,6 +140,10 @@
     border-color: rgba(139, 92, 246, 0.5);
     background: rgba(139, 92, 246, 0.08);
     transform: translateY(-1px);
+  }
+
+  .btn-outline:active {
+    transform: translateY(0) scale(0.97);
   }
 
   /* Section badge */

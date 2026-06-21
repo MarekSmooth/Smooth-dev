@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Layers, Code2, ShoppingBag, Tablet, Server, Wrench, Cpu } from 'lucide-react';
+import { ArrowRight, Code2, ShoppingBag, Tablet, Server, Wrench, Cpu } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { EASE_OUT, SPRING_SNAPPY, TAP_SCALE } from '../lib/motion';
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -82,7 +83,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-[#030712] pt-20 pb-24 px-4 sm:px-6 relative overflow-hidden">
+    <section className="min-h-dvh bg-[#030712] pt-20 pb-24 px-4 sm:px-6 relative overflow-hidden">
       {/* Background orbs */}
       <div className="orb absolute top-0 right-0 w-[600px] h-[400px] bg-violet-600/10 animate-glow-pulse" />
       <div className="orb absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-500/8 animate-pulse-slow" style={{ animationDelay: '3s' }} />
@@ -102,7 +103,7 @@ const Services: React.FC = () => {
             </span>
           </motion.div> */}
           <motion.h1
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight font-display text-white mb-4"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tightest font-display text-white mb-4"
             variants={fadeUp}
             transition={{ duration: 0.6 }}
           >
@@ -125,12 +126,13 @@ const Services: React.FC = () => {
               className={`group relative overflow-hidden rounded-2xl shimmer-card ${service.span}`}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              transition={{ duration: 0.5, delay: index * 0.05, ease: EASE_OUT }}
               style={{
                 background: 'rgba(255,255,255,0.03)',
                 border: '1px solid rgba(255,255,255,0.07)',
               }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              whileHover={{ y: -4, transition: SPRING_SNAPPY }}
+              whileTap={TAP_SCALE}
             >
               {/* Background image with overlay */}
               <div
@@ -149,9 +151,9 @@ const Services: React.FC = () => {
                   {service.icon}
                 </div>
 
-                <h3 className="text-base sm:text-lg font-semibold text-white mb-3 font-display">
+                <h2 className="text-base sm:text-lg font-semibold text-white mb-3 font-display">
                   {service.title}
-                </h3>
+                </h2>
 
                 <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
                   {service.description}

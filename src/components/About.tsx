@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Users2, Star, Clock, Shield } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { SPRING_SNAPPY } from '../lib/motion';
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -20,7 +21,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center bg-[#030712] pt-28 pb-16 relative overflow-hidden">
+    <section className="min-h-dvh flex items-center bg-[#030712] pt-28 pb-16 relative overflow-hidden">
       <div className="orb absolute top-1/3 right-0 w-[500px] h-[500px] bg-purple-700/15 animate-glow-pulse" />
       <div className="orb absolute bottom-0 left-1/4 w-[300px] h-[300px] bg-cyan-500/10 animate-pulse-slow" style={{ animationDelay: '2s' }} />
 
@@ -35,7 +36,7 @@ const About: React.FC = () => {
             transition={{ staggerChildren: 0.12 }}
           >
             <motion.h1
-              className="text-[clamp(2.2rem,8vw,72px)] font-black mb-5 leading-none tracking-tight font-display"
+              className="text-[clamp(2.2rem,8vw,72px)] font-black mb-5 leading-none tracking-tightest font-display"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
             >
@@ -92,8 +93,8 @@ const About: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                whileHover={{ y: -4, transition: SPRING_SNAPPY }}
               >
                 <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${item.bg} ${item.color} flex items-center justify-center`}>
                   {item.icon}

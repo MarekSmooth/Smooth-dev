@@ -13,32 +13,36 @@ const Footer: React.FC = () => {
       <div className="gradient-line" />
 
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-12 relative z-10">
-        <div className="flex flex-col sm:flex-row sm:items-stretch sm:justify-between gap-6 mb-8 sm:h-20">
-          {/* Brand — fills the fixed row height exactly, so it can't grow the footer */}
-          <Logo showText={true} className="h-full" />
+        <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:h-20">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:gap-10 lg:flex-shrink-0">
+            {/* Brand — fills the fixed row height exactly, so it can't grow the footer */}
+            <Logo showText={true} className="h-full" />
 
-          {/* Contact */}
-          <div className="flex flex-col gap-2.5 sm:items-end sm:justify-center">
-            <a href="tel:+420776677137" className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors duration-200">
-              <Phone className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
-              +420 776 677 137
-            </a>
-            <a href="mailto:info@smooth-development.com" className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors duration-200">
-              <Mail className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-              info@smooth-development.com
-            </a>
-            <div className="flex items-center gap-2 text-gray-400 text-xs">
-              <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-              Czech Republic
+            {/* Contact */}
+            <div className="flex flex-col gap-2.5 lg:justify-center">
+              <a href="tel:+420776677137" className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors duration-200">
+                <Phone className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
+                +420 776 677 137
+              </a>
+              <a href="mailto:info@smooth-development.com" className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors duration-200">
+                <Mail className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+                info@smooth-development.com
+              </a>
+              <div className="flex items-center gap-2 text-gray-400 text-xs">
+                <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
+                Czech Republic
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs text-center sm:text-left">{t('footer.copyright')}</p>
+          {/* Copyright — takes the leftover space between the two side groups and centers within it, so it can never overlap them */}
+          <p className="text-gray-600 text-xs text-center lg:hidden">{t('footer.copyright')}</p>
+          <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center lg:min-w-0">
+            <p className="text-gray-600 text-xs whitespace-nowrap">{t('footer.copyright')}</p>
+          </div>
 
-          <div className="flex items-center gap-3">
+          {/* Social + scroll-to-top — same height level as the logo/contact row */}
+          <div className="flex items-center gap-3 lg:self-center lg:flex-shrink-0">
             <a
               href="https://facebook.com"
               target="_blank"

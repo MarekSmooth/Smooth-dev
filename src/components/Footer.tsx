@@ -13,13 +13,16 @@ const Footer: React.FC = () => {
       <div className="gradient-line" />
 
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-12 relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:h-20">
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-6 lg:gap-10 lg:flex-shrink-0">
-            {/* Brand — fills the fixed row height exactly, so it can't grow the footer */}
-            <Logo showText={true} className="h-full" />
+        <div className="flex flex-col items-center lg:flex-row lg:items-stretch gap-6 lg:h-20">
+          {/* On mobile this wrapper is display:contents — Logo/Contact become direct items of the outer
+              column so they can be reordered/centered independently; at lg it becomes a real flex row again,
+              reproducing the original side-by-side desktop pairing untouched. */}
+          <div className="contents lg:flex lg:flex-row lg:items-stretch lg:gap-10 lg:flex-shrink-0 lg:order-1">
+            {/* Brand — smaller + centered on mobile; fills the fixed row height exactly on desktop */}
+            <Logo showText={true} className="order-2 lg:order-1 h-[83px] lg:h-full" />
 
             {/* Contact */}
-            <div className="flex flex-col gap-2.5 lg:justify-center">
+            <div className="order-1 lg:order-2 flex flex-col items-center lg:items-stretch gap-2.5 lg:justify-center">
               <a href="tel:+420776677137" className="flex items-center gap-2 text-gray-400 hover:text-white text-xs transition-colors duration-200">
                 <Phone className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
                 +420 776 677 137
@@ -35,14 +38,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Copyright — takes the leftover space between the two side groups and centers within it, so it can never overlap them */}
-          <p className="text-gray-600 text-xs text-center lg:hidden">{t('footer.copyright')}</p>
-          <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-center lg:min-w-0">
-            <p className="text-gray-600 text-xs whitespace-nowrap">{t('footer.copyright')}</p>
-          </div>
-
-          {/* Social + scroll-to-top — same height level as the logo/contact row */}
-          <div className="flex items-center gap-3 lg:self-center lg:flex-shrink-0">
+          {/* Social + scroll-to-top — above copyright on mobile, same height level as logo/contact on desktop */}
+          <div className="order-3 lg:order-4 flex items-center gap-3 lg:self-center lg:flex-shrink-0">
             <a
               href="https://facebook.com"
               target="_blank"
@@ -69,6 +66,12 @@ const Footer: React.FC = () => {
             >
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
+          </div>
+
+          {/* Copyright — last on mobile (below everything); centered between the side groups on desktop */}
+          <p className="order-4 text-gray-600 text-xs text-center lg:hidden">{t('footer.copyright')}</p>
+          <div className="hidden lg:flex lg:order-3 lg:flex-1 lg:items-center lg:justify-center lg:min-w-0">
+            <p className="text-gray-600 text-xs whitespace-nowrap">{t('footer.copyright')}</p>
           </div>
         </div>
       </div>

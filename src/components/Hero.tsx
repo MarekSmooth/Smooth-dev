@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
   return (
     <section className="min-h-dvh flex items-end bg-[#030712] pt-24 pb-12 md:pb-16 relative overflow-hidden">
       {/* Shader background */}
-      <ShaderBackground className="absolute inset-0 w-full h-full opacity-70" />
+      <ShaderBackground className="absolute inset-0 w-full h-full opacity-90 sm:opacity-70" />
 
       {/* Gradient overlays — keep the shader visible up top, guarantee text contrast lower down */}
       <div

@@ -51,7 +51,11 @@ const FRAGMENT_SHADER = `
   void main() {
     vec2 fragCoord = gl_FragCoord.xy;
     vec2 uv = fragCoord.xy / iResolution.xy;
-    vec2 space = (fragCoord - iResolution.xy / 2.0) / iResolution.x * 2.0 * scale;
+    // Normalize by the longer side, not always width — on a narrow/tall mobile
+    // viewport, dividing by width alone crams far more periods into the height,
+    // making the whole pattern shrink into thin, barely-visible lines.
+    float spaceDivisor = max(iResolution.x, iResolution.y);
+    vec2 space = (fragCoord - iResolution.xy / 2.0) / spaceDivisor * 2.0 * scale;
 
     float horizontalFade = 1.0 - (cos(uv.x * 6.28) * 0.5 + 0.5);
     float verticalFade = 1.0 - (cos(uv.y * 6.28) * 0.5 + 0.5);
@@ -173,7 +177,8 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const startTime = Date.now();
     let frameId = 0;
-    let isPaused = document.hidden;
+    let isTabHidden = document.hidden;
+    let isMenuOpen = false;
     let lastFrameTime = 0;
     const TARGET_FRAME_INTERVAL = 1000 / 30; // the plasma drifts slowly — 30fps is indistinguishable from 60fps here, but halves GPU load
 
@@ -193,23 +198,36 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
         lastFrameTime = now;
         draw();
       }
-      if (!prefersReducedMotion && !isPaused) {
+      if (!prefersReducedMotion && !isTabHidden && !isMenuOpen) {
+        frameId = requestAnimationFrame(tick);
+      } else {
+        frameId = 0;
+      }
+    };
+
+    const resumeIfNeeded = () => {
+      if (!isTabHidden && !isMenuOpen && !prefersReducedMotion && !frameId) {
         frameId = requestAnimationFrame(tick);
       }
     };
 
     const handleVisibilityChange = () => {
-      isPaused = document.hidden;
-      if (!isPaused && !prefersReducedMotion && !frameId) {
-        frameId = requestAnimationFrame(tick);
-      }
+      isTabHidden = document.hidden;
+      resumeIfNeeded();
+    };
+
+    const handleMobileMenuToggle = (e: Event) => {
+      isMenuOpen = (e as CustomEvent<{ open: boolean }>).detail.open;
+      resumeIfNeeded();
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('mobile-menu-toggle', handleMobileMenuToggle);
     tick(performance.now());
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('mobile-menu-toggle', handleMobileMenuToggle);
       resizeObserver.disconnect();
       cancelAnimationFrame(frameId);
       gl.deleteBuffer(positionBuffer);

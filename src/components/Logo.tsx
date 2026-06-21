@@ -19,6 +19,7 @@ const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, className }) 
       <img
         src={showText ? '/LogoFull.png' : '/LogoIcon.png'}
         alt="Smooth Development"
+        loading={showText ? 'lazy' : 'eager'}
         className={`${heightClass} w-auto object-contain flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.7)]`}
       />
     </Link>

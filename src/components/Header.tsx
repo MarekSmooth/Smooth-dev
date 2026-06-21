@@ -21,6 +21,10 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    // The Hero shader keeps drawing every frame underneath this full-screen blurred
+    // overlay even though it's fully covered — pause it so the open/close animation
+    // doesn't compete with WebGL draws for the same GPU/main-thread budget.
+    window.dispatchEvent(new CustomEvent('mobile-menu-toggle', { detail: { open: isMobileMenuOpen } }));
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 

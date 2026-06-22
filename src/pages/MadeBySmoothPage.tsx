@@ -17,10 +17,11 @@ const MadeBySmoothPage: React.FC = () => {
   const projects = portfolioProjects.map((p) => ({
     title: t(p.titleKey),
     description: t(p.descriptionKey),
-    tech: p.tech,
+    tags: p.tags,
     image: p.image,
-    accent: p.accent,
+    url: p.url,
     tagColor: p.tagColor,
+    domain: p.url.replace(/^https?:\/\//, '').replace(/^www\./, ''),
   }));
 
   return (
@@ -67,29 +68,40 @@ const MadeBySmoothPage: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.06 }}
                 whileHover={{ y: -3, transition: SPRING_SNAPPY }}
               >
-                <div className={`grid grid-cols-1 md:grid-cols-2 items-stretch`}>
+                <div className="grid grid-cols-1 md:grid-cols-2 items-stretch">
 
-                  {/* Image */}
-                  <div className={`relative overflow-hidden min-h-[200px] sm:min-h-[260px] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-r ${project.accent}`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#030712]/90 via-[#030712]/20 to-transparent md:hidden" />
-                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 text-6xl sm:text-7xl font-black font-display opacity-10 text-white leading-none select-none">
-                      {String(index + 1).padStart(2, '0')}
+                  {/* Browser window */}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`relative flex flex-col overflow-hidden min-h-[240px] sm:min-h-[300px] ${index % 2 === 1 ? 'md:order-2' : ''}`}
+                  >
+                    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/[0.06] flex-shrink-0" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-400/50" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/50" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-400/50" />
+                      <div className="flex-1 mx-2 px-3 py-1 rounded-md text-center truncate" style={{ background: 'rgba(0,0,0,0.3)' }}>
+                        <span className="text-[11px] text-gray-500">{project.domain}</span>
+                      </div>
+                      <ExternalLink className="w-3.5 h-3.5 text-gray-600 group-hover:text-violet-400 transition-colors flex-shrink-0" />
                     </div>
-                  </div>
+                    <div className="relative flex-1 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </a>
 
                   {/* Content */}
                   <div className={`relative p-6 sm:p-8 md:p-10 flex flex-col justify-center ${index % 2 === 1 ? 'md:order-1' : ''}`}>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech, ti) => (
+                      {project.tags.map((tag, ti) => (
                         <span key={ti} className={`px-3 py-1 rounded-full text-xs font-medium border ${project.tagColor}`}>
-                          {tech}
+                          {tag}
                         </span>
                       ))}
                     </div>
@@ -99,10 +111,15 @@ const MadeBySmoothPage: React.FC = () => {
                     <p className="text-gray-400 text-sm leading-relaxed mb-5">
                       {project.description}
                     </p>
-                    <Link to="/contact" className="inline-flex items-center gap-2 text-sm text-violet-400 hover:text-violet-300 transition-colors font-medium group/link">
-                      <span>{t('made.cta')}</span>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-violet-400 hover:text-violet-300 transition-colors font-medium group/link"
+                    >
+                      <span>{t('made.visit')}</span>
                       <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-200" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
 

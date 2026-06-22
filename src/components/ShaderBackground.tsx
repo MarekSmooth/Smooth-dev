@@ -1,245 +1,135 @@
 import React, { useEffect, useRef } from 'react';
-
-const VERTEX_SHADER = `
-  attribute vec4 aVertexPosition;
-  void main() {
-    gl_Position = aVertexPosition;
-  }
-`;
-
-// linesPerGroup is the dominant cost driver (it's the per-pixel loop count) — parameterized so
-// mobile GPUs, which this per-pixel trig-heavy shader hits much harder than desktop, can run a
-// visibly-equivalent but cheaper version instead of the same workload at a smaller canvas.
-const getFragmentShader = (linesPerGroup: number) => `
-  precision highp float;
-  uniform vec2 iResolution;
-  uniform float iTime;
-
-  const float overallSpeed = 0.2;
-  const float gridSmoothWidth = 0.015;
-  const float axisWidth = 0.05;
-  const float majorLineWidth = 0.025;
-  const float minorLineWidth = 0.0125;
-  const float majorLineFrequency = 5.0;
-  const float minorLineFrequency = 1.0;
-  const float scale = 5.0;
-  const vec4 lineColor = vec4(0.55, 0.32, 1.0, 1.0);
-  const float minLineWidth = 0.01;
-  const float maxLineWidth = 0.2;
-  const float lineSpeed = 1.0 * overallSpeed;
-  const float lineAmplitude = 1.0;
-  const float lineFrequency = 0.2;
-  const float warpSpeed = 0.2 * overallSpeed;
-  const float warpFrequency = 0.5;
-  const float warpAmplitude = 1.0;
-  const float offsetFrequency = 0.5;
-  const float offsetSpeed = 1.33 * overallSpeed;
-  const float minOffsetSpread = 0.6;
-  const float maxOffsetSpread = 2.0;
-  const int linesPerGroup = ${linesPerGroup};
-
-  #define drawCircle(pos, radius, coord) smoothstep(radius + gridSmoothWidth, radius, length(coord - (pos)))
-  #define drawSmoothLine(pos, halfWidth, t) smoothstep(halfWidth, 0.0, abs(pos - (t)))
-  #define drawCrispLine(pos, halfWidth, t) smoothstep(halfWidth + gridSmoothWidth, halfWidth, abs(pos - (t)))
-  #define drawPeriodicLine(freq, width, t) drawCrispLine(freq / 2.0, width, abs(mod(t, freq) - (freq) / 2.0))
-
-  float random(float t) {
-    return (cos(t) + cos(t * 1.3 + 1.3) + cos(t * 1.4 + 1.4)) / 3.0;
-  }
-
-  float getPlasmaY(float x, float horizontalFade, float offset) {
-    return random(x * lineFrequency + iTime * lineSpeed) * horizontalFade * lineAmplitude + offset;
-  }
-
-  void main() {
-    vec2 fragCoord = gl_FragCoord.xy;
-    vec2 uv = fragCoord.xy / iResolution.xy;
-    // Normalize by the longer side, not always width — on a narrow/tall mobile
-    // viewport, dividing by width alone crams far more periods into the height,
-    // making the whole pattern shrink into thin, barely-visible lines.
-    float spaceDivisor = max(iResolution.x, iResolution.y);
-    vec2 space = (fragCoord - iResolution.xy / 2.0) / spaceDivisor * 2.0 * scale;
-
-    float horizontalFade = 1.0 - (cos(uv.x * 6.28) * 0.5 + 0.5);
-    float verticalFade = 1.0 - (cos(uv.y * 6.28) * 0.5 + 0.5);
-
-    space.y += random(space.x * warpFrequency + iTime * warpSpeed) * warpAmplitude * (0.5 + horizontalFade);
-    space.x += random(space.y * warpFrequency + iTime * warpSpeed + 2.0) * warpAmplitude * horizontalFade;
-
-    vec4 lines = vec4(0.0);
-    vec4 bgColor1 = vec4(0.05, 0.04, 0.16, 1.0);
-    vec4 bgColor2 = vec4(0.16, 0.05, 0.28, 1.0);
-
-    for (int l = 0; l < linesPerGroup; l++) {
-      float normalizedLineIndex = float(l) / float(linesPerGroup);
-      float offsetTime = iTime * offsetSpeed;
-      float offsetPosition = float(l) + space.x * offsetFrequency;
-      float rand = random(offsetPosition + offsetTime) * 0.5 + 0.5;
-      float halfWidth = mix(minLineWidth, maxLineWidth, rand * horizontalFade) / 2.0;
-      float offset = random(offsetPosition + offsetTime * (1.0 + normalizedLineIndex)) * mix(minOffsetSpread, maxOffsetSpread, horizontalFade);
-      float linePosition = getPlasmaY(space.x, horizontalFade, offset);
-      float line = drawSmoothLine(linePosition, halfWidth, space.y) / 2.0 + drawCrispLine(linePosition, halfWidth * 0.15, space.y);
-
-      float circleX = mod(float(l) + iTime * lineSpeed, 25.0) - 12.0;
-      vec2 circlePosition = vec2(circleX, getPlasmaY(circleX, horizontalFade, offset));
-      float circle = drawCircle(circlePosition, 0.01, space) * 4.0;
-
-      lines += (line + circle) * lineColor * rand * 0.7;
-    }
-
-    vec4 fragColor = mix(bgColor1, bgColor2, uv.x);
-    fragColor *= verticalFade;
-    fragColor.a = 1.0;
-    fragColor += lines;
-
-    gl_FragColor = fragColor;
-  }
-`;
-
-function loadShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
-  const shader = gl.createShader(type);
-  if (!shader) return null;
-
-  gl.shaderSource(shader, source);
-  gl.compileShader(shader);
-
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error('Shader compile error:', gl.getShaderInfoLog(shader));
-    gl.deleteShader(shader);
-    return null;
-  }
-
-  return shader;
-}
-
-function initShaderProgram(gl: WebGLRenderingContext, vsSource: string, fsSource: string): WebGLProgram | null {
-  const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
-  const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
-  if (!vertexShader || !fragmentShader) return null;
-
-  const program = gl.createProgram();
-  if (!program) return null;
-
-  gl.attachShader(program, vertexShader);
-  gl.attachShader(program, fragmentShader);
-  gl.linkProgram(program);
-
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    console.error('Shader program link error:', gl.getProgramInfoLog(program));
-    return null;
-  }
-
-  return program;
-}
+import { startPlasmaShader, type PlasmaShaderHandle, type PlasmaWorkerMessage } from '../lib/plasmaShader';
 
 interface ShaderBackgroundProps {
   className?: string;
 }
 
+interface PlasmaState {
+  worker: Worker | null;
+  handle: PlasmaShaderHandle | null;
+  pendingDestroyId: ReturnType<typeof setTimeout> | null;
+}
+
 const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolute inset-0 w-full h-full' }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Persists across React StrictMode's dev-only mount→cleanup→mount cycle (the ref object itself
+  // survives even though the effect body re-runs) — needed because transferControlToOffscreen()
+  // can only ever be called once per canvas element, ever.
+  const stateRef = useRef<PlasmaState>({ worker: null, handle: null, pendingDestroyId: null });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    const state = stateRef.current;
 
-    const gl = canvas.getContext('webgl', { antialias: false });
-    if (!gl) {
-      console.warn('WebGL not supported, shader background disabled.');
-      return;
+    // A StrictMode remount landed before the previous cleanup's deferred teardown fired — cancel
+    // it and keep using the worker/handle that's already running instead of trying (and failing)
+    // to set up a second one on the same canvas.
+    if (state.pendingDestroyId !== null) {
+      clearTimeout(state.pendingDestroyId);
+      state.pendingDestroyId = null;
     }
 
-    // Mobile GPUs (the ones this complaint is actually about) hit this per-pixel trig-heavy
-    // shader far harder than the CPU-throttling used to simulate them suggests — fewer loop
-    // iterations and a smaller internal canvas cut the real bottleneck (fragment shader fill
-    // cost), not just the JS side.
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    const program = initShaderProgram(gl, VERTEX_SHADER, getFragmentShader(isMobile ? 6 : 10));
-    if (!program) return;
-
-    const positionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-
-    const vertexPositionLoc = gl.getAttribLocation(program, 'aVertexPosition');
-    const resolutionLoc = gl.getUniformLocation(program, 'iResolution');
-    const timeLoc = gl.getUniformLocation(program, 'iTime');
-
-    // Render at a reduced internal resolution — this is a soft, blurred plasma
-    // background, so it doesn't need native/retina sharpness, and pixel count
-    // is the single biggest cost driver for this per-pixel shader.
-    const RESOLUTION_SCALE = isMobile ? 0.4 : 0.6;
-
-    const resize = () => {
-      const { width, height } = canvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5) * RESOLUTION_SCALE;
-      canvas.width = Math.max(1, Math.round(width * dpr));
-      canvas.height = Math.max(1, Math.round(height * dpr));
-      gl.viewport(0, 0, canvas.width, canvas.height);
-    };
-
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(canvas);
-    resize();
-
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const startTime = Date.now();
-    let frameId = 0;
-    let isTabHidden = document.hidden;
-    let isMenuOpen = false;
-    let lastFrameTime = 0;
-    const TARGET_FRAME_INTERVAL = 1000 / (isMobile ? 20 : 30); // the plasma drifts slowly — even 20fps reads as smooth, and it's a quarter of the GPU time of 60fps
 
-    const draw = () => {
-      const elapsed = (Date.now() - startTime) / 1000;
-      gl.useProgram(program);
-      gl.uniform2f(resolutionLoc, canvas.width, canvas.height);
-      gl.uniform1f(timeLoc, elapsed);
-      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-      gl.vertexAttribPointer(vertexPositionLoc, 2, gl.FLOAT, false, 0, 0);
-      gl.enableVertexAttribArray(vertexPositionLoc);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    };
+    if (!state.worker && !state.handle) {
+      const canUseWorker =
+        typeof OffscreenCanvas !== 'undefined' && typeof canvas.transferControlToOffscreen === 'function';
 
-    const tick = (now: number) => {
-      if (now - lastFrameTime >= TARGET_FRAME_INTERVAL) {
-        lastFrameTime = now;
-        draw();
-      }
-      if (!prefersReducedMotion && !isTabHidden && !isMenuOpen) {
-        frameId = requestAnimationFrame(tick);
+      if (canUseWorker) {
+        // Run entirely off the main thread. Many mobile GPU drivers don't actually compile the
+        // shader pipeline at gl.compileShader/linkProgram time — they defer it to the first real
+        // draw call, which can then block whichever thread called it for a second or more on
+        // weaker hardware. On the main thread that hitch eats every pending click (including the
+        // mobile menu button) and freezes any running CSS/Framer animation until it clears. Off
+        // the main thread, the same hitch is invisible to the user.
+        const worker = new Worker(new URL('../workers/plasmaShaderWorker.ts', import.meta.url), {
+          type: 'module',
+        });
+        const offscreen = canvas.transferControlToOffscreen();
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        const initMsg: PlasmaWorkerMessage = {
+          type: 'init',
+          canvas: offscreen,
+          width: rect.width,
+          height: rect.height,
+          dpr,
+          isMobile,
+          prefersReducedMotion,
+        };
+        worker.postMessage(initMsg, [offscreen]);
+        state.worker = worker;
       } else {
-        frameId = 0;
+        const gl = canvas.getContext('webgl', { antialias: false });
+        if (gl) {
+          state.handle = startPlasmaShader(gl, canvas, { isMobile, prefersReducedMotion });
+        } else {
+          console.warn('WebGL not supported, shader background disabled.');
+        }
       }
-    };
+    }
 
-    const resumeIfNeeded = () => {
-      if (!isTabHidden && !isMenuOpen && !prefersReducedMotion && !frameId) {
-        frameId = requestAnimationFrame(tick);
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      const dpr = window.devicePixelRatio || 1;
+      if (state.worker) {
+        const msg: PlasmaWorkerMessage = { type: 'resize', width: entry.contentRect.width, height: entry.contentRect.height, dpr };
+        state.worker.postMessage(msg);
+      } else {
+        state.handle?.resize(entry.contentRect.width, entry.contentRect.height, dpr);
       }
-    };
+    });
+    resizeObserver.observe(canvas);
+    if (state.handle) {
+      const rect = canvas.getBoundingClientRect();
+      state.handle.resize(rect.width, rect.height, window.devicePixelRatio || 1);
+    }
 
     const handleVisibilityChange = () => {
-      isTabHidden = document.hidden;
-      resumeIfNeeded();
+      const value = document.hidden;
+      if (state.worker) {
+        const msg: PlasmaWorkerMessage = { type: 'hidden', value };
+        state.worker.postMessage(msg);
+      } else {
+        state.handle?.setHidden(value);
+      }
     };
 
     const handleMobileMenuToggle = (e: Event) => {
-      isMenuOpen = (e as CustomEvent<{ open: boolean }>).detail.open;
-      resumeIfNeeded();
+      const value = (e as CustomEvent<{ open: boolean }>).detail.open;
+      if (state.worker) {
+        const msg: PlasmaWorkerMessage = { type: 'pause', value };
+        state.worker.postMessage(msg);
+      } else {
+        state.handle?.setPaused(value);
+      }
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('mobile-menu-toggle', handleMobileMenuToggle);
-    tick(performance.now());
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('mobile-menu-toggle', handleMobileMenuToggle);
       resizeObserver.disconnect();
-      cancelAnimationFrame(frameId);
-      gl.deleteBuffer(positionBuffer);
-      gl.deleteProgram(program);
+
+      // Deferred so a StrictMode dev double-invoke remount (which happens synchronously right
+      // after this) can cancel it above and keep the same worker/handle alive. A real unmount has
+      // no follow-up remount, so this actually runs.
+      state.pendingDestroyId = setTimeout(() => {
+        if (state.worker) {
+          const msg: PlasmaWorkerMessage = { type: 'destroy' };
+          state.worker.postMessage(msg);
+          state.worker.terminate();
+          state.worker = null;
+        }
+        state.handle?.destroy();
+        state.handle = null;
+        state.pendingDestroyId = null;
+      }, 0);
     };
   }, []);
 

@@ -14,7 +14,12 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-dvh flex items-end bg-[#030712] pt-24 pb-12 md:pb-16 relative overflow-hidden">
+    // svh (small viewport height), not dvh — dvh recalculates the moment the mobile browser's
+    // address bar starts collapsing on the user's first scroll touch, which resizes this section
+    // mid-gesture. Since the heading/CTA/stats are bottom-anchored (items-end), that resize visibly
+    // snaps them to a new position right as the user starts scrolling. svh stays fixed to the
+    // smallest possible viewport (toolbar fully shown) so it never recalculates after first paint.
+    <section className="min-h-svh flex items-end bg-[#030712] pt-24 pb-12 md:pb-16 relative overflow-hidden">
       {/* Shader background */}
       <ShaderBackground className="absolute inset-0 w-full h-full opacity-90 sm:opacity-70" />
 

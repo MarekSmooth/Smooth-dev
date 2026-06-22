@@ -10,12 +10,12 @@ const DebugOverlay: React.FC = () => {
   const [stalls, setStalls] = useState<{ time: string; ms: number }[]>([]);
 
   useEffect(() => {
-    const modeTimer = setTimeout(() => {
-      setShaderMode((window as unknown as { __shaderMode?: string }).__shaderMode || 'unknown');
-    }, 600);
-
     let last = performance.now();
     const interval = setInterval(() => {
+      // Re-read every tick, not once — a one-shot read could capture a stale value if the
+      // worker's confirmation arrives a moment later than the read itself.
+      setShaderMode((window as unknown as { __shaderMode?: string }).__shaderMode || 'unknown');
+
       const now = performance.now();
       const gap = now - last;
       last = now;
@@ -25,10 +25,7 @@ const DebugOverlay: React.FC = () => {
       }
     }, 50);
 
-    return () => {
-      clearTimeout(modeTimer);
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -49,6 +46,7 @@ const DebugOverlay: React.FC = () => {
         lineHeight: 1.5,
       }}
     >
+      <div>disabled: {new URLSearchParams(window.location.search).get('disable') || '(none)'}</div>
       <div>shader: {shaderMode}</div>
       <div style={{ color: '#fbbf24', marginTop: 4 }}>stalls &gt;80ms:</div>
       {stalls.length === 0 ? (

@@ -11,6 +11,12 @@ interface PlasmaState {
   pendingDestroyId: ReturnType<typeof setTimeout> | null;
 }
 
+// Temporary isolation switch for the mobile freeze investigation (?debug=1&disable=shader).
+// Remove once closed out.
+const isDisabled =
+  typeof window !== 'undefined' &&
+  (new URLSearchParams(window.location.search).get('disable') || '').split(',').includes('shader');
+
 const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolute inset-0 w-full h-full' }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // Persists across React StrictMode's dev-only mount→cleanup→mount cycle (the ref object itself
@@ -19,6 +25,7 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
   const stateRef = useRef<PlasmaState>({ worker: null, handle: null, pendingDestroyId: null });
 
   useEffect(() => {
+    if (isDisabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const state = stateRef.current;
@@ -146,6 +153,7 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
     };
   }, []);
 
+  if (isDisabled) return null;
   return <canvas ref={canvasRef} aria-hidden="true" className={className} />;
 };
 

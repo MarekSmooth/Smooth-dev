@@ -117,7 +117,17 @@ const Header: React.FC = () => {
 
             {/* Mobile Burger */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={(e) => {
+                // Temporary diagnostic (read by DebugOverlay behind ?debug=1) — measures the
+                // actual gap between the browser dispatching this click and our handler running,
+                // which is what "the menu doesn't open right away" really means, independent of
+                // whether a background setInterval-based heartbeat is itself being delayed/
+                // coalesced by iOS in a way that doesn't reflect real input latency.
+                const w = window as unknown as { __lastClickLatency?: number; __menuOpenClickedAt?: number };
+                w.__lastClickLatency = Math.round(performance.now() - e.timeStamp);
+                w.__menuOpenClickedAt = performance.now();
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
               className="md:hidden text-white p-2.5 rounded-md hover:bg-white/5 transition-all duration-300"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
@@ -139,6 +149,12 @@ const Header: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: EASE_OUT }}
+            onAnimationComplete={() => {
+              const w = window as unknown as { __menuOpenClickedAt?: number; __lastOpenDuration?: number };
+              if (isMobileMenuOpen && w.__menuOpenClickedAt) {
+                w.__lastOpenDuration = Math.round(performance.now() - w.__menuOpenClickedAt);
+              }
+            }}
           >
             <motion.div
               className="pt-24 px-6"

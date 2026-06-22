@@ -7,7 +7,10 @@ const VERTEX_SHADER = `
   }
 `;
 
-const FRAGMENT_SHADER = `
+// linesPerGroup is the dominant cost driver (it's the per-pixel loop count) — parameterized so
+// mobile GPUs, which this per-pixel trig-heavy shader hits much harder than desktop, can run a
+// visibly-equivalent but cheaper version instead of the same workload at a smaller canvas.
+const getFragmentShader = (linesPerGroup: number) => `
   precision highp float;
   uniform vec2 iResolution;
   uniform float iTime;
@@ -33,7 +36,7 @@ const FRAGMENT_SHADER = `
   const float offsetSpeed = 1.33 * overallSpeed;
   const float minOffsetSpread = 0.6;
   const float maxOffsetSpread = 2.0;
-  const int linesPerGroup = 10;
+  const int linesPerGroup = ${linesPerGroup};
 
   #define drawCircle(pos, radius, coord) smoothstep(radius + gridSmoothWidth, radius, length(coord - (pos)))
   #define drawSmoothLine(pos, halfWidth, t) smoothstep(halfWidth, 0.0, abs(pos - (t)))
@@ -146,7 +149,12 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
       return;
     }
 
-    const program = initShaderProgram(gl, VERTEX_SHADER, FRAGMENT_SHADER);
+    // Mobile GPUs (the ones this complaint is actually about) hit this per-pixel trig-heavy
+    // shader far harder than the CPU-throttling used to simulate them suggests — fewer loop
+    // iterations and a smaller internal canvas cut the real bottleneck (fragment shader fill
+    // cost), not just the JS side.
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const program = initShaderProgram(gl, VERTEX_SHADER, getFragmentShader(isMobile ? 6 : 10));
     if (!program) return;
 
     const positionBuffer = gl.createBuffer();
@@ -160,7 +168,7 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
     // Render at a reduced internal resolution — this is a soft, blurred plasma
     // background, so it doesn't need native/retina sharpness, and pixel count
     // is the single biggest cost driver for this per-pixel shader.
-    const RESOLUTION_SCALE = 0.6;
+    const RESOLUTION_SCALE = isMobile ? 0.4 : 0.6;
 
     const resize = () => {
       const { width, height } = canvas.getBoundingClientRect();
@@ -180,7 +188,7 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
     let isTabHidden = document.hidden;
     let isMenuOpen = false;
     let lastFrameTime = 0;
-    const TARGET_FRAME_INTERVAL = 1000 / 30; // the plasma drifts slowly — 30fps is indistinguishable from 60fps here, but halves GPU load
+    const TARGET_FRAME_INTERVAL = 1000 / (isMobile ? 20 : 30); // the plasma drifts slowly — even 20fps reads as smooth, and it's a quarter of the GPU time of 60fps
 
     const draw = () => {
       const elapsed = (Date.now() - startTime) / 1000;

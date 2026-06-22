@@ -42,7 +42,7 @@ const Header: React.FC = () => {
       <header
         className={`fixed w-full top-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#030712]/90 backdrop-blur-xl border-b border-white/[0.06]'
+            ? 'bg-[#030712] backdrop-blur-none md:bg-[#030712]/90 md:backdrop-blur-xl border-b border-white/[0.06]'
             : 'bg-transparent'
         }`}
       >
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#030712]/98 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 bg-[#030712] md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

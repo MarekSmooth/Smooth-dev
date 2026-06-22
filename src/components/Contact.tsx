@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail } from 'lucide-react';
+import { Send, Phone, Mail, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const fadeUp = {
@@ -12,6 +12,27 @@ const Contact: React.FC = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const serviceRef = useRef<HTMLDivElement>(null);
+
+  const serviceOptions = [
+    { value: '', label: t('contact.form.service.select') },
+    { value: 'website', label: t('contact.form.service.website') },
+    { value: 'ecommerce', label: t('contact.form.service.ecommerce') },
+    { value: 'mobile', label: t('contact.form.service.mobile') },
+    { value: 'database', label: t('contact.form.service.database') },
+    { value: 'repair', label: t('contact.form.service.repair') },
+    { value: 'custom-build', label: t('contact.form.service.custom') },
+    { value: 'consultation', label: t('contact.form.service.consultation') },
+  ];
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (serviceRef.current && !serviceRef.current.contains(e.target as Node)) setServiceOpen(false);
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -145,16 +166,45 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <label htmlFor="service" className="block text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">{t('contact.form.service')}</label>
-                    <select id="service" name="service" value={formData.service} onChange={handleChange} className={inputClass + " [color-scheme:dark]"}>
-                      <option value="">{t('contact.form.service.select')}</option>
-                      <option value="website">{t('contact.form.service.website')}</option>
-                      <option value="ecommerce">{t('contact.form.service.ecommerce')}</option>
-                      <option value="mobile">{t('contact.form.service.mobile')}</option>
-                      <option value="database">{t('contact.form.service.database')}</option>
-                      <option value="repair">{t('contact.form.service.repair')}</option>
-                      <option value="custom-build">{t('contact.form.service.custom')}</option>
-                      <option value="consultation">{t('contact.form.service.consultation')}</option>
-                    </select>
+                    <div className="relative" ref={serviceRef}>
+                      <button
+                        type="button"
+                        id="service"
+                        onClick={() => setServiceOpen((o) => !o)}
+                        aria-haspopup="listbox"
+                        aria-expanded={serviceOpen}
+                        className={inputClass + " flex items-center justify-between text-left"}
+                      >
+                        <span className={formData.service ? 'text-white' : 'text-gray-600'}>
+                          {serviceOptions.find((opt) => opt.value === formData.service)?.label}
+                        </span>
+                        <ChevronDown className={`w-4 h-4 text-violet-400 transition-transform duration-200 flex-shrink-0 ${serviceOpen ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {serviceOpen && (
+                        <ul
+                          role="listbox"
+                          className="absolute z-20 mt-2 w-full max-h-60 overflow-y-auto rounded-xl py-1.5"
+                          style={{ background: '#0d0a1a', border: '1px solid rgba(139,92,246,0.3)', boxShadow: '0 16px 40px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(139,92,246,0.08)' }}
+                        >
+                          {serviceOptions.map((opt) => (
+                            <li
+                              key={opt.value}
+                              role="option"
+                              aria-selected={formData.service === opt.value}
+                              onClick={() => { setFormData({ ...formData, service: opt.value }); setServiceOpen(false); }}
+                              className={`px-4 py-2.5 text-sm cursor-pointer transition-colors duration-150 ${
+                                formData.service === opt.value
+                                  ? 'bg-violet-500/15 text-violet-300'
+                                  : 'text-gray-300 hover:bg-violet-500/10 hover:text-white'
+                              }`}
+                            >
+                              {opt.label}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
                 </div>
 

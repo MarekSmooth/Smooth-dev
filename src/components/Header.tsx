@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Plus, Facebook, Instagram } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 import Logo from './Logo';
@@ -140,67 +140,69 @@ const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-[#030712] md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: EASE_OUT }}
-            onAnimationComplete={() => {
-              const w = window as unknown as { __menuOpenClickedAt?: number; __lastOpenDuration?: number };
-              if (isMobileMenuOpen && w.__menuOpenClickedAt) {
-                w.__lastOpenDuration = Math.round(performance.now() - w.__menuOpenClickedAt);
-              }
-            }}
-          >
-            <motion.div
-              className="pt-24 px-6"
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25, ease: EASE_OUT }}
+      {/* Mobile Menu — permanently mounted (never conditionally rendered) so the first-ever open
+          doesn't pay React's first-mount + Framer Motion controller setup cost exactly at the
+          moment the user clicks. That one-time cost now happens quietly during initial page load
+          instead, which is why only the very first open used to feel slow while every later one
+          was already smooth. */}
+      <motion.div
+        className="fixed inset-0 z-40 bg-[#030712] md:hidden"
+        initial={false}
+        animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
+        style={{ pointerEvents: isMobileMenuOpen ? 'auto' : 'none' }}
+        aria-hidden={!isMobileMenuOpen}
+        transition={{ duration: 0.2, ease: EASE_OUT }}
+        onAnimationComplete={() => {
+          const w = window as unknown as { __menuOpenClickedAt?: number; __lastOpenDuration?: number };
+          if (isMobileMenuOpen && w.__menuOpenClickedAt) {
+            w.__lastOpenDuration = Math.round(performance.now() - w.__menuOpenClickedAt);
+          }
+        }}
+      >
+        <motion.div
+          className="pt-24 px-6"
+          initial={false}
+          animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -12 }}
+          transition={{ duration: 0.25, ease: EASE_OUT }}
+        >
+          <div className="space-y-2">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                tabIndex={isMobileMenuOpen ? 0 : -1}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-lg text-xl font-medium transition-all duration-200 ${
+                  isActivePath(item.path)
+                    ? 'text-white bg-violet-500/10 border border-violet-500/20'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <Link
+              to="/contact"
+              tabIndex={isMobileMenuOpen ? 0 : -1}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="btn-gradient block w-full text-center mt-6 rounded-md"
             >
-              <div className="space-y-2">
-                {navigationItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-lg text-xl font-medium transition-all duration-200 ${
-                      isActivePath(item.path)
-                        ? 'text-white bg-violet-500/10 border border-violet-500/20'
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              {t('nav.contact')}
+            </Link>
 
-                <Link
-                  to="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="btn-gradient block w-full text-center mt-6 rounded-md"
-                >
-                  {t('nav.contact')}
-                </Link>
-
-                <div className="flex items-center justify-center gap-2 pt-8 border-t border-white/[0.07] mt-6">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="https://www.instagram.com/smooth_development/" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                  <LanguageToggle />
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="flex items-center justify-center gap-2 pt-8 border-t border-white/[0.07] mt-6">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" tabIndex={isMobileMenuOpen ? 0 : -1} className="p-3 text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/smooth_development/" target="_blank" rel="noopener noreferrer" tabIndex={isMobileMenuOpen ? 0 : -1} className="p-3 text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <LanguageToggle />
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
     </>
   );
 };

@@ -38,6 +38,12 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
       const canUseWorker =
         typeof OffscreenCanvas !== 'undefined' && typeof canvas.transferControlToOffscreen === 'function';
 
+      // Temporary diagnostic hook (read by DebugOverlay, only mounted behind ?debug=1) — lets us
+      // confirm from a real device which render path actually engaged, instead of guessing from
+      // feature-detection alone (Safari can expose the OffscreenCanvas API while still failing to
+      // hand back a usable WebGL context from it, which would silently fall through to nothing).
+      (window as unknown as { __shaderMode?: string }).__shaderMode = canUseWorker ? 'worker-pending' : 'fallback';
+
       if (canUseWorker) {
         // Run entirely off the main thread. Many mobile GPU drivers don't actually compile the
         // shader pipeline at gl.compileShader/linkProgram time — they defer it to the first real
@@ -59,6 +65,13 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
           dpr,
           isMobile,
           prefersReducedMotion,
+        };
+        worker.onmessage = (e: MessageEvent) => {
+          if (e.data?.type === 'status') {
+            (window as unknown as { __shaderMode?: string }).__shaderMode = e.data.ok
+              ? 'worker'
+              : `worker-failed:${e.data.reason}`;
+          }
         };
         worker.postMessage(initMsg, [offscreen]);
         state.worker = worker;

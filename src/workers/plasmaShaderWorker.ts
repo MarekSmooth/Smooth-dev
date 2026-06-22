@@ -8,12 +8,20 @@ self.onmessage = (e: MessageEvent<PlasmaWorkerMessage>) => {
   switch (msg.type) {
     case 'init': {
       const gl = msg.canvas.getContext('webgl', { antialias: false });
-      if (!gl) return;
+      if (!gl) {
+        self.postMessage({ type: 'status', ok: false, reason: 'no-webgl-context' });
+        return;
+      }
       handle = startPlasmaShader(gl, msg.canvas, {
         isMobile: msg.isMobile,
         prefersReducedMotion: msg.prefersReducedMotion,
       });
-      handle?.resize(msg.width, msg.height, msg.dpr);
+      if (!handle) {
+        self.postMessage({ type: 'status', ok: false, reason: 'shader-init-failed' });
+        return;
+      }
+      handle.resize(msg.width, msg.height, msg.dpr);
+      self.postMessage({ type: 'status', ok: true });
       break;
     }
     case 'resize':

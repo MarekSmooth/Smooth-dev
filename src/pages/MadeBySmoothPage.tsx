@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SPRING_SNAPPY } from '../lib/motion';
+import { portfolioProjects } from '../data/projects';
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -13,32 +14,14 @@ const fadeUp = {
 const MadeBySmoothPage: React.FC = () => {
   const { t } = useLanguage();
 
-  const projects = [
-    {
-      title: t('made.project2.title'),
-      description: t('made.project2.description'),
-      tech: ['Next.js', 'Tailwind CSS', 'Supabase'],
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      accent: 'from-violet-500/30 to-purple-900/60',
-      tagColor: 'bg-violet-500/15 text-violet-300 border-violet-500/20',
-    },
-    {
-      title: t('made.project1.title'),
-      description: t('made.project1.description'),
-      tech: ['Shoptet', 'Payment Integration', 'SEO'],
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      accent: 'from-cyan-500/30 to-blue-900/60',
-      tagColor: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/20',
-    },
-    {
-      title: t('made.project3.title'),
-      description: t('made.project3.description'),
-      tech: ['Python', 'Data Visualization', 'Business Intelligence'],
-      image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      accent: 'from-emerald-500/30 to-teal-900/60',
-      tagColor: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/20',
-    },
-  ];
+  const projects = portfolioProjects.map((p) => ({
+    title: t(p.titleKey),
+    description: t(p.descriptionKey),
+    tech: p.tech,
+    image: p.image,
+    accent: p.accent,
+    tagColor: p.tagColor,
+  }));
 
   return (
     <div className="bg-[#030712] text-white min-h-dvh relative overflow-hidden">

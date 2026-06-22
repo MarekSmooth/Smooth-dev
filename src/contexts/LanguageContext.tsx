@@ -151,6 +151,28 @@ const translations = {
     'made.project3.title': 'Data analysis',
     'made.project3.description': 'Advanced data analysis and business intelligence solutions.',
     'made.cta': 'Start Your Project',
+
+    // Homepage: Process Section
+    'process.title': 'How We Work Together',
+    'process.subtitle': 'No guesswork, no surprises. You always know exactly where your project stands.',
+    'process.step1.title': 'Free Consultation',
+    'process.step1.description': 'We discuss your idea, goals, and budget. No strings attached.',
+    'process.step2.title': 'Proposal & Plan',
+    'process.step2.description': 'We prepare a concrete plan, timeline estimate, and price quote.',
+    'process.step3.title': 'Development',
+    'process.step3.description': 'We build your project with regular progress updates.',
+    'process.step4.title': 'Handover & Support',
+    'process.step4.description': 'Deployment, training, and support after launch.',
+
+    // Homepage: Work Showcase
+    'work.title': 'Our Work',
+    'work.subtitle': 'A few examples of what we\'ve been building lately.',
+    'work.cta': 'View All Projects',
+
+    // Homepage: Final CTA
+    'finalcta.title': 'Got a project in mind?',
+    'finalcta.subtitle': 'Let\'s talk it through — the consultation is free and no-strings-attached.',
+    'finalcta.cta': 'Let\'s Get Started',
   },
   cs: {
     // Header
@@ -284,6 +306,28 @@ const translations = {
     'made.project3.title': 'Datová analýza',
     'made.project3.description': 'Pokročilá datová analýza a business intelligence řešení.',
     'made.cta': 'Začněte váš projekt',
+
+    // Homepage: Process Section
+    'process.title': 'Jak probíhá spolupráce',
+    'process.subtitle': 'Žádné nejasnosti, žádná překvapení. Vždy přesně víte, v jaké fázi se váš projekt nachází.',
+    'process.step1.title': 'Konzultace zdarma',
+    'process.step1.description': 'Probereme váš nápad, cíle a rozpočet. Bez závazků.',
+    'process.step2.title': 'Návrh a nabídka',
+    'process.step2.description': 'Připravíme konkrétní plán, časový odhad a cenovou nabídku.',
+    'process.step3.title': 'Vývoj',
+    'process.step3.description': 'Stavíme váš projekt s pravidelnými ukázkami postupu.',
+    'process.step4.title': 'Předání a podpora',
+    'process.step4.description': 'Nasazení, zaškolení a podpora i po spuštění projektu.',
+
+    // Homepage: Work Showcase
+    'work.title': 'Naše práce',
+    'work.subtitle': 'Pár ukázek toho, na čem jsme nedávno pracovali.',
+    'work.cta': 'Zobrazit všechny projekty',
+
+    // Homepage: Final CTA
+    'finalcta.title': 'Máte nápad na projekt?',
+    'finalcta.subtitle': 'Probereme ho společně – konzultace je zdarma a nezávazná.',
+    'finalcta.cta': 'Začněme spolupracovat',
   }
 };
 

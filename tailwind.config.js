@@ -42,9 +42,13 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(24px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        // No transform here on purpose — animating an orb's scale forces the browser to
+        // re-rasterize its expensive blur() filter on every frame (the blurred output's pixel
+        // size changes with the element), unlike opacity alone which can usually reuse a cached
+        // bitmap. Same visual "breathing" glow, without the recurring main-thread/GPU cost.
         glowPulse: {
-          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.08)' },
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
         },
         fadeIn: {
           '0%': { opacity: '0' },

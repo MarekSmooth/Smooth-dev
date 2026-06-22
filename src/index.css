@@ -111,8 +111,14 @@
   /* Orb glow */
   .orb {
     border-radius: 50%;
-    filter: blur(80px);
+    /* Gaussian blur cost scales roughly with radius² — 80px was forcing a large, continuous
+       re-rasterization cost on every animated orb (several per page, most with an infinite
+       scale/opacity animation), which is exactly the kind of recurring main-thread/compositor
+       work that shows up as periodic stalls on weaker mobile GPUs (WebKit's filter performance
+       is notably weaker than Blink's). 48px keeps the same soft-glow look at a fraction of the cost. */
+    filter: blur(48px);
     pointer-events: none;
+    will-change: opacity;
   }
 
   /* Gradient border button */

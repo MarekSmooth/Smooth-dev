@@ -11,12 +11,6 @@ interface PlasmaState {
   pendingDestroyId: ReturnType<typeof setTimeout> | null;
 }
 
-// Temporary isolation switch for the mobile freeze investigation (?debug=1&disable=shader).
-// Remove once closed out.
-const isDisabled =
-  typeof window !== 'undefined' &&
-  (new URLSearchParams(window.location.search).get('disable') || '').split(',').includes('shader');
-
 const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolute inset-0 w-full h-full' }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // Persists across React StrictMode's dev-only mount→cleanup→mount cycle (the ref object itself
@@ -25,7 +19,6 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
   const stateRef = useRef<PlasmaState>({ worker: null, handle: null, pendingDestroyId: null });
 
   useEffect(() => {
-    if (isDisabled) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const state = stateRef.current;
@@ -44,12 +37,6 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
     if (!state.worker && !state.handle) {
       const canUseWorker =
         typeof OffscreenCanvas !== 'undefined' && typeof canvas.transferControlToOffscreen === 'function';
-
-      // Temporary diagnostic hook (read by DebugOverlay, only mounted behind ?debug=1) — lets us
-      // confirm from a real device which render path actually engaged, instead of guessing from
-      // feature-detection alone (Safari can expose the OffscreenCanvas API while still failing to
-      // hand back a usable WebGL context from it, which would silently fall through to nothing).
-      (window as unknown as { __shaderMode?: string }).__shaderMode = canUseWorker ? 'worker-pending' : 'fallback';
 
       if (canUseWorker) {
         // Run entirely off the main thread. Many mobile GPU drivers don't actually compile the
@@ -72,13 +59,6 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
           dpr,
           isMobile,
           prefersReducedMotion,
-        };
-        worker.onmessage = (e: MessageEvent) => {
-          if (e.data?.type === 'status') {
-            (window as unknown as { __shaderMode?: string }).__shaderMode = e.data.ok
-              ? 'worker'
-              : `worker-failed:${e.data.reason}`;
-          }
         };
         worker.postMessage(initMsg, [offscreen]);
         state.worker = worker;
@@ -153,7 +133,6 @@ const ShaderBackground: React.FC<ShaderBackgroundProps> = ({ className = 'absolu
     };
   }, []);
 
-  if (isDisabled) return null;
   return <canvas ref={canvasRef} aria-hidden="true" className={className} />;
 };
 

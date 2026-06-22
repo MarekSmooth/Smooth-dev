@@ -5,9 +5,6 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import DebugOverlay from './components/DebugOverlay';
-
-const isDebugMode = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('debug') === '1';
 
 // Only the homepage ships in the main bundle — it's what mobile visitors land on first.
 // Every other route loads on demand, so first load doesn't pay for pages the visitor may never open.
@@ -35,7 +32,6 @@ function App() {
               </Suspense>
             </main>
             <Footer />
-            {isDebugMode && <DebugOverlay />}
           </div>
         </Router>
       </MotionConfig>

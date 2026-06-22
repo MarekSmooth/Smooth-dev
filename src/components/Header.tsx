@@ -10,23 +10,8 @@ import { EASE_OUT } from '../lib/motion';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Safari is known to pay a real one-time cost the first time aria-hidden flips false on a
-  // previously-hidden subtree (it has to build that subtree's accessibility tree, which it
-  // otherwise skips). Pulsing it briefly during idle load time — while the menu is still fully
-  // invisible/non-interactive via opacity+pointer-events — pre-pays that cost silently instead of
-  // at the user's first real click.
-  const [ariaWarmPulse, setAriaWarmPulse] = useState(false);
   const { t } = useLanguage();
   const location = useLocation();
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setAriaWarmPulse(true), 400);
-    const t2 = setTimeout(() => setAriaWarmPulse(false), 500);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -132,17 +117,7 @@ const Header: React.FC = () => {
 
             {/* Mobile Burger */}
             <button
-              onClick={(e) => {
-                // Temporary diagnostic (read by DebugOverlay behind ?debug=1) — measures the
-                // actual gap between the browser dispatching this click and our handler running,
-                // which is what "the menu doesn't open right away" really means, independent of
-                // whether a background setInterval-based heartbeat is itself being delayed/
-                // coalesced by iOS in a way that doesn't reflect real input latency.
-                const w = window as unknown as { __lastClickLatency?: number; __menuOpenClickedAt?: number };
-                w.__lastClickLatency = Math.round(performance.now() - e.timeStamp);
-                w.__menuOpenClickedAt = performance.now();
-                setIsMobileMenuOpen(!isMobileMenuOpen);
-              }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden text-white p-2.5 rounded-md hover:bg-white/5 transition-all duration-300"
               aria-label="Toggle mobile menu"
               aria-expanded={isMobileMenuOpen}
@@ -155,24 +130,15 @@ const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Menu — permanently mounted (never conditionally rendered) so the first-ever open
-          doesn't pay React's first-mount + Framer Motion controller setup cost exactly at the
-          moment the user clicks. That one-time cost now happens quietly during initial page load
-          instead, which is why only the very first open used to feel slow while every later one
-          was already smooth. */}
+      {/* Mobile Menu — permanently mounted (never conditionally rendered) rather than mounted on
+          first click, so opening it doesn't pay any first-render cost at interaction time. */}
       <motion.div
         className="fixed inset-0 z-40 bg-[#030712] md:hidden"
         initial={false}
         animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
         style={{ pointerEvents: isMobileMenuOpen ? 'auto' : 'none', willChange: 'opacity' }}
-        aria-hidden={!(isMobileMenuOpen || ariaWarmPulse)}
+        aria-hidden={!isMobileMenuOpen}
         transition={{ duration: 0.2, ease: EASE_OUT }}
-        onAnimationComplete={() => {
-          const w = window as unknown as { __menuOpenClickedAt?: number; __lastOpenDuration?: number };
-          if (isMobileMenuOpen && w.__menuOpenClickedAt) {
-            w.__lastOpenDuration = Math.round(performance.now() - w.__menuOpenClickedAt);
-          }
-        }}
       >
         <motion.div
           className="pt-24 px-6"

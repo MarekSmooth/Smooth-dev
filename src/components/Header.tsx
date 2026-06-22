@@ -10,8 +10,23 @@ import { EASE_OUT } from '../lib/motion';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Safari is known to pay a real one-time cost the first time aria-hidden flips false on a
+  // previously-hidden subtree (it has to build that subtree's accessibility tree, which it
+  // otherwise skips). Pulsing it briefly during idle load time — while the menu is still fully
+  // invisible/non-interactive via opacity+pointer-events — pre-pays that cost silently instead of
+  // at the user's first real click.
+  const [ariaWarmPulse, setAriaWarmPulse] = useState(false);
   const { t } = useLanguage();
   const location = useLocation();
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setAriaWarmPulse(true), 400);
+    const t2 = setTimeout(() => setAriaWarmPulse(false), 500);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -149,8 +164,8 @@ const Header: React.FC = () => {
         className="fixed inset-0 z-40 bg-[#030712] md:hidden"
         initial={false}
         animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
-        style={{ pointerEvents: isMobileMenuOpen ? 'auto' : 'none' }}
-        aria-hidden={!isMobileMenuOpen}
+        style={{ pointerEvents: isMobileMenuOpen ? 'auto' : 'none', willChange: 'opacity' }}
+        aria-hidden={!(isMobileMenuOpen || ariaWarmPulse)}
         transition={{ duration: 0.2, ease: EASE_OUT }}
         onAnimationComplete={() => {
           const w = window as unknown as { __menuOpenClickedAt?: number; __lastOpenDuration?: number };
@@ -163,6 +178,7 @@ const Header: React.FC = () => {
           className="pt-24 px-6"
           initial={false}
           animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -12 }}
+          style={{ willChange: 'opacity, transform' }}
           transition={{ duration: 0.25, ease: EASE_OUT }}
         >
           <div className="space-y-2">

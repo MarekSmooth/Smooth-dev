@@ -5,6 +5,7 @@ import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SPRING_SNAPPY } from '../lib/motion';
 import { portfolioProjects } from '../data/projects';
+import { useSEO } from '../lib/useSEO';
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -13,6 +14,7 @@ const fadeUp = {
 
 const MadeBySmoothPage: React.FC = () => {
   const { t } = useLanguage();
+  useSEO({ title: t('seo.made.title'), description: t('seo.made.description'), path: '/made-by-smooth' });
 
   const projects = portfolioProjects.map((p) => ({
     title: t(p.titleKey),

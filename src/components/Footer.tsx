@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               </a>
               <div className="flex items-center gap-2 text-gray-400 text-xs">
                 <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
-                Czech Republic
+                {t('contact.location.value')}
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const fadeUp = {
@@ -121,6 +121,16 @@ const Contact: React.FC = () => {
                   <div className="text-white font-medium text-sm truncate">info@smooth-development.com</div>
                 </div>
               </a>
+
+              <div className="flex items-center gap-4 p-4 rounded-xl glass-hover">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">{t('contact.location')}</div>
+                  <div className="text-white font-medium text-sm">{t('contact.location.value')}</div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 

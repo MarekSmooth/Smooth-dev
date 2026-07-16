@@ -23,7 +23,8 @@ const MadeBySmoothPage: React.FC = () => {
     image: p.image,
     url: p.url,
     tagColor: p.tagColor,
-    domain: p.url.replace(/^https?:\/\//, '').replace(/^www\./, ''),
+    isClickable: p.url !== '#',
+    domain: p.url !== '#' ? p.url.replace(/^https?:\/\//, '').replace(/^www\./, '') : '',
   }));
 
   return (
@@ -73,6 +74,7 @@ const MadeBySmoothPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 items-stretch">
 
                   {/* Browser window */}
+                  {project.isClickable ? (
                   <a
                     href={project.url}
                     target="_blank"
@@ -97,6 +99,26 @@ const MadeBySmoothPage: React.FC = () => {
                       />
                     </div>
                   </a>
+                ) : (
+                  <div className={`relative flex flex-col overflow-hidden min-h-[240px] sm:min-h-[300px] ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+                    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/[0.06] flex-shrink-0" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-400/50" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/50" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-400/50" />
+                      <div className="flex-1 mx-2 px-3 py-1 rounded-md text-center truncate" style={{ background: 'rgba(0,0,0,0.3)' }}>
+                        <span className="text-[11px] text-gray-500">{project.domain}</span>
+                      </div>
+                    </div>
+                    <div className="relative flex-1 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        className="absolute inset-0 w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  </div>
+                )}
 
                   {/* Content */}
                   <div className={`relative p-6 sm:p-8 md:p-10 flex flex-col justify-center ${index % 2 === 1 ? 'md:order-1' : ''}`}>
@@ -113,6 +135,7 @@ const MadeBySmoothPage: React.FC = () => {
                     <p className="text-gray-400 text-sm leading-relaxed mb-5">
                       {project.description}
                     </p>
+                    {project.isClickable && (
                     <a
                       href={project.url}
                       target="_blank"
@@ -122,6 +145,7 @@ const MadeBySmoothPage: React.FC = () => {
                       <span>{t('made.visit')}</span>
                       <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-200" />
                     </a>
+                    )}
                   </div>
                 </div>
 

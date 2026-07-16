@@ -32,20 +32,24 @@ const WorkShowcase: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 mb-12">
           {featured.map((project, i) => {
-            const domain = project.url.replace(/^https?:\/\//, '').replace(/^www\./, '');
+            const isClickable = project.url !== '#';
+            const domain = isClickable ? project.url.replace(/^https?:\/\//, '').replace(/^www\./, '') : '';
             return (
-              <motion.a
+              <motion.div
                 key={i}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative rounded-2xl overflow-hidden block"
-                style={{ background: '#0a0a12', border: '1px solid rgba(255,255,255,0.08)' }}
+                className={`group relative rounded-2xl overflow-hidden${isClickable ? ' cursor-pointer' : ' cursor-default'}`}
+                style={{
+                  background: '#0a0a12',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  display: 'grid',
+                  gridTemplateRows: '40px 220px auto',
+                }}
+                onClick={isClickable ? () => window.open(project.url, '_blank', 'noopener,noreferrer') : undefined}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -4, transition: SPRING_SNAPPY }}
+                whileHover={isClickable ? { y: -4, transition: SPRING_SNAPPY } : {}}
               >
                 {/* Browser chrome */}
                 <div className="flex items-center gap-1.5 px-3.5 py-2.5 border-b border-white/[0.06]" style={{ background: 'rgba(255,255,255,0.03)' }}>
@@ -55,11 +59,11 @@ const WorkShowcase: React.FC = () => {
                   <div className="flex-1 mx-2 px-3 py-1 rounded-md text-center truncate" style={{ background: 'rgba(0,0,0,0.3)' }}>
                     <span className="text-[11px] text-gray-500">{domain}</span>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-gray-600 group-hover:text-violet-400 transition-colors flex-shrink-0" />
+                  {isClickable && <ExternalLink className="w-3.5 h-3.5 text-gray-600 group-hover:text-violet-400 transition-colors flex-shrink-0" />}
                 </div>
 
                 {/* Screenshot */}
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative overflow-hidden">
                   <img
                     src={project.image}
                     alt={t(project.titleKey)}
@@ -82,11 +86,13 @@ const WorkShowcase: React.FC = () => {
                   </h3>
                 </div>
 
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{ boxShadow: 'inset 0 0 0 1px rgba(139,92,246,0.3)' }}
-                />
-              </motion.a>
+                {isClickable && (
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{ boxShadow: 'inset 0 0 0 1px rgba(139,92,246,0.3)' }}
+                  />
+                )}
+              </motion.div>
             );
           })}
         </div>

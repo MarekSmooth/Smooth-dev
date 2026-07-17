@@ -184,7 +184,7 @@ const translations = {
     // Homepage: Work Showcase
     'work.title': 'Our Work',
     'work.subtitle': 'A few examples of what we\'ve been building lately.',
-    'work.cta': 'View All Projects',
+    'work.cta': 'View More Projects',
 
     // Homepage: Final CTA
     'finalcta.title': 'Got a project in mind?',
@@ -368,7 +368,7 @@ const translations = {
     // Homepage: Work Showcase
     'work.title': 'Naše práce',
     'work.subtitle': 'Pár ukázek toho, na čem jsme nedávno pracovali.',
-    'work.cta': 'Zobrazit všechny projekty',
+    'work.cta': 'Zobrazit více projektů',
 
     // Homepage: Final CTA
     'finalcta.title': 'Máte nápad na projekt?',

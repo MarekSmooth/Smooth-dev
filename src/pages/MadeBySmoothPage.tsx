@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { SPRING_SNAPPY } from '../lib/motion';
-import { portfolioProjects } from '../data/projects';
+import { portfolioProjects, PortfolioCategory } from '../data/projects';
 import { useSEO } from '../lib/useSEO';
 
 const fadeUp = {
@@ -12,20 +12,39 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
 };
 
+const FILTERS: Array<{ key: PortfolioCategory | 'all'; labelKey: string }> = [
+  { key: 'all', labelKey: 'made.filter.all' },
+  { key: 'website', labelKey: 'made.filter.website' },
+  { key: 'webapp', labelKey: 'made.filter.webapp' },
+  { key: 'eshop', labelKey: 'made.filter.eshop' },
+];
+
+// Determines the group order when "All" is active — websites first (most numerous/familiar),
+// then web apps, then e-shops.
+const CATEGORY_ORDER: PortfolioCategory[] = ['website', 'webapp', 'eshop'];
+
 const MadeBySmoothPage: React.FC = () => {
   const { t } = useLanguage();
   useSEO({ title: t('seo.made.title'), description: t('seo.made.description'), path: '/made-by-smooth' });
 
-  const projects = portfolioProjects.map((p) => ({
-    title: t(p.titleKey),
-    description: t(p.descriptionKey),
-    tags: p.tags,
-    image: p.image,
-    url: p.url,
-    tagColor: p.tagColor,
-    isClickable: p.url !== '#',
-    domain: p.url !== '#' ? p.url.replace(/^https?:\/\//, '').replace(/^www\./, '') : '',
-  }));
+  const [activeFilter, setActiveFilter] = useState<PortfolioCategory | 'all'>('all');
+
+  const projects = portfolioProjects
+    .filter((p) => activeFilter === 'all' || p.category === activeFilter)
+    .map((p) => ({
+      category: p.category,
+      title: t(p.titleKey),
+      description: t(p.descriptionKey),
+      tags: p.tags,
+      image: p.image,
+      url: p.url,
+      tagColor: p.tagColor,
+      isClickable: p.url !== '#',
+      domain: p.url !== '#' ? p.url.replace(/^https?:\/\//, '').replace(/^www\./, '') : '',
+    }))
+    .sort((a, b) =>
+      activeFilter === 'all' ? CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category) : 0
+    );
 
   return (
     <div className="bg-[#030712] text-white min-h-dvh relative overflow-hidden">
@@ -58,11 +77,49 @@ const MadeBySmoothPage: React.FC = () => {
             </motion.p>
           </motion.div>
 
+          {/* Filters */}
+          <motion.div
+            className="flex flex-wrap gap-2 mb-10 sm:mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            {FILTERS.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+                className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                  activeFilter === filter.key
+                    ? 'bg-violet-500/15 text-violet-300 border-violet-500/30'
+                    : 'text-gray-400 border-white/10 hover:text-white hover:border-white/20'
+                }`}
+              >
+                {t(filter.labelKey)}
+              </button>
+            ))}
+          </motion.div>
+
           {/* Projects */}
           <div className="space-y-4 sm:space-y-6 mb-12 sm:mb-16">
-            {projects.map((project, index) => (
+            {projects.map((project, index) => {
+              const showCategoryHeading =
+                activeFilter === 'all' && (index === 0 || projects[index - 1].category !== project.category);
+
+              return (
+              <React.Fragment key={project.title}>
+                {showCategoryHeading && (
+                  <motion.div
+                    className={`flex items-center gap-3 text-sm font-semibold uppercase tracking-wider text-violet-300/80 ${index === 0 ? '' : 'pt-4 sm:pt-6'}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {t(`made.filter.${project.category}`)}
+                    <span className="flex-1 h-px bg-white/10" />
+                  </motion.div>
+                )}
               <motion.div
-                key={index}
                 className="group relative rounded-2xl overflow-hidden"
                 style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
                 initial={{ opacity: 0, y: 32 }}
@@ -152,7 +209,9 @@ const MadeBySmoothPage: React.FC = () => {
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{ boxShadow: 'inset 0 0 0 1px rgba(139,92,246,0.25)' }} />
               </motion.div>
-            ))}
+              </React.Fragment>
+              );
+            })}
           </div>
 
           {/* CTA */}

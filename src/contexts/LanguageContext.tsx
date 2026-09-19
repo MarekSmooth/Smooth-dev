@@ -444,7 +444,7 @@ const translations = {
     'made.visit': 'Navštívit web',
 
     // Homepage: Process Section
-    'process.title': 'Jak probíhá spolupráce',
+    'process.title': 'Jak probíhá spolupráce při vývoji',
     'process.subtitle': 'Žádné nejasnosti, žádná překvapení. Vždy přesně víte, v jaké fázi se váš projekt nachází.',
     'process.step1.title': 'Konzultace zdarma',
     'process.step1.description': 'Probereme váš nápad, cíle a rozpočet. Bez závazků.',
@@ -477,7 +477,7 @@ const translations = {
     // Homepage: Final CTA
     'finalcta.title': 'Pojďme to vyřešit',
     'finalcta.subtitle': 'Probereme to společně, konzultace je zdarma a nezávazná.',
-    'finalcta.cta': 'Začněme spolupracovat',
+    'finalcta.cta': 'Napište nám',
 
     // SEO — titulky a popisky pro jednotlivé stránky
     'seo.home.title': 'Smooth Development — Vývoj webů, e-shopů a aplikací + IT servis | Brno',

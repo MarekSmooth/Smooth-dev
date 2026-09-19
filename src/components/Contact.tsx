@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -10,7 +11,7 @@ const fadeUp = {
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' });
+  const [searchParams] = useSearchParams();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [serviceOpen, setServiceOpen] = useState(false);
   const serviceRef = useRef<HTMLDivElement>(null);
@@ -21,10 +22,25 @@ const Contact: React.FC = () => {
     { value: 'ecommerce', label: t('contact.form.service.ecommerce') },
     { value: 'mobile', label: t('contact.form.service.mobile') },
     { value: 'database', label: t('contact.form.service.database') },
-    { value: 'repair', label: t('contact.form.service.repair') },
+    { value: 'diagnostics', label: t('contact.form.service.diagnostics') },
+    { value: 'cleaning', label: t('contact.form.service.cleaning') },
+    { value: 'windows-install', label: t('contact.form.service.windowsInstall') },
+    { value: 'hardware-upgrade', label: t('contact.form.service.hardwareUpgrade') },
+    { value: 'virus-removal', label: t('contact.form.service.virusRemoval') },
+    { value: 'backup', label: t('contact.form.service.backup') },
     { value: 'custom-build', label: t('contact.form.service.custom') },
+    { value: 'corporate-onboarding', label: t('contact.form.service.corpOnboarding') },
+    { value: 'corporate-pc-setup', label: t('contact.form.service.corpPcSetup') },
     { value: 'consultation', label: t('contact.form.service.consultation') },
   ];
+
+  // Service cards on the Services page link here as /contact?service=<id> so the dropdown
+  // arrives pre-selected — read once on mount, validated against the known option values.
+  const [formData, setFormData] = useState(() => {
+    const requested = searchParams.get('service') ?? '';
+    const service = serviceOptions.some((opt) => opt.value === requested) ? requested : '';
+    return { name: '', email: '', phone: '', service, message: '' };
+  });
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {

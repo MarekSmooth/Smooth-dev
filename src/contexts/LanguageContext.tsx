@@ -211,7 +211,7 @@ const translations = {
     'process.title': 'How We Work Together',
     'process.subtitle': 'No guesswork, no surprises. You always know exactly where your project stands.',
     'process.step1.title': 'Free Consultation',
-    'process.step1.description': 'We discuss your idea, goals, and budget. No strings attached.',
+    'process.step1.description': 'We discuss your idea, goals, and budget.',
     'process.step2.title': 'Proposal & Plan',
     'process.step2.description': 'We prepare a concrete plan, timeline estimate, and cost breakdown.',
     'process.step3.title': 'Design & Visuals',

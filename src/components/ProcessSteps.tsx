@@ -212,12 +212,15 @@ const ProcessSteps: React.FC = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
-          className="mb-14 sm:mb-20 max-w-2xl"
+          className="mb-14 sm:mb-20"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ staggerChildren: 0.12 }}
         >
+          {/* No width cap here — the heading is short enough to stay on one line at this
+              container's full width. The cap moves to the paragraph below instead, since that's
+              the one that actually needs a readable measure, not the display heading. */}
           <motion.h2
             className="text-3xl sm:text-4xl md:text-5xl font-black leading-none tracking-tightest font-display text-white mb-4"
             variants={fadeUp}
@@ -226,7 +229,7 @@ const ProcessSteps: React.FC = () => {
             {t('process.title')}
           </motion.h2>
           <motion.p
-            className="text-base sm:text-lg text-gray-400 leading-relaxed"
+            className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl"
             variants={fadeUp}
             transition={{ duration: 0.6 }}
           >

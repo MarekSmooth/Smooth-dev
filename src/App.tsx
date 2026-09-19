@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
@@ -50,6 +50,9 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/made-by-smooth" element={<MadeBySmoothPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              {/* Any unmatched path (old bookmarks/links like /cenik, typos, etc.) — without this,
+                  React Router renders nothing at all for an unknown path, not even the header/footer. */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
         </Router>

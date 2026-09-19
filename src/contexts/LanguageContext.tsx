@@ -208,7 +208,7 @@ const translations = {
     'made.visit': 'Visit website',
 
     // Homepage: Process Section
-    'process.title': 'How We Work Together',
+    'process.title': 'How Development Collaboration Works',
     'process.subtitle': 'No guesswork, no surprises. You always know exactly where your project stands.',
     'process.step1.title': 'Free Consultation',
     'process.step1.description': 'We discuss your idea, goals, and budget.',
@@ -241,7 +241,7 @@ const translations = {
     // Homepage: Final CTA
     'finalcta.title': "Let's Solve It",
     'finalcta.subtitle': "Let's talk it through, the consultation is free and no-strings-attached.",
-    'finalcta.cta': 'Let\'s Get Started',
+    'finalcta.cta': 'Write to Us',
 
     // SEO — per-page title/description
     'seo.home.title': 'Smooth Development — Web, E-commerce & App Development + IT Service | Brno',

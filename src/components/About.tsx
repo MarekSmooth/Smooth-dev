@@ -36,7 +36,7 @@ const About: React.FC = () => {
             transition={{ staggerChildren: 0.12 }}
           >
             <motion.h1
-              className="text-[clamp(2.2rem,8vw,72px)] font-black mb-5 leading-none tracking-tightest font-display"
+              className="text-[clamp(2.2rem,8vw,64px)] font-black mb-5 leading-none tracking-tightest font-display"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
             >

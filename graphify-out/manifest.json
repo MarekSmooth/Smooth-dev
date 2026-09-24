@@ -1,0 +1,332 @@
+{
+  ".claude/skills/ui-ux-pro-max/data/_sync_all.py": {
+    "mtime": 1790281561.0254445,
+    "ast_hash": "ce3fd6613eee315556671046b7a76a6f",
+    "semantic_hash": ""
+  },
+  ".claude/skills/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1790281561.0604434,
+    "ast_hash": "579bd996ca10aa22a33c712a172d8b90",
+    "semantic_hash": ""
+  },
+  ".claude/skills/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1790281561.0614414,
+    "ast_hash": "f10fa759d4a25dcd16d1a6d72a505a5c",
+    "semantic_hash": ""
+  },
+  ".claude/skills/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1790281561.062441,
+    "ast_hash": "89f1dc15dbd0ecd96999deaf936e3166",
+    "semantic_hash": ""
+  },
+  "eslint.config.js": {
+    "mtime": 1790281561.0644424,
+    "ast_hash": "4225f837ef9e9b6352935d05a57f40ff",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1790281561.0684428,
+    "ast_hash": "9381bb84748785b2d27ef254daaf4a5d",
+    "semantic_hash": ""
+  },
+  "postcss.config.js": {
+    "mtime": 1790281561.0684428,
+    "ast_hash": "33fad9c02cb0ec6d6030369ef6347d57",
+    "semantic_hash": ""
+  },
+  "src/App.tsx": {
+    "mtime": 1790281561.201982,
+    "ast_hash": "1df580191040c4cd27dfa7c90f99e84a",
+    "semantic_hash": ""
+  },
+  "src/components/About.tsx": {
+    "mtime": 1790282603.48643,
+    "ast_hash": "432c4496660beacf1fec66d9849f28bc",
+    "semantic_hash": ""
+  },
+  "src/components/Contact.tsx": {
+    "mtime": 1790281561.2029822,
+    "ast_hash": "636afa256fddb7db315db057ee4f1130",
+    "semantic_hash": ""
+  },
+  "src/components/FinalCTA.tsx": {
+    "mtime": 1790281561.2039804,
+    "ast_hash": "af447f45eabc1154d9b8a05185494e97",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.tsx": {
+    "mtime": 1790281561.2049832,
+    "ast_hash": "f1e11c380bd3037154ac3d5648614f55",
+    "semantic_hash": ""
+  },
+  "src/components/Header.tsx": {
+    "mtime": 1790281561.2059834,
+    "ast_hash": "83eae9df6de7956299eb9f67b6c3f90e",
+    "semantic_hash": ""
+  },
+  "src/components/Hero.tsx": {
+    "mtime": 1790281561.2069826,
+    "ast_hash": "73aaff37aea8e2aaa2ab8ba5c4d287ad",
+    "semantic_hash": ""
+  },
+  "src/components/HomeServices.tsx": {
+    "mtime": 1790281561.2069826,
+    "ast_hash": "b951d6b4bd644c0b57350e891405f895",
+    "semantic_hash": ""
+  },
+  "src/components/LanguageToggle.tsx": {
+    "mtime": 1790281561.208418,
+    "ast_hash": "57b992ab7be835776e8c49b4844a4727",
+    "semantic_hash": ""
+  },
+  "src/components/Logo.tsx": {
+    "mtime": 1790281561.208418,
+    "ast_hash": "b520f905403ad68a2424b7505bfd430c",
+    "semantic_hash": ""
+  },
+  "src/components/ProcessSteps.tsx": {
+    "mtime": 1790281561.2097476,
+    "ast_hash": "24d4eaeb4c1576ae66733ff01176b500",
+    "semantic_hash": ""
+  },
+  "src/components/Services.tsx": {
+    "mtime": 1790281561.2107496,
+    "ast_hash": "9411a0ab5463b6fc66d056569806649d",
+    "semantic_hash": ""
+  },
+  "src/components/ShaderBackground.tsx": {
+    "mtime": 1790281561.2107496,
+    "ast_hash": "b9b9e56aa810f75d3c97f7550590c204",
+    "semantic_hash": ""
+  },
+  "src/components/WorkShowcase.tsx": {
+    "mtime": 1790281561.2117481,
+    "ast_hash": "99efe00605cba6555ef6877dd65c9654",
+    "semantic_hash": ""
+  },
+  "src/contexts/LanguageContext.tsx": {
+    "mtime": 1790282271.4781322,
+    "ast_hash": "fe397e8aeb977d36d51b2046712e08c0",
+    "semantic_hash": ""
+  },
+  "src/data/projects.ts": {
+    "mtime": 1790281561.2147448,
+    "ast_hash": "d3e82f315236042f0c102bb09e4161b2",
+    "semantic_hash": ""
+  },
+  "src/data/serviceIcons.tsx": {
+    "mtime": 1790281561.2157457,
+    "ast_hash": "1917d4734ffb85f8dd4b7008fe2f55c4",
+    "semantic_hash": ""
+  },
+  "src/data/services.tsx": {
+    "mtime": 1790281561.2157457,
+    "ast_hash": "2dfe021fe25bbeffec1369776cfeb5c8",
+    "semantic_hash": ""
+  },
+  "src/lib/motion.ts": {
+    "mtime": 1790281561.217745,
+    "ast_hash": "0315486da222cb5fab0bf25c5fb93d64",
+    "semantic_hash": ""
+  },
+  "src/lib/plasmaShader.ts": {
+    "mtime": 1790281561.217745,
+    "ast_hash": "12d08b862b8c4a8f5a42b16b36d9aa92",
+    "semantic_hash": ""
+  },
+  "src/lib/useSEO.ts": {
+    "mtime": 1790281561.2187443,
+    "ast_hash": "2bddfea2106f58bb4aa9ab14e2ae55b9",
+    "semantic_hash": ""
+  },
+  "src/main.tsx": {
+    "mtime": 1790281561.2187443,
+    "ast_hash": "5539db94cfd8fad79e48b35f3ea25429",
+    "semantic_hash": ""
+  },
+  "src/pages/AboutPage.tsx": {
+    "mtime": 1790281561.2197442,
+    "ast_hash": "842a7652370758b41cef847788b23b2b",
+    "semantic_hash": ""
+  },
+  "src/pages/ContactPage.tsx": {
+    "mtime": 1790281561.2197442,
+    "ast_hash": "87f39155554c0013cd362d3f3d923ca9",
+    "semantic_hash": ""
+  },
+  "src/pages/HomePage.tsx": {
+    "mtime": 1790281561.2207441,
+    "ast_hash": "28076dd8e1451a8882e30b1257cb164f",
+    "semantic_hash": ""
+  },
+  "src/pages/MadeBySmoothPage.tsx": {
+    "mtime": 1790281561.2207441,
+    "ast_hash": "f94cb498903f12be6f88e95de9cbca92",
+    "semantic_hash": ""
+  },
+  "src/pages/MarekPage.tsx": {
+    "mtime": 1790281561.2217455,
+    "ast_hash": "209931f2c63d265915b5cab5e8be8702",
+    "semantic_hash": ""
+  },
+  "src/pages/ServicesPage.tsx": {
+    "mtime": 1790281561.2217455,
+    "ast_hash": "7f2d51893ffa369a708f3259c787401e",
+    "semantic_hash": ""
+  },
+  "src/vite-env.d.ts": {
+    "mtime": 1790281561.222746,
+    "ast_hash": "8f68c27c3fc38817b2726b20e2d4f1ee",
+    "semantic_hash": ""
+  },
+  "src/workers/plasmaShaderWorker.ts": {
+    "mtime": 1790281561.222746,
+    "ast_hash": "6714f9ea232c7d8e6cf9e849dca9d873",
+    "semantic_hash": ""
+  },
+  "tailwind.config.js": {
+    "mtime": 1790281561.2237437,
+    "ast_hash": "69a421ab7f5a959ed106e196dc81f7fa",
+    "semantic_hash": ""
+  },
+  "tsconfig.app.json": {
+    "mtime": 1790281561.2237437,
+    "ast_hash": "c8a06a5c7d728682ef4bc91ffd488149",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1790281561.2247436,
+    "ast_hash": "852c3a5df14a4b43ac28e9554ebedf4a",
+    "semantic_hash": ""
+  },
+  "tsconfig.node.json": {
+    "mtime": 1790281561.2247436,
+    "ast_hash": "e980c1dd3d183c0e364644efa7aaf82f",
+    "semantic_hash": ""
+  },
+  "vite.config.ts": {
+    "mtime": 1790281561.2247436,
+    "ast_hash": "a6342f8c3326ff5109ea1f759d80b847",
+    "semantic_hash": ""
+  },
+  ".claude/skills/ui-ux-pro-max/SKILL.md": {
+    "mtime": 1790281561.023443,
+    "ast_hash": "02f8553c6ed4ffb01186e3b19fdad492",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1790281561.0634425,
+    "ast_hash": "36e9a36bde1f4710ef34021ecfe56c8f",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1790281561.0654454,
+    "ast_hash": "6c97290bf025d450609442c94e1ab2a8",
+    "semantic_hash": ""
+  },
+  "public/robots.txt": {
+    "mtime": 1790281561.1784654,
+    "ast_hash": "399e38bb5f8066ea0b33a146247258fa",
+    "semantic_hash": ""
+  },
+  "public/LogoFull.png": {
+    "mtime": 1790281561.073441,
+    "ast_hash": "bd514c0b31e5e8fd456618179ba46469",
+    "semantic_hash": ""
+  },
+  "public/LogoIcon.png": {
+    "mtime": 1790281561.0744438,
+    "ast_hash": "ba34461c0c2e2af87d2a0147342ef23e",
+    "semantic_hash": ""
+  },
+  "public/Opravy.png": {
+    "mtime": 1790281561.0959613,
+    "ast_hash": "29eaad340f4b07160e2bcc53b7f1eb19",
+    "semantic_hash": ""
+  },
+  "public/databaze.png": {
+    "mtime": 1790281561.1139617,
+    "ast_hash": "97e0c6a45fd452112ce440b97eee0fb8",
+    "semantic_hash": ""
+  },
+  "public/desktop.png": {
+    "mtime": 1790281561.1309628,
+    "ast_hash": "e27ecc569ee924857aef75237669ae93",
+    "semantic_hash": ""
+  },
+  "public/ecommerce.png": {
+    "mtime": 1790281561.139549,
+    "ast_hash": "b727f7cd51edc6f91ba2c556215c5336",
+    "semantic_hash": ""
+  },
+  "public/favicon.png": {
+    "mtime": 1790281561.1405506,
+    "ast_hash": "efedfe99f3189a46344d466e27647090",
+    "semantic_hash": ""
+  },
+  "public/mobilnia.png": {
+    "mtime": 1790281561.1531172,
+    "ast_hash": "f83bc7318d3b4d4f45e404c56f611324",
+    "semantic_hash": ""
+  },
+  "public/personalpage/marek.jpeg": {
+    "mtime": 1790281561.1551166,
+    "ast_hash": "3116cebf50fce720d18a063c00a1f462",
+    "semantic_hash": ""
+  },
+  "public/portfolio/aqms.png": {
+    "mtime": 1790281561.157117,
+    "ast_hash": "c2c862526daf93f8edac4f7601346781",
+    "semantic_hash": ""
+  },
+  "public/portfolio/armyshoporechov.jpg": {
+    "mtime": 1790281561.1601174,
+    "ast_hash": "bd4e2f2b91d0bf674a15c94719bc4e21",
+    "semantic_hash": ""
+  },
+  "public/portfolio/autoskolajedu.jpg": {
+    "mtime": 1790281561.1631176,
+    "ast_hash": "a0ecae5470bbeaee655fed3a0e9bda36",
+    "semantic_hash": ""
+  },
+  "public/portfolio/kadernicehelena.jpg": {
+    "mtime": 1790281561.164121,
+    "ast_hash": "94d8bb2a6e0dac6c4ff1a3198a2c6d1e",
+    "semantic_hash": ""
+  },
+  "public/portfolio/kurzystudiomirage.jpg": {
+    "mtime": 1790281561.166457,
+    "ast_hash": "f8145b371b99a8c15f43e5891ab5b6a2",
+    "semantic_hash": ""
+  },
+  "public/portfolio/mnshine.jpg": {
+    "mtime": 1790281561.1684573,
+    "ast_hash": "9c1d4c6e675bceea4046d4985fc98f36",
+    "semantic_hash": ""
+  },
+  "public/portfolio/sd.png": {
+    "mtime": 1790281561.1734586,
+    "ast_hash": "134a000c5b966c500b005773eb8ed34a",
+    "semantic_hash": ""
+  },
+  "public/portfolio/smoothpost.png": {
+    "mtime": 1790281561.17646,
+    "ast_hash": "274088ebae78451c428205d4c8588908",
+    "semantic_hash": ""
+  },
+  "public/portfolio/vrakybrno.jpg": {
+    "mtime": 1790281561.1774662,
+    "ast_hash": "8646a09baa722f0058626a8af9c50e53",
+    "semantic_hash": ""
+  },
+  "public/vyvoj.png": {
+    "mtime": 1790281561.199986,
+    "ast_hash": "11cc1313fe23ac73efd2c800cfb884c6",
+    "semantic_hash": ""
+  },
+  "public/video.mp4": {
+    "mtime": 1790281561.1884677,
+    "ast_hash": "677fe144abddff833b10483b88d04cf8",
+    "semantic_hash": ""
+  }
+}

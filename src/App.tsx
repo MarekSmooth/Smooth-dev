@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate, useLocation, useNavigationType } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
@@ -13,6 +13,21 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const MadeBySmoothPage = lazy(() => import('./pages/MadeBySmoothPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const MarekPage = lazy(() => import('./pages/MarekPage'));
+
+// A client-side route change keeps the previous page's scroll position, so a link clicked
+// near the bottom of one page would open the next page near its bottom. Start each new page
+// at the top — except on browser back/forward (POP), where returning to the old spot is expected.
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  const navigationType = useNavigationType();
+
+  useEffect(() => {
+    // 'instant' overrides the global `scroll-behavior: smooth`, which would otherwise animate the jump.
+    if (navigationType !== 'POP') window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname, navigationType]);
+
+  return null;
+}
 
 // Shared chrome (Smooth Development header/footer) for the main site's routes only —
 // /marek is Marek's own page and must never show the Smooth Development logo or nav.
@@ -35,6 +50,7 @@ function App() {
     <LanguageProvider>
       <MotionConfig reducedMotion="user">
         <Router>
+          <ScrollToTop />
           <Routes>
             <Route
               path="/marek"

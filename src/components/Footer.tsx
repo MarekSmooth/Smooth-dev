@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
           {/* Social + scroll-to-top — above copyright on mobile, same height level as logo/contact on desktop */}
           <div className="order-3 lg:order-4 flex items-center gap-3 lg:self-center lg:flex-shrink-0">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/people/Smooth-Development/61591219212769/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-11 h-11 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
